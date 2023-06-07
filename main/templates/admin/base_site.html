@@ -1,0 +1,64 @@
+{% extends "admin/base_site.html" %}
+{% comment %}code for admin language select box  {% endcomment %}
+{% load i18n %}
+{% block userlinks %}
+{{ block.super }}
+/ <form action="{% url 'set_language' %}" method="post" style="display:inline">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+</form>
+{% endblock %}
+{% block extrastyle %}
+{% comment %} set django admin theme to alway light mode: https://stackoverflow.com/questions/67207144/django-admin-theming {% endcomment %}
+<style>
+    @media (prefers-color-scheme: dark) { 
+        :root {
+            --primary: #79aec8;
+            --primary-fg: #fff;
+
+            --body-fg: #333;
+            --body-bg: #fff;
+            --body-quiet-color: #666;
+            --body-loud-color: #000;
+
+            --breadcrumbs-fg: #c4dce8;
+            --breadcrumbs-bg: var(--primary);
+
+            --link-fg: #447e9b;
+            --link-hover-color: #036;
+            --link-selected-fg: #5b80b2;
+
+            --hairline-color: #e8e8e8;
+            --border-color: #ccc;
+
+            --error-fg: #ba2121;
+
+            --message-success-bg: #dfd;
+            --message-warning-bg: #ffc;
+            --message-error-bg: #ffefef;
+
+            --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
+            --selected-bg: #e4e4e4; /* E.g. selected table cells */
+            --selected-row: #ffc;
+
+            --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
+            --close-button-hover-bg: #747474;
+        }
+    }
+</style>
+{% endblock %}
+
+{% comment %} additional code settings for ckeditor {% endcomment %}
+{% block extrahead %}
+{{ block.super }}
+{% endblock %}
+

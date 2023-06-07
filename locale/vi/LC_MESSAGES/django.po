@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-07 18:04+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: backend/enums.py:5 keywordrecognition/enums.py:5
+msgid "Server error"
+msgstr "Lỗi Server"
+
+#: backend/enums.py:6 keywordrecognition/enums.py:6
+msgid "Permission error"
+msgstr "Lỗi phân quyền (Permission error)"
+
+#: backend/enums.py:10
+msgid "Failed to get Firebase user"
+msgstr "Không tìm thấy Firebase user"
+
+#: backend/enums.py:11 backend/enums.py:18
+msgid "Email alredy existed"
+msgstr "Email đã tồn tại"
+
+#: backend/enums.py:12
+msgid "Failed to create Firebase user"
+msgstr "Có lỗi trong quá trình tạo Firebase user"
+
+#: backend/enums.py:13
+msgid "Failed to get Firebase user by email"
+msgstr "Không tìm thấy Firebase user bằng email"
+
+#: backend/enums.py:17
+msgid "Account does not exist"
+msgstr "Tài khoản không tồn tại"
+
+#: backend/models/account.py:16
+msgid "account"
+msgstr "tài khoản"
+
+#: backend/models/account.py:17
+msgid "accounts"
+msgstr "tài khoản"
+
+#: backend/models/account.py:19
+msgid "email"
+msgstr ""
+
+#: backend/models/account.py:20 keywordrecognition/models/eliza_bot.py:13
+msgid "name"
+msgstr "tên"
+
+#: backend/models/account.py:21
+msgid "password"
+msgstr "mật khẩu"
+
+#: backend/models/account.py:22 keywordrecognition/models/eliza_bot.py:14
+msgid "description"
+msgstr "mô tả"
+
+#: backend/models/base.py:31 keywordrecognition/models/base.py:24
+msgid "created at"
+msgstr "ngày giờ khởi tạo"
+
+#: keywordrecognition/enums.py:10
+msgid "Eliza Chatbot Does not exist"
+msgstr "Eliza Chatbot không tồn tại"
+
+#: keywordrecognition/enums.py:11
+msgid "Chosen Bot does not belong to this User"
+msgstr "Bot không thuộc tài khoản này"
+
+#: keywordrecognition/enums.py:15
+msgid "Bot not set, please set the bot before using ElizaService"
+msgstr "Bot không xác định, hãy set bot trước khi sử dụng ElizaService"
+
+#: keywordrecognition/enums.py:16
+msgid "Invalid goto key"
+msgstr "goto key không hợp lệ"
+
+#: keywordrecognition/enums.py:17
+msgid "Invalid result index"
+msgstr "result index không hợp lệ"
+
+#: keywordrecognition/enums.py:21
+msgid "Invalid File extension! Please use a .txt file"
+msgstr "Đuôi file không hợp lệ! Xin hãy dùng .txt file"
+
+#: keywordrecognition/enums.py:22
+msgid "File upload must be under 2MB"
+msgstr "File upload vượt quá 2MB"
+
+#: keywordrecognition/enums.py:26
+msgid "Keyword does not exist"
+msgstr "Từ khóa không tồn tại"
+
+#: keywordrecognition/models/decomp.py:13
+msgid "decomposition rule"
+msgstr "luật phân rã"
+
+#: keywordrecognition/models/decomp.py:14
+msgid "decomposition rules"
+msgstr "luật phân rã"
+
+#: keywordrecognition/models/decomp.py:16
+#: keywordrecognition/models/keyword.py:10
+msgid "keyword"
+msgstr "từ khóa"
+
+#: keywordrecognition/models/decomp.py:17
+msgid "pattern"
+msgstr ""
+
+#: keywordrecognition/models/default_message.py:24
+#: keywordrecognition/models/default_message.py:28
+msgid "default message"
+msgstr "message mặc định"
+
+#: keywordrecognition/models/default_message.py:25
+msgid "default messages"
+msgstr "message mặc định"
+
+#: keywordrecognition/models/default_message.py:27
+#: keywordrecognition/models/keyword.py:13 keywordrecognition/models/quit.py:16
+msgid "bot"
+msgstr ""
+
+#: keywordrecognition/models/eliza_bot.py:10
+msgid "eliza bot"
+msgstr ""
+
+#: keywordrecognition/models/eliza_bot.py:11
+msgid "eliza bots"
+msgstr "eliza bot"
+
+#: keywordrecognition/models/eliza_bot.py:15
+msgid "owner"
+msgstr "chủ sở hữu"
+
+#: keywordrecognition/models/keyword.py:11
+msgid "keywords"
+msgstr "các từ khóa"
+
+#: keywordrecognition/models/keyword.py:14
+#: keywordrecognition/models/synonym.py:13
+msgid "word"
+msgstr "giá trị"
+
+#: keywordrecognition/models/keyword.py:15
+msgid "weight"
+msgstr "trọng số"
+
+#: keywordrecognition/models/postprocessing.py:10
+#: keywordrecognition/models/postprocessing.py:11
+msgid "post processing"
+msgstr "hậu xử lí"
+
+#: keywordrecognition/models/postprocessing.py:13
+msgid "input word"
+msgstr "giá trị đầu vào"
+
+#: keywordrecognition/models/postprocessing.py:14
+msgid "output word"
+msgstr "kết quả đầu ra"
+
+#: keywordrecognition/models/quit.py:13
+msgid "quit message"
+msgstr "message kết thúc"
+
+#: keywordrecognition/models/quit.py:14
+msgid "quit messages"
+msgstr "message kết thúc"
+
+#: keywordrecognition/models/quit.py:17
+msgid "trigger"
+msgstr "từ khóa kích hoạt"
+
+#: keywordrecognition/models/reasmb.py:13
+msgid "reassembling rule"
+msgstr "luật hợp thành"
+
+#: keywordrecognition/models/reasmb.py:14
+msgid "reassembling rules"
+msgstr "luật hợp thành"
+
+#: keywordrecognition/models/reasmb.py:16
+msgid "decomp"
+msgstr "luật phân rã"
+
+#: keywordrecognition/models/reasmb.py:17
+msgid "template"
+msgstr ""
+
+#: keywordrecognition/models/synonym.py:10
+msgid "synonym"
+msgstr "từ đồng nghĩa"
+
+#: keywordrecognition/models/synonym.py:11
+msgid "synonyms"
+msgstr "từ đồng nghĩa"
+
+#: keywordrecognition/models/synonym.py:14
+msgid "value"
+msgstr "giá trị"

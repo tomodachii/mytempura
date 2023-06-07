@@ -1,0 +1,267 @@
+initial: Xin chào! Hãy cho tôi biết vấn đề của bạn.
+final: Tạm biệt! Cảm ơn đã dành thời gian cho tôi.
+quit: bye
+quit: goodbye
+quit: quit
+quit: tạm biệt
+fallback: Tôi không hiểu lắm xin hãy giải thích thêm.
+fallback: Xin hãy tiếp tục.
+fallback: Điều này có ý nghĩa thế nào đối với bạn?
+fallback: Bạn có cảm thấy ổn khi chia sẻ về những điều này?
+synon: máy tính / máy móc
+synon: máy tính / nhân tạo
+synon: yes / ừ
+synon: yes / ok
+synon: yes / oke
+synon: yes / đúng
+synon: yes / yeb
+synon: yes / chuẩn
+post: của bạn / của tôi
+post: tôi / bạn
+post: bạn / tôi
+post: bản thân tôi / bản thân bạn
+post: bản thân bạn / bản thân tôi
+post: tôi là / bạn là
+key: xin lỗi
+  decomp: *
+    reasmb: Không sao đâu mà.
+    reasmb: Không cần thiết phải xin lỗi.
+    reasmb: Không cần phải xin lỗi đâu mà.
+key: nhớ / 5
+  decomp: * tôi nhớ *
+    reasmb: Bạn có thường hay nghĩ đến (2) ?
+    reasmb: Việc nghĩ đến (2) có gợi lên điều gì trong tâm trí bạn ?
+    reasmb: Xin hãy kể thêm cho tôi về những gì bạn nhớ
+    reasmb: Tại sao bạn lại nhớ về (2) ngay lúc này ?
+    reasmb: Điều gì khiến bạn nhớ về (2) ?
+    reasmb: Tại sao bạn lại nhớ (2) ?
+  decomp: * bạn nhớ *
+    reasmb: Bạn nghĩ tôi đã quên (2) à ?
+    reasmb: (2) ?
+    reasmb: Bạn vừa nhắc đến (2) à ?
+key: nếu / 3
+  decomp: * nếu *
+    reasmb: Bạn nghĩ rằng có khả năng (2) ?
+    reasmb: Có phải bạn mong rằng (2) ?
+    reasmb: Thật ư, nếu (2) ?
+key: đã mơ / 4
+  decomp: * đã mơ *
+    reasmb: Thật ư, (2) ?
+    reasmb: Bạn đã bao giờ nghĩ về (2) khi bạn vẫn còn thức không ?
+    reasmb: Bạn đã mơ về (2) trước đây ?
+key: mơ / 3
+  decomp: *
+    reasmb: Giấc mơ này gợi nhớ cho bạn về điều gì ?
+    reasmb: Bạn có thường mơ thấy điều này ?
+    reasmb: Thứ gì đã xuất hiện trong giấc mơ của bạn ?
+    reasmb: Bạn có nghĩ rằng giấc mơ này liên quan đến những vấn đề bạn đang gặp phải ?
+key: có lẽ
+  decomp: *
+    reasmb: Bạn có vẻ không chắc chắn lắm nhỉ.
+    reasmb: Bạn không chắc về điều này ?
+    reasmb: Có lẽ vậy, hoặc có lẽ không chúng ta khó lòng mà biết được đúng không nào ?
+key: tên / 15
+  decomp: *
+    reasmb: Tôi không hứng thú với những cái tên.
+    reasmb: Tôi nghĩ là tôi không có hứng thú với những cái tên. Xin hãy tiếp tục.
+key: chào
+  decomp: *
+    reasmb: Xin chào. Tôi có thể giúp gì cho bạn ?
+    reasmb: Xin chào. Vấn đề bạn đang gặp phải là gì ?
+key: máy tính / 50
+  decomp: *
+    reasmb: Có phải bạn sợ những cỗ máy ?
+    reasmb: Tại sao bạn lại đề cập đến máy tính ?
+    reasmb: Bạn nghĩ máy móc có liên quan đến vấn đề của bạn ?
+    reasmb: Bạn nghĩ rằng máy móc thì không thể giúp bạn à ?
+    reasmb: Điều gì khiến bạn lo lắng về máy móc ?
+    reasmb: Bạn nghĩ gì về máy tính ?
+key: là
+  decomp: * tôi là *
+    reasmb: Bạn có tin bạn là (2) ?
+    reasmb: Có phải bạn muốn trở thành (2) ?
+    reasmb: Có phải bạn mong rằng tôi sẽ nói bạn là (2) ?
+    reasmb: Sẽ thế nào nếu bạn không phải là (2) ?
+  decomp: * bạn là *
+    reasmb: Tại sao bạn lại hứng thú với việc tôi là (2) ?
+    reasmb: Bạn nghĩ tôi là (2) ?
+  decomp: * là *
+    reasmb: Bạn có nghĩ rằng (0) có thể không là (2) ?
+    reasmb: Sẽ thếu nào nếu (0) không là (2) ?
+    reasmb: Có lẽ (0) đúng là (2).
+  decomp: *
+    reasmb: Tại sao bạn lại nói 'là' ?
+    reasmb: Xin lỗi có lẽ tôi không hiểu.
+key: của
+  decomp: * của bạn *
+    reasmb: Tại sao bạn lại quan tâm đến (0) của tôi ?
+    reasmb: Thế còn (0) của bạn thì sao ?
+    reasmb: Thật ư, (0) của tôi ?
+  decomp: * của họ *
+    reasmb: Có phải bạn đang lo lắng về (0) của người khác ?
+    reasmb: Tại sao bạn lại quan tâm đến (0) của họ ?
+  decomp: * của *
+    reasmb: Có phải bạn đang lo lắng về (0) của (2) ?
+    reasmb: Tại sao bạn lại quan tâm đến (0) của (2) ?
+key: đã / 2
+  decomp: * tôi đã *
+    reasmb: Sẽ thế nào nếu bạn đã (2) ?
+    reasmb: Bạn nghĩ rằng sẽ thế nào nếu bạn đã (2) ?
+    reasmb: Bạn đã không (2) à ?
+    reasmb: Việc (2) có ý nghĩa gì với bạn ?
+    reasmb: Bạn thực sự đã làm vậy ?
+  decomp: * bạn đã *
+    reasmb: Bạn nghĩ rằng tôi đã (2) ?
+    reasmb: Điều gì khiến bạn nghĩ rằng tôi đã (2) ?
+    reasmb: Bạn nghĩ sao ?
+    reasmb: Có lẽ tôi thực sự đã (2) .
+    reasmb: Sẽ ra sao nếu tôi đã (2) ?
+key: tôi
+  decomp: * tôi muốn *
+    reasmb: Sẽ ra sao nếu bạn thực sự sẽ có được (2) ?
+    reasmb: Tại sao bạn lại muốn (2) ?
+    reasmb: Tại sao bạn lại điều đó (2) ?
+    reasmb: Sẽ ra sao nếu bạn không bao giờ có được (2) ?
+    reasmb: Việc có được (2) có ý nghĩa thế nào với bạn ?
+  decomp: * tôi * buồn *
+    reasmb: Không sao đâu tôi ở đây để lắng nghe!
+    reasmb: Tôi ở đây để lắng nghe nỗi buồn của bạn.
+    reasmb: Điều gì khiến bạn buồn ?
+  decomp: * tôi * hạnh phúc *
+    reasmb: Điều gì đã khiến bạn hạnh phúc ?
+    reasmb: Có phải cuộc nói chuyện này đang khiến bạn cảm thấy tốt hơn ?
+  decomp: * tôi tin rằng *
+    reasmb: Bạn có thực sự nghĩ thế ?
+    reasmb: Liệu bạn chắc chắn về (2) ?
+  decomp: * tôi tin * tôi *
+    reasmb: Bạn có thực sự nghĩ rằng bạn (4) ?
+    reasmb: Liệu bạn chắc chắn rằng bạn (4) ?
+  decomp: * tôi * tin * bạn *
+    reasmb: Điều gì khiến bạn nghĩ vậy ?
+    reasmb: Bạn có thực sự nghĩ vậy ?
+  decomp: * tôi tin *
+    reasmb: Bạn có thực sự nghĩ thế ?
+    reasmb: Liệu bạn chắc chắn về (2) ?
+  decomp: * tôi không thể *
+    reasmb: Tại sao bạn lại nghĩ rằng bạn không thể (2) ?
+    reasmb: Bạn đã thử chưa ?
+    reasmb: Biết đâu bây giờ bạn có thể (2). Hãy cố gắng lên!
+    reasmb: Bạn có thực sự muốn có thể (2) ?
+  decomp: * tôi không *
+    reasmb: Bạn không (2) ?
+    reasmb: Tại sao bạn không (2) ?
+    reasmb: Và điều này đang làm bạn băn khoăn trăn trở ?
+  decomp: * tôi * thấy *
+    reasmb: Xin hãy kể thêm cho tôi những gì bạn thấy.
+    reasmb: Bạn có thường thấy (4) ?
+    reasmb: Bạn có thỏa mãn với việc bản thân thấy (4) ?
+  decomp: * tôi * bạn *
+    reasmb: Bạn (2) tôi ?
+    reasmb: Bạn có (2) ai khác nữa không ?
+  decomp: *
+    reasmb: Bạn nói là (0) ?
+    reasmb: Bạn có thể giải thích thêm về điều đó không ?
+    reasmb: Vì sao bạn lại nói rằng (0) ?
+    reasmb: Xin hãy tiếp tục.
+key: bạn
+  decomp: * bạn gợi tôi nhớ đến *
+    reasmb: goto alike
+  decomp: * bạn là *
+    reasmb: Điều gì khiến bạn nghĩ tôi là (2) ?
+    reasmb: Liệu bạn có vui khi tin rằng tôi là (2) ?
+    reasmb: Bạn có muốn là (2) ?
+  decomp: * bạn * tôi *
+    reasmb: Điều gì khiến bạn nghĩ tôi (2) bạn ?
+    reasmb: Bạn muốn tôi (2) bạn ?
+    reasmb: Thật sao, tôi (2) bạn ?
+    reasmb: Bạn tin rằng tôi (2) bạn ?
+  decomp: * bạn *
+    reasmb: Chúng ta đang nói về bạn, không phải tôi !
+    reasmb: Oh, Tôi (2) ?
+    reasmb: Chúng ta không ở đây để nói về tôi đúng không ?
+    reasmb: Bạn đang cảm thấy thế nào ?
+key: yes
+  decomp: *
+    reasmb: Tôi hiểu. Xin hãy tiếp tục.
+    reasmb: Tôi hiểu rồi. Xin hãy tiếp tục.
+key: no
+  decomp: *
+    reasmb: Tại sao ?
+key: của tôi / 2
+  decomp: * của tôi *
+    reasmb: (2) của bạn ?
+    reasmb: Hãy làm rõ vì sao (0) của bạn (2) .
+    reasmb: Bạn nói rằng (0) của bạn (2) ?
+  decomp: * gia đình * của tôi *
+    reasmb: Xin hãy kể thêm về gia đình bạn.
+    reasmb: Gia đình bạn ?
+key: có thể
+  decomp: * bạn có thể *
+    reasmb: Bạn tin rằng tôi có thể (2) đúng không ?
+    reasmb: Bạn nghĩ vậy?
+  decomp: * tôi có thể *
+    reasmb: Việc bạn có thể (2) phụ thuộc vào bản thân bạn.
+    reasmb: Bạn có muốn (2) ?
+key: cái gì
+   decomp: *
+    reasmb: Tại sao bạn hỏi vậy?
+    reasmb: Câu hỏi đó có làm bạn quan tâm không?
+    reasmb: Bạn thực sự muốn biết điều gì?
+    reasmb: Những câu hỏi như vậy có nhiều trong đầu bạn không?
+    reasmb: Câu trả lời nào làm bạn hài lòng nhất?
+    reasmb: Bạn nghĩ gì?
+    reasmb: Bạn nghĩ đến điều gì khi hỏi điều đó?
+    reasmb: Bạn đã hỏi những câu hỏi như vậy trước đây chưa?
+    reasmb: Bạn đã hỏi ai khác chưa?
+key: bởi vì
+  decomp: *
+    reasmb: Đó có phải là lý do thực sự không?
+    reasmb: Bạn không nghĩ ra lý do nào khác sao?
+    reasmb: Có phải lý do đó dường như giải thích bất cứ điều gì khác không?
+    reasmb: Có thể có những lý do nào khác?
+key: tại sao
+  decomp: * sao bạn không *
+    reasmb: Bạn có tin là tôi không (2) không?
+    reasmb: Có lẽ tôi sẽ (2) trong thời gian thích hợp.
+    reasmb: Bạn có nên (2) chính mình?
+    reasmb: Bạn muốn tôi (2)?
+    reasmb: hiểu cái gì
+  decomp: * sao không được *
+    reasmb: Bạn có nghĩ rằng bạn có thể (2) không?
+    reasmb: Bạn có muốn có thể (2) không?
+    reasmb: Bạn có tin rằng điều này sẽ giúp bạn (2)?
+    reasmb: Bạn có biết tại sao bạn không thể (2) không?
+    reasmb: hiểu cái gì
+  decomp: *
+    reasmb: hiểu cái gì
+key: mọi người / 2
+  phân trần: *mọi người*
+    reasmb: Thật sao, (2)?
+    reasmb: Chắc chắn là không (2) .
+    reasmb: Bạn có thể nghĩ ra ai cụ thể không?
+    reasmb: Ví dụ như ai?
+    reasmb: Bạn có đang nghĩ đến một người rất đặc biệt không?
+    reasmb: Ai, tôi có thể hỏi?
+    reasmb: Có lẽ ai đó đặc biệt chăng?
+    reasmb: Bạn có một người đặc biệt trong tâm trí, phải không?
+    reasmb: Bạn nghĩ bạn đang nói về ai?
+key: luôn luôn 1
+  decomp: *
+    reasmb: Bạn có thể nghĩ ra một ví dụ cụ thể không?
+    reasmb: Khi nào?
+    reasmb: Bạn đang nghĩ đến sự cố gì vậy?
+    reasmb: Thực sự, luôn luôn?
+key: giống nhau / 10
+  decomp: *
+    reasmb: Bằng cách nào?
+    reasmb: Bạn thấy giống cái gì?
+    reasmb: Sự giống nhau đó gợi cho bạn điều gì?
+    reasmb: Bạn thấy những kết nối nào khác?
+    reasmb: Bạn cho rằng sự giống nhau đó có nghĩa là gì?
+    reasmb: Bạn có cho rằng kết nối là gì không?
+    reasmb: Đây thực sự có thể là một số kết nối?
+    reamb: Làm thế nào?
+key: thích / 10
+  decomp: *là *thích*
+    reasmb: goto giống nhau
+   

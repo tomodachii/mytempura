@@ -1,0 +1,14 @@
+[flake8]
+ignore = D203, E501
+exclude =
+    .venv,
+    .git,
+    htmlcov,
+    persistent,
+    __pycache__,
+    docs/source/conf.py,
+    old,
+    build,
+    dist,
+    __init__.py
+max-complexity = 10

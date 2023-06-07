@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  cache:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: [ "redis-server", "--appendonly", "yes" ]
+    volumes:
+      - ./persistent/cache:/data
+    ports:
+      - ${REDIS_CACHING_PORT}:6379
+
+  db:
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./persistent/postgres:/var/lib/postgresql/data
+      - ./backup/dump.sql:/backup/dump.sql
+    ports:
+      - "${POSTGRES_EXPOSE_PORT}:5432"
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - ${ADMINER_PORT:-8080}:8080
+  # worker:
+  #   build: .
+  #   restart: always
+  #   command: watchmedo auto-restart --recursive -p '*.py' -- python -m celery -A main worker -l debug
+  #   environment:
+  #     - REDIS_CACHING_HOST=cache
+  #     - REDIS_CACHING_PORT=${REDIS_CACHING_PORT}
+  #     - POSTGRES_HOST=db
+  #   volumes:
+  #     - .:/code
+  #   depends_on:
+  #     - cache
