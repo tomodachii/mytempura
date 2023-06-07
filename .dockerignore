@@ -1,0 +1,5 @@
+persistent
+htmlcov
+.venv
+.env
+.env.copilot.staging.yml

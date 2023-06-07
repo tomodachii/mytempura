@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-07 18:04+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: backend/enums.py:5 keywordrecognition/enums.py:5
+msgid "Server error"
+msgstr ""
+
+#: backend/enums.py:6 keywordrecognition/enums.py:6
+msgid "Permission error"
+msgstr ""
+
+#: backend/enums.py:10
+msgid "Failed to get Firebase user"
+msgstr ""
+
+#: backend/enums.py:11 backend/enums.py:18
+msgid "Email alredy existed"
+msgstr ""
+
+#: backend/enums.py:12
+msgid "Failed to create Firebase user"
+msgstr ""
+
+#: backend/enums.py:13
+msgid "Failed to get Firebase user by email"
+msgstr ""
+
+#: backend/enums.py:17
+msgid "Account does not exist"
+msgstr ""
+
+#: backend/models/account.py:16
+msgid "account"
+msgstr ""
+
+#: backend/models/account.py:17
+msgid "accounts"
+msgstr ""
+
+#: backend/models/account.py:19
+msgid "email"
+msgstr ""
+
+#: backend/models/account.py:20 keywordrecognition/models/eliza_bot.py:13
+msgid "name"
+msgstr ""
+
+#: backend/models/account.py:21
+msgid "password"
+msgstr ""
+
+#: backend/models/account.py:22 keywordrecognition/models/eliza_bot.py:14
+msgid "description"
+msgstr ""
+
+#: backend/models/base.py:31 keywordrecognition/models/base.py:24
+msgid "created at"
+msgstr ""
+
+#: keywordrecognition/enums.py:10
+msgid "Eliza Chatbot Does not exist"
+msgstr ""
+
+#: keywordrecognition/enums.py:11
+msgid "Chosen Bot does not belong to this User"
+msgstr ""
+
+#: keywordrecognition/enums.py:15
+msgid "Bot not set, please set the bot before using ElizaService"
+msgstr ""
+
+#: keywordrecognition/enums.py:16
+msgid "Invalid goto key"
+msgstr ""
+
+#: keywordrecognition/enums.py:17
+msgid "Invalid result index"
+msgstr ""
+
+#: keywordrecognition/enums.py:21
+msgid "Invalid File extension! Please use a .txt file"
+msgstr ""
+
+#: keywordrecognition/enums.py:22
+msgid "File upload must be under 2MB"
+msgstr ""
+
+#: keywordrecognition/enums.py:26
+msgid "Keyword does not exist"
+msgstr ""
+
+#: keywordrecognition/models/decomp.py:13
+msgid "decomposition rule"
+msgstr ""
+
+#: keywordrecognition/models/decomp.py:14
+msgid "decomposition rules"
+msgstr ""
+
+#: keywordrecognition/models/decomp.py:16
+#: keywordrecognition/models/keyword.py:10
+msgid "keyword"
+msgstr ""
+
+#: keywordrecognition/models/decomp.py:17
+msgid "pattern"
+msgstr ""
+
+#: keywordrecognition/models/default_message.py:24
+#: keywordrecognition/models/default_message.py:28
+msgid "default message"
+msgstr ""
+
+#: keywordrecognition/models/default_message.py:25
+msgid "default messages"
+msgstr ""
+
+#: keywordrecognition/models/default_message.py:27
+#: keywordrecognition/models/keyword.py:13 keywordrecognition/models/quit.py:16
+msgid "bot"
+msgstr ""
+
+#: keywordrecognition/models/eliza_bot.py:10
+msgid "eliza bot"
+msgstr ""
+
+#: keywordrecognition/models/eliza_bot.py:11
+msgid "eliza bots"
+msgstr ""
+
+#: keywordrecognition/models/eliza_bot.py:15
+msgid "owner"
+msgstr ""
+
+#: keywordrecognition/models/keyword.py:11
+msgid "keywords"
+msgstr ""
+
+#: keywordrecognition/models/keyword.py:14
+#: keywordrecognition/models/synonym.py:13
+msgid "word"
+msgstr ""
+
+#: keywordrecognition/models/keyword.py:15
+msgid "weight"
+msgstr ""
+
+#: keywordrecognition/models/postprocessing.py:10
+#: keywordrecognition/models/postprocessing.py:11
+msgid "post processing"
+msgstr ""
+
+#: keywordrecognition/models/postprocessing.py:13
+msgid "input word"
+msgstr ""
+
+#: keywordrecognition/models/postprocessing.py:14
+msgid "output word"
+msgstr ""
+
+#: keywordrecognition/models/quit.py:13
+msgid "quit message"
+msgstr ""
+
+#: keywordrecognition/models/quit.py:14
+msgid "quit messages"
+msgstr ""
+
+#: keywordrecognition/models/quit.py:17
+msgid "trigger"
+msgstr ""
+
+#: keywordrecognition/models/reasmb.py:13
+msgid "reassembling rule"
+msgstr ""
+
+#: keywordrecognition/models/reasmb.py:14
+msgid "reassembling rules"
+msgstr ""
+
+#: keywordrecognition/models/reasmb.py:16
+msgid "decomp"
+msgstr ""
+
+#: keywordrecognition/models/reasmb.py:17
+msgid "template"
+msgstr ""
+
+#: keywordrecognition/models/synonym.py:10
+msgid "synonym"
+msgstr ""
+
+#: keywordrecognition/models/synonym.py:11
+msgid "synonyms"
+msgstr ""
+
+#: keywordrecognition/models/synonym.py:14
+msgid "value"
+msgstr ""
