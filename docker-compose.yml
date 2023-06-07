@@ -30,15 +30,15 @@ services:
       - db
     ports:
       - ${ADMINER_PORT:-8080}:8080
-  # worker:
-  #   build: .
-  #   restart: always
-  #   command: watchmedo auto-restart --recursive -p '*.py' -- python -m celery -A main worker -l debug
-  #   environment:
-  #     - REDIS_CACHING_HOST=cache
-  #     - REDIS_CACHING_PORT=${REDIS_CACHING_PORT}
-  #     - POSTGRES_HOST=db
-  #   volumes:
-  #     - .:/code
-  #   depends_on:
-  #     - cache
+  worker:
+    build: .
+    restart: always
+    command: watchmedo auto-restart --recursive -p '*.py' -- python -m celery -A main worker -l debug
+    environment:
+      - REDIS_CACHING_HOST=cache
+      - REDIS_CACHING_PORT=${REDIS_CACHING_PORT}
+      - POSTGRES_HOST=db
+    volumes:
+      - .:/code
+    depends_on:
+      - cache
