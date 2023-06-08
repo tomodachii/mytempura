@@ -149,19 +149,19 @@ class ElizaBotAPIView(APIView):
 
 
 class ElizaBotLoadTxtAPIView(APIView):
-    authentication_classes = [RouteAuthenticationByJWT]
+    authentication_classes = []
     permission_classes = []
     parser_classes = [parsers.MultiPartParser]
 
     @extend_schema(request=ElizaBotLoadTxtSerializer, tags=["eliza-bot"])
     def post(self, request, id):
         try:
-            bot = ElizaBot.objects.get(id=id)
-            if bot.owner != request.user:
-                return JsonResponse(
-                    {"message": ELIZA_BOT_EXCEPTION.PERMISSION_ERROR},
-                    status=status.HTTP_403_FORBIDDEN,
-                )
+            # bot = ElizaBot.objects.get(id=id)
+            # if bot.owner != request.user:
+            #     return JsonResponse(
+            #         {"message": ELIZA_BOT_EXCEPTION.PERMISSION_ERROR},
+            #         status=status.HTTP_403_FORBIDDEN,
+            #     )
 
             serializer = ElizaBotLoadTxtSerializer(data=request.data)
             if serializer.is_valid():

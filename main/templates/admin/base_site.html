@@ -1,6 +1,131 @@
 {% extends 'admin/base.html' %}
 {% load i18n admin_urls static admin_modify jazzmin %}
 {% get_jazzmin_settings request as jazzmin_settings %}
+
+<nav class="main-header navbar navbar-expand {{ jazzmin_ui.navbar_classes }}" id="jazzy-navbar">
+	<ul class="navbar-nav">
+
+		{% if jazzmin_settings.show_sidebar %}
+			<li class="nav-item">
+				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+			</li>
+		{% else %}
+			<li class="nav-item">
+				<a href="{% url 'admin:index' %}" class="brand-link">
+					<img src="{% static jazzmin_settings.site_logo %}" alt="{{ jazzmin_settings.site_header }} Logo" class="{{ jazzmin_settings.site_logo_classes }} brand-image" style="opacity: .8; margin: 0 0 0 5px;">
+				</a>
+			</li>
+		{% endif %}
+
+		{% get_top_menu user request.current_app|default:"admin" as top_menu %}
+		{% for link in top_menu %}
+			<li class="nav-item d-none d-sm-inline-block{% if link.children %} dropdown{% endif %}">
+				{% if link.children %}
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{ link.name }}
+					</a>
+					<div class="dropdown-menu">
+						{% for child in link.children %}
+							<a class="dropdown-item" href="{{ child.url }}" {% if link.new_window %}target="_blank"{% endif %}>{{ child.name }}</a>
+						{% endfor %}
+					</div>
+				{% else %}
+					<a href="{{ link.url }}" class="nav-link" {% if link.new_window %}target="_blank"{% endif %}>{{ link.name }}</a>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+
+	{% if jazzmin_settings.search_model %}
+		{% for search_model in jazzmin_settings.search_models_parsed %}
+			<form action="{{ search_model.search_url }}" method="GET" class="form-inline ml-3">
+				<div class="input-group input-group-sm">
+					<input class="form-control form-control-navbar" name="q" type="search" placeholder="{% trans 'Search' %} {{ search_model.search_name }}..." aria-label="{% trans 'Search' %} {{ search_model.search_name }}...">
+					<div class="input-group-append">
+						<button class="btn btn-navbar" type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		{% endfor %}
+	{% endif %}
+
+	<ul class="navbar-nav ml-auto">
+
+		{% if jazzmin_settings.show_ui_builder %}
+		<li class="nav-item">
+			<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+				<i class="fas fa-th-large"></i>
+			</a>
+		</li>
+		{% endif %}
+		{% if 'django.contrib.admindocs'|app_is_installed %}
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'django-admindocs-docroot' %}" role="button">
+				<i class="fas fa-book"></i>
+			</a>
+		</li>
+		{% endif %}
+
+		{% if jazzmin_settings.language_chooser %}
+			{% get_available_languages as LANGUAGES %}
+			{% get_language_info_list for LANGUAGES as languages %}
+
+			<li class="nav-item dropdown">
+				<a class="nav-link btn" data-toggle="dropdown" href="#" title="Choose language">
+					<i class="fas fa-globe" aria-hidden="true"></i>
+				</a>
+				<div class="dropdown-menu dropdown-menu-lg dropdown-menu-left" id="jazzy-languagemenu">
+					<form action="{% url 'set_language' %}" method="post">
+						{% csrf_token %}
+						<input name="next" type="hidden" value="{{ request.get_full_path|remove_lang:LANGUAGE_CODE }}" />
+						{% for language in languages %}
+							<button
+								type="submit"
+								name="language"
+								value="{{ language.code }}"
+								class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+								lang="{{ language.code }}"
+							>
+								{{ language.name_local|title }} - {{ language.code }}
+							</button>
+						{% endfor %}
+					</form>
+				</div>
+			</li>
+		{% endif %}
+
+		<li class="nav-item dropdown">
+			<a class="nav-link btn" data-toggle="dropdown" href="#" title="{{ request.user }}">
+				<i class="far fa-user" aria-hidden="true"></i>
+			</a>
+			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-left" id="jazzy-usermenu">
+				<span class="dropdown-header">{% trans 'Account' %}</span>
+				<div class="dropdown-divider"></div>
+				<a href="{% url 'admin:password_change' %}" class="dropdown-item">
+					<i class="fas fa-key mr-2"></i> {% trans 'Change password' %}
+				</a>
+				<div class="dropdown-divider"></div>
+				<a href="{% url 'admin:logout' %}" class="dropdown-item">
+					<i class="fas fa-users mr-2"></i> {% trans 'Log out' %}
+				</a>
+				{% get_user_menu user request.current_app|default:"admin" as user_menu %}
+				{% for link in user_menu %}
+					<div class="dropdown-divider"></div>
+					<a href="{{ link.url }}" class="dropdown-item" {% if link.new_window %}target="_blank"{% endif %}>
+						<i class="{{ link.icon }} mr-2"></i> {% trans link.name %}
+					</a>
+				{% endfor %}
+				<div class="dropdown-divider"></div>
+				{% if perms|can_view_self %}
+					<a href="{% jazzy_admin_url request.user request.current_app|default:"admin" %}" class="dropdown-item dropdown-footer">{% trans 'See Profile' %}</a>
+				{% endif %}
+			</div>
+		</li>
+	</ul>
+</nav>
+
 {% block sidebar %}
 {% if jazzmin_settings.show_sidebar %}
 {% get_side_menu as side_menu_list %}

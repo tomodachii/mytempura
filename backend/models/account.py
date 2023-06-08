@@ -76,7 +76,6 @@ class Account(AbstractUser):
         max_length=128,
         null=True,
         blank=True,
-        editable=False,
         verbose_name=_("email"),
         unique=True,
     )
