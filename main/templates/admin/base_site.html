@@ -1,64 +1,88 @@
-{% extends "admin/base_site.html" %}
-{% comment %}code for admin language select box  {% endcomment %}
-{% load i18n %}
-{% block userlinks %}
-{{ block.super }}
-/ <form action="{% url 'set_language' %}" method="post" style="display:inline">{% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}">
-    <select name="language" onchange="this.form.submit()">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-</form>
+{% extends 'admin/base.html' %}
+{% load i18n admin_urls static admin_modify jazzmin %}
+{% get_jazzmin_settings request as jazzmin_settings %}
+{% block sidebar %}
+{% if jazzmin_settings.show_sidebar %}
+{% get_side_menu as side_menu_list %}
+
+<aside class="main-sidebar elevation-4 {{ jazzmin_ui.sidebar_classes }}" id="jazzy-sidebar">
+	<a href="{% url 'admin:index' %}" class="brand-link {{ jazzmin_ui.brand_classes }}" id="jazzy-logo">
+		<img src="{% static jazzmin_settings.site_logo %}" alt="{{ jazzmin_settings.site_header }} Logo"
+			class="{{ jazzmin_settings.site_logo_classes }} brand-image elevation-3" style="opacity: .8">
+		<span class="brand-text font-weight-light">{{ jazzmin_settings.site_brand }}</span>
+	</a>
+
+	<div class="sidebar">
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="image">
+				{% if jazzmin_settings|has_jazzmin_setting:"user_avatar" %}
+				<img src="{% get_user_avatar request.user %}" width="160px" class="img-circle elevation-2" alt="User Image">
+				{% else %}
+				<i class="fas user-profile fa-user-circle"></i>
+				{% endif %}
+			</div>
+			<div class="info">
+				{% if perms|can_view_self %}
+				<a href="{% jazzy_admin_url request.user request.current_app|default:" admin" %}" class="d-block">{{ request.user }}</a>
+				{% else %}
+				<span class="d-block" style="color: black;">{{ request.user }}</span>
+				{% endif %}
+			</div>
+		</div>
+
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column {{ jazzmin_ui.sidebar_list_classes }}" data-widget="treeview"
+				role="menu" data-collapsible="false">
+
+				<li class="nav-item">
+					<a href="{% url 'admin:index' %}" class="nav-link">
+						<i class="nav-icon fas fa-th-large"></i>
+						<p>{% trans 'Dashboard' %}</p>
+					</a>
+				</li>
+
+				{% if jazzmin_settings.navigation_expanded %}
+				{% for app in side_menu_list %}
+				<li class="nav-header">{{ app.name }}</li>
+				{% for model in app.models %}
+				<li class="nav-item">
+					{% if model.url %}
+					<a href="{{ model.url }}" class="nav-link">
+						<i class="nav-icon {{ model.icon }}"></i>
+						<p>{{ model.name }}</p>
+					</a>
+					{% else %}
+					<span class="nav-link disabled">
+						<i class="nav-icon {{ model.icon }}"></i>
+						<p>{{ model.name }}</p>
+					</span>
+					{% endif %}
+				</li>
+				{% endfor %}
+				{% endfor %}
+				{% else %}
+				{% for app in side_menu_list %}
+				<li class="nav-item has-treeview">
+					<a href="#" class="nav-link">
+						<i class="nav-icon {{ app.icon }}"></i>
+						<p>{{ app.name|truncatechars:21 }} <i class="fas fa-angle-left right"></i></p>
+					</a>
+					<ul class="nav nav-treeview" style="display: none;">
+						{% for model in app.models %}
+						<li class="nav-item">
+							<a href="{% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}" class="nav-link">
+								<i class="nav-icon {{ model.icon }}"></i>
+								<p>{{ model.name }}</p>
+							</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</li>
+				{% endfor %}
+				{% endif %}
+			</ul>
+		</nav>
+	</div>
+</aside>
+{% endif %}
 {% endblock %}
-{% block extrastyle %}
-{% comment %} set django admin theme to alway light mode: https://stackoverflow.com/questions/67207144/django-admin-theming {% endcomment %}
-<style>
-    @media (prefers-color-scheme: dark) { 
-        :root {
-            --primary: #79aec8;
-            --primary-fg: #fff;
-
-            --body-fg: #333;
-            --body-bg: #fff;
-            --body-quiet-color: #666;
-            --body-loud-color: #000;
-
-            --breadcrumbs-fg: #c4dce8;
-            --breadcrumbs-bg: var(--primary);
-
-            --link-fg: #447e9b;
-            --link-hover-color: #036;
-            --link-selected-fg: #5b80b2;
-
-            --hairline-color: #e8e8e8;
-            --border-color: #ccc;
-
-            --error-fg: #ba2121;
-
-            --message-success-bg: #dfd;
-            --message-warning-bg: #ffc;
-            --message-error-bg: #ffefef;
-
-            --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
-            --selected-bg: #e4e4e4; /* E.g. selected table cells */
-            --selected-row: #ffc;
-
-            --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
-            --close-button-hover-bg: #747474;
-        }
-    }
-</style>
-{% endblock %}
-
-{% comment %} additional code settings for ckeditor {% endcomment %}
-{% block extrahead %}
-{{ block.super }}
-{% endblock %}
-
