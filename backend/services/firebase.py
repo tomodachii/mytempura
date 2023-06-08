@@ -6,18 +6,20 @@ from django.conf import settings
 from backend.exceptions import FirebaseException
 from backend.enums import FIREBASE_EXCEPTION
 
-cred = credentials.Certificate({
-    "type": "service_account",
-    "project_id": settings.FIREBASE_PROJECT_ID,
-    "private_key_id": settings.FIREBASE_PRIVATE_KEY_ID,
-    "private_key": settings.FIREBASE_PRIVATE_KEY,
-    "client_email": settings.FIREBASE_CLIENT_EMAIL,
-    "client_id": settings.FIREBASE_CLIENT_ID,
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://accounts.google.com/o/oauth2/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": settings.FIREBASE_CLIENT_CERT_URL
-})
+cred = credentials.Certificate(
+    {
+        "type": "service_account",
+        "project_id": settings.FIREBASE_PROJECT_ID,
+        "private_key_id": settings.FIREBASE_PRIVATE_KEY_ID,
+        "private_key": settings.FIREBASE_PRIVATE_KEY,
+        "client_email": settings.FIREBASE_CLIENT_EMAIL,
+        "client_id": settings.FIREBASE_CLIENT_ID,
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://accounts.google.com/o/oauth2/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": settings.FIREBASE_CLIENT_CERT_URL,
+    }
+)
 
 
 class FireBaseService:
@@ -28,7 +30,7 @@ class FireBaseService:
     def get_user(self, id_token):
         try:
             decoded_token = auth.verify_id_token(id_token)
-            uid = decoded_token['uid']
+            uid = decoded_token["uid"]
             return auth.get_user(uid, app=None)
         except Exception as e:
             # raise Exception(FIREBASE_EXCEPTION.GET_USER_ERROR)
@@ -64,7 +66,7 @@ class FireBaseService:
                 display_name=data["display_name"],
                 photo_url=data["photo_url"],
                 disabled=data["disabled"],
-                app=None
+                app=None,
             )
             return user
         except Exception as e:
@@ -74,22 +76,28 @@ class FireBaseService:
     def create_custom_token(self, uid):
         try:
             custom_token = auth.create_custom_token(uid)
-            return custom_token.decode('utf-8')
+            return custom_token.decode("utf-8")
         except Exception as e:
             raise e
 
-    def sign_in_with_email_and_password(self, email: str, password: str, return_secure_token: bool = True) -> dict:
-        rest_api_url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword"
+    def sign_in_with_email_and_password(
+        self, email: str, password: str, return_secure_token: bool = True
+    ) -> dict:
+        rest_api_url = (
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword"
+        )
 
-        payload = json.dumps({
-            "email": email,
-            "password": password,
-            "returnSecureToken": return_secure_token
-        })
+        payload = json.dumps(
+            {
+                "email": email,
+                "password": password,
+                "returnSecureToken": return_secure_token,
+            }
+        )
 
-        response = requests.post(rest_api_url,
-                                 params={"key": self.web_api_key},
-                                 data=payload)
+        response = requests.post(
+            rest_api_url, params={"key": self.web_api_key}, data=payload
+        )
 
         return response.json()
 

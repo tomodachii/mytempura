@@ -15,7 +15,7 @@ class CustomManager(Manager):
         return super().filter(*args, **updated_kwargs)
 
     def random(self):
-        count = self.aggregate(count=Count('id'))['count']
+        count = self.aggregate(count=Count("id"))["count"]
         random_index = randint(0, count - 1)
         return self.all()[random_index]
 
@@ -28,7 +28,7 @@ class ModelBase(models.Model):
     # However, if you want to use objects as a field name, or if you want to use a name other than objects for the Manager, you can rename it on a per-model basis.
     # To rename the Manager for a given class, define a class attribute of type models.Manager() on that model.
     objects = CustomManager()
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):

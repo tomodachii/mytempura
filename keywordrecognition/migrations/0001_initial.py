@@ -7,7 +7,6 @@ import django.db.models.manager
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,141 +15,289 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Decomp',
+            name="Decomp",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('pattern', models.CharField(max_length=255, verbose_name='pattern')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("pattern", models.CharField(max_length=255, verbose_name="pattern")),
             ],
             options={
-                'verbose_name': 'decomposition rule',
-                'verbose_name_plural': 'decomposition rules',
-                'db_table': 'keywordrecognition_decomp',
-                'ordering': ['pk'],
+                "verbose_name": "decomposition rule",
+                "verbose_name_plural": "decomposition rules",
+                "db_table": "keywordrecognition_decomp",
+                "ordering": ["pk"],
             },
         ),
         migrations.CreateModel(
-            name='ElizaBot',
+            name="ElizaBot",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=255, verbose_name='name')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='description')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='owner')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=255, verbose_name="name")),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="description"),
+                ),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="owner",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'eliza bot',
-                'verbose_name_plural': 'eliza bots',
-                'db_table': 'keywordrecognition_eliza_bot',
-                'ordering': ['pk'],
+                "verbose_name": "eliza bot",
+                "verbose_name_plural": "eliza bots",
+                "db_table": "keywordrecognition_eliza_bot",
+                "ordering": ["pk"],
             },
         ),
         migrations.CreateModel(
-            name='PostProcessing',
+            name="PostProcessing",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('input_word', models.CharField(max_length=255, verbose_name='input word')),
-                ('output_word', models.CharField(max_length=255, verbose_name='output word')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "input_word",
+                    models.CharField(max_length=255, verbose_name="input word"),
+                ),
+                (
+                    "output_word",
+                    models.CharField(max_length=255, verbose_name="output word"),
+                ),
             ],
             options={
-                'verbose_name': 'post processing',
-                'verbose_name_plural': 'post processing',
-                'db_table': 'keywordrecognition_postprocessing',
-                'ordering': ['input_word'],
+                "verbose_name": "post processing",
+                "verbose_name_plural": "post processing",
+                "db_table": "keywordrecognition_postprocessing",
+                "ordering": ["input_word"],
             },
         ),
         migrations.CreateModel(
-            name='Synonym',
+            name="Synonym",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('word', models.CharField(max_length=255, verbose_name='word')),
-                ('value', models.CharField(max_length=255, verbose_name='value')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("word", models.CharField(max_length=255, verbose_name="word")),
+                ("value", models.CharField(max_length=255, verbose_name="value")),
             ],
             options={
-                'verbose_name': 'synonym',
-                'verbose_name_plural': 'synonyms',
-                'db_table': 'keywordrecognition_synonym',
-                'ordering': ['word'],
+                "verbose_name": "synonym",
+                "verbose_name_plural": "synonyms",
+                "db_table": "keywordrecognition_synonym",
+                "ordering": ["word"],
             },
         ),
         migrations.CreateModel(
-            name='Reasmb',
+            name="Reasmb",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('template', models.TextField(verbose_name='template')),
-                ('decomp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='keywordrecognition.decomp', verbose_name='decomp')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("template", models.TextField(verbose_name="template")),
+                (
+                    "decomp",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="keywordrecognition.decomp",
+                        verbose_name="decomp",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'reassembling rule',
-                'verbose_name_plural': 'reassembling rules',
-                'db_table': 'keywordrecognition_reasmb',
-                'ordering': ['pk'],
+                "verbose_name": "reassembling rule",
+                "verbose_name_plural": "reassembling rules",
+                "db_table": "keywordrecognition_reasmb",
+                "ordering": ["pk"],
             },
         ),
         migrations.CreateModel(
-            name='Quit',
+            name="Quit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('trigger', models.CharField(max_length=255, verbose_name='trigger')),
-                ('bot', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='keywordrecognition.elizabot', verbose_name='bot')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("trigger", models.CharField(max_length=255, verbose_name="trigger")),
+                (
+                    "bot",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="keywordrecognition.elizabot",
+                        verbose_name="bot",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'quit message',
-                'verbose_name_plural': 'quit messages',
-                'db_table': 'keywordrecognition_quit',
-                'ordering': ['pk'],
+                "verbose_name": "quit message",
+                "verbose_name_plural": "quit messages",
+                "db_table": "keywordrecognition_quit",
+                "ordering": ["pk"],
             },
         ),
         migrations.CreateModel(
-            name='Keyword',
+            name="Keyword",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('word', models.CharField(max_length=255, verbose_name='word')),
-                ('weight', models.IntegerField(default=1, verbose_name='weight')),
-                ('bot', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='keywordrecognition.elizabot', verbose_name='bot')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("word", models.CharField(max_length=255, verbose_name="word")),
+                ("weight", models.IntegerField(default=1, verbose_name="weight")),
+                (
+                    "bot",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="keywordrecognition.elizabot",
+                        verbose_name="bot",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'keyword',
-                'verbose_name_plural': 'keywords',
-                'db_table': 'keywordrecognition_keyword',
-                'ordering': ['-weight'],
+                "verbose_name": "keyword",
+                "verbose_name_plural": "keywords",
+                "db_table": "keywordrecognition_keyword",
+                "ordering": ["-weight"],
             },
         ),
         migrations.CreateModel(
-            name='DefaultMessage',
+            name="DefaultMessage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('message', models.TextField(verbose_name='default message')),
-                ('message_type', models.CharField(choices=[('INITIAL', 'Initial'), ('FINAL', 'Final'), ('FALLBACK', 'Fallback')], default='FALLBACK', max_length=64, verbose_name='default message type')),
-                ('bot', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='keywordrecognition.elizabot', verbose_name='bot')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("message", models.TextField(verbose_name="default message")),
+                (
+                    "message_type",
+                    models.CharField(
+                        choices=[
+                            ("INITIAL", "Initial"),
+                            ("FINAL", "Final"),
+                            ("FALLBACK", "Fallback"),
+                        ],
+                        default="FALLBACK",
+                        max_length=64,
+                        verbose_name="default message type",
+                    ),
+                ),
+                (
+                    "bot",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="keywordrecognition.elizabot",
+                        verbose_name="bot",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'default message',
-                'verbose_name_plural': 'default messages',
-                'db_table': 'keywordrecognition_default_message',
-                'ordering': ['pk'],
+                "verbose_name": "default message",
+                "verbose_name_plural": "default messages",
+                "db_table": "keywordrecognition_default_message",
+                "ordering": ["pk"],
             },
             managers=[
-                ('default_message_objects', django.db.models.manager.Manager()),
+                ("default_message_objects", django.db.models.manager.Manager()),
             ],
         ),
         migrations.AddField(
-            model_name='decomp',
-            name='keyword',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='keywordrecognition.keyword', verbose_name='keyword'),
+            model_name="decomp",
+            name="keyword",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="keywordrecognition.keyword",
+                verbose_name="keyword",
+            ),
         ),
     ]

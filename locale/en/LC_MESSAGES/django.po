@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-07 18:04+0700\n"
+"POT-Creation-Date: 2023-06-08 14:45+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: backend/admin/account.py:12
+msgid "Personal info"
+msgstr ""
+
+#: backend/admin/account.py:14
+msgid "Permissions"
+msgstr ""
+
+#: backend/admin/account.py:24
+msgid "Important dates"
+msgstr ""
 
 #: backend/enums.py:5 keywordrecognition/enums.py:5
 msgid "Server error"
@@ -46,27 +58,39 @@ msgstr ""
 msgid "Account does not exist"
 msgstr ""
 
-#: backend/models/account.py:16
+#: backend/models/account.py:46
+msgid "The Email must be set"
+msgstr ""
+
+#: backend/models/account.py:62
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: backend/models/account.py:64
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: backend/models/account.py:72
 msgid "account"
 msgstr ""
 
-#: backend/models/account.py:17
+#: backend/models/account.py:73
 msgid "accounts"
 msgstr ""
 
-#: backend/models/account.py:19
+#: backend/models/account.py:80
 msgid "email"
 msgstr ""
 
-#: backend/models/account.py:20 keywordrecognition/models/eliza_bot.py:13
+#: backend/models/account.py:83 keywordrecognition/models/eliza_bot.py:13
 msgid "name"
 msgstr ""
 
-#: backend/models/account.py:21
+#: backend/models/account.py:84
 msgid "password"
 msgstr ""
 
-#: backend/models/account.py:22 keywordrecognition/models/eliza_bot.py:14
+#: backend/models/account.py:86 keywordrecognition/models/eliza_bot.py:14
 msgid "description"
 msgstr ""
 
@@ -213,4 +237,16 @@ msgstr ""
 
 #: keywordrecognition/models/synonym.py:14
 msgid "value"
+msgstr ""
+
+#: main/settings/defaults.py:138
+msgid "Vietnam"
+msgstr "Vietnamese"
+
+#: main/settings/defaults.py:139
+msgid "English"
+msgstr "English"
+
+#: main/templates/admin/base_site.html:40
+msgid "Dashboard"
 msgstr ""

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import datetime
+from django.utils.translation import gettext_lazy as _
 
 # Celery
 # CELERY_BROKER_URL = '%s://%s:%s@%s:%s' % (os.environ.get('RABBITMQ_PROTOCOL'), os.environ.get('RABBITMQ_DEFAULT_USER'), os.environ.get(
@@ -134,8 +135,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "vi"
 
 LANGUAGES = (
-    ("vi", "Vietnam"),
-    ("en", "English"),
+    ("vi", _("Vietnam")),
+    ("en", _("English")),
 )
 LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 

@@ -4,7 +4,7 @@ from api.middlewares.api_middlewares import FirebaseAuthentication
 
 class FirebaseAuthenticationExtension(OpenApiAuthenticationExtension):
     target_class = FirebaseAuthentication
-    name = 'Firebase JWT Auth'
+    name = "Firebase JWT Auth"
 
     def get_security_definition(self, auto_schema):
         return {
@@ -18,4 +18,6 @@ class FirebaseAuthenticationExtension(OpenApiAuthenticationExtension):
 
 
 firebase_authentication = FirebaseAuthentication()
-firebase_authentication_extension = FirebaseAuthenticationExtension(target=firebase_authentication)
+firebase_authentication_extension = FirebaseAuthenticationExtension(
+    target=firebase_authentication
+)
