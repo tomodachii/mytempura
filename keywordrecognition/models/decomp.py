@@ -8,16 +8,20 @@ from django.utils.translation import gettext_lazy as _
 
 class Decomp(ModelBase):
     class Meta:
-        db_table = 'keywordrecognition_decomp'
-        ordering = ['pk']
-        verbose_name = _('decomposition rule')
-        verbose_name_plural = _('decomposition rules')
+        db_table = "keywordrecognition_decomp"
+        ordering = ["pk"]
+        verbose_name = _("decomposition rule")
+        verbose_name_plural = _("decomposition rules")
 
-    keyword = models.ForeignKey('keywordrecognition.Keyword', on_delete=models.CASCADE, verbose_name=_('keyword'))
-    pattern = models.CharField(max_length=255, verbose_name=_('pattern'))
+    keyword = models.ForeignKey(
+        "keywordrecognition.Keyword",
+        on_delete=models.CASCADE,
+        verbose_name=_("keyword"),
+    )
+    pattern = models.CharField(max_length=255, verbose_name=_("pattern"))
 
     def __str__(self):
-        return f'{self.pattern}'
+        return f"{self.pattern}"
 
     def get_random_reasmb(self):
         reasmb_set = self.reasmb_set.all()
@@ -26,17 +30,17 @@ class Decomp(ModelBase):
         return random.choice(reasmb_set)
 
     def get_decomp_pattern_parts(self) -> list[str]:
-        pattern_words = self.pattern.split(' ')
+        pattern_words = self.pattern.split(" ")
         output = []
-        phrase = ''
+        phrase = ""
         for word in pattern_words:
-            if word == '*':
+            if word == "*":
                 if phrase:
                     output.append(phrase.strip())
-                    phrase = ''
+                    phrase = ""
                 output.append(word)
             else:
-                phrase = ' '.join([phrase, word])
+                phrase = " ".join([phrase, word])
         if phrase:
             output.append(phrase.strip())
         return output

@@ -4,18 +4,21 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('backend', '0001_initial'),
+        ("backend", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='account',
-            options={'ordering': ['pk'], 'verbose_name': 'account', 'verbose_name_plural': 'accounts'},
+            name="account",
+            options={
+                "ordering": ["pk"],
+                "verbose_name": "account",
+                "verbose_name_plural": "accounts",
+            },
         ),
         migrations.AlterModelTable(
-            name='account',
-            table='backend_account',
+            name="account",
+            table="backend_account",
         ),
     ]

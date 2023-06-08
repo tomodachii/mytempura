@@ -7,13 +7,13 @@ from keywordrecognition.enums import FILE_EXCEPTION
 class ElizaBotSerializer(serializers.ModelSerializer):
     class Meta:
         model = ElizaBot
-        fields = ['name', 'description']
+        fields = ["name", "description"]
 
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['id', 'email', 'name', 'description']
+        fields = ["id", "email", "name", "description"]
 
 
 class ElizaBotResponseSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class ElizaBotResponseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ElizaBot
-        fields = ['id', 'name', 'description', 'owner']
+        fields = ["id", "name", "description", "owner"]
 
 
 class ElizaBotLoadTxtSerializer(serializers.Serializer):
@@ -29,8 +29,10 @@ class ElizaBotLoadTxtSerializer(serializers.Serializer):
 
     def validate_file(self, value):
         if value:
-            if not value.name.endswith('.txt'):
-                raise serializers.ValidationError(FILE_EXCEPTION.INVALID_FILE_EXTENSION_TXT)
+            if not value.name.endswith(".txt"):
+                raise serializers.ValidationError(
+                    FILE_EXCEPTION.INVALID_FILE_EXTENSION_TXT
+                )
             size_in_mb = value.size / (1024 * 1024)
             if size_in_mb > 2:
                 raise serializers.ValidationError(FILE_EXCEPTION.FILE_TOO_LARGE)

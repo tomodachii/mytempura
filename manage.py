@@ -4,8 +4,7 @@ import os
 import sys
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path=os.path.join(
-    os.path.dirname(__file__), '.env'), verbose=True)
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"), verbose=True)
 
 
 def main():
@@ -21,8 +20,7 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
-    if os.environ.get('DJANGO_SETTINGS_MODULE') is None:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                              'main.settings')
+if __name__ == "__main__":
+    if os.environ.get("DJANGO_SETTINGS_MODULE") is None:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
     main()

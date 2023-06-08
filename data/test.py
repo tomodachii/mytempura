@@ -44,13 +44,13 @@ import re
 
 def extract_matched_pattern(rule, text):
     # Construct a regular expression pattern from the given rule
-    pattern = ''
+    pattern = ""
     for i in range(len(rule)):
-        if rule[i] == '*':
-            pattern += '(.*?)'
+        if rule[i] == "*":
+            pattern += "(.*?)"
         else:
             pattern += re.escape(rule[i])
-    pattern = '^' + pattern + '$'
+    pattern = "^" + pattern + "$"
 
     # Match the pattern against the text
     print(pattern)
@@ -62,7 +62,7 @@ def extract_matched_pattern(rule, text):
         result = []
         j = 0
         for i in range(len(rule)):
-            if rule[i] == '*':
+            if rule[i] == "*":
                 result.append(groups[j].strip())
                 j += 1
             else:
@@ -73,7 +73,7 @@ def extract_matched_pattern(rule, text):
         return None
 
 
-rule = ['*', 'I want to', '*']
-text = 'last night I want to go to the garden'
+rule = ["*", "I want to", "*"]
+text = "last night I want to go to the garden"
 output = extract_matched_pattern(rule, text)
 print(output)
