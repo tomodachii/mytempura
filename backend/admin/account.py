@@ -9,7 +9,7 @@ class AccountAdmin(UserAdmin):
     # list_display = ("name", "email", "description")
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("name", "first_name", "last_name", "email")}),
+        (_("Personal info"), {"fields": ("name", "email")}),
         (
             _("Permissions"),
             {

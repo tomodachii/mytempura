@@ -33,7 +33,7 @@ services:
   worker:
     build: .
     restart: always
-    command: watchmedo auto-restart --recursive -p '*.py' -- python -m celery -A main worker -l debug
+    command: watchmedo auto-restart --recursive -p '*.py' -- python -m celery -A main worker -l info
     environment:
       - REDIS_CACHING_HOST=cache
       - REDIS_CACHING_PORT=${REDIS_CACHING_PORT}

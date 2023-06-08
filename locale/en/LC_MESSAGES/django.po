@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 14:45+0700\n"
+"POT-Creation-Date: 2023-06-08 15:29+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,26 +138,26 @@ msgstr ""
 msgid "decomposition rules"
 msgstr ""
 
-#: keywordrecognition/models/decomp.py:16
+#: keywordrecognition/models/decomp.py:19
 #: keywordrecognition/models/keyword.py:10
 msgid "keyword"
 msgstr ""
 
-#: keywordrecognition/models/decomp.py:17
+#: keywordrecognition/models/decomp.py:21
 msgid "pattern"
 msgstr ""
 
-#: keywordrecognition/models/default_message.py:24
-#: keywordrecognition/models/default_message.py:28
+#: keywordrecognition/models/default_message.py:29
+#: keywordrecognition/models/default_message.py:35
 msgid "default message"
 msgstr ""
 
-#: keywordrecognition/models/default_message.py:25
+#: keywordrecognition/models/default_message.py:30
 msgid "default messages"
 msgstr ""
 
-#: keywordrecognition/models/default_message.py:27
-#: keywordrecognition/models/keyword.py:13 keywordrecognition/models/quit.py:16
+#: keywordrecognition/models/default_message.py:33
+#: keywordrecognition/models/keyword.py:14 keywordrecognition/models/quit.py:17
 msgid "bot"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "eliza bots"
 msgstr ""
 
-#: keywordrecognition/models/eliza_bot.py:15
+#: keywordrecognition/models/eliza_bot.py:16
 msgid "owner"
 msgstr ""
 
@@ -177,12 +177,12 @@ msgstr ""
 msgid "keywords"
 msgstr ""
 
-#: keywordrecognition/models/keyword.py:14
+#: keywordrecognition/models/keyword.py:16
 #: keywordrecognition/models/synonym.py:13
 msgid "word"
 msgstr ""
 
-#: keywordrecognition/models/keyword.py:15
+#: keywordrecognition/models/keyword.py:17
 msgid "weight"
 msgstr ""
 
@@ -207,7 +207,7 @@ msgstr ""
 msgid "quit messages"
 msgstr ""
 
-#: keywordrecognition/models/quit.py:17
+#: keywordrecognition/models/quit.py:19
 msgid "trigger"
 msgstr ""
 
@@ -219,11 +219,11 @@ msgstr ""
 msgid "reassembling rules"
 msgstr ""
 
-#: keywordrecognition/models/reasmb.py:16
+#: keywordrecognition/models/reasmb.py:17
 msgid "decomp"
 msgstr ""
 
-#: keywordrecognition/models/reasmb.py:17
+#: keywordrecognition/models/reasmb.py:19
 msgid "template"
 msgstr ""
 
@@ -239,14 +239,12 @@ msgstr ""
 msgid "value"
 msgstr ""
 
-#: main/settings/defaults.py:138
-msgid "Vietnam"
-msgstr "Vietnamese"
-
-#: main/settings/defaults.py:139
-msgid "English"
-msgstr "English"
-
 #: main/templates/admin/base_site.html:40
 msgid "Dashboard"
 msgstr ""
+
+#~ msgid "Vietnam"
+#~ msgstr "Vietnamese"
+
+#~ msgid "English"
+#~ msgstr "English"
