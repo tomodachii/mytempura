@@ -16,15 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-admin.site.site_header = 'Mytempura Admin Site'
+admin.site.site_header = "Mytempura Admin Site"
 
 
 urlpatterns = [
     # https://stackoverflow.com/a/58634209
-    path('i18n/', include('django.conf.urls.i18n')),
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-    # these modules below will not provide api
-    # path('backend/', include('backend.urls')),
-    # path('keywordrecognition/', include('api.urls')),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("", admin.site.urls),
+    path("api/", include("api.urls")),
 ]
