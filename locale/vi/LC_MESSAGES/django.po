@@ -241,10 +241,4 @@ msgstr "giá trị"
 
 #: main/templates/admin/base_site.html:40
 msgid "Dashboard"
-msgstr ""
-
-#~ msgid "Vietnam"
-#~ msgstr "Tiếng Việt"
-
-#~ msgid "English"
-#~ msgstr "Tiếng Anh"
+msgstr "Trang chủ"

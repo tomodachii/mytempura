@@ -242,9 +242,3 @@ msgstr ""
 #: main/templates/admin/base_site.html:40
 msgid "Dashboard"
 msgstr ""
-
-#~ msgid "Vietnam"
-#~ msgstr "Vietnamese"
-
-#~ msgid "English"
-#~ msgstr "English"
