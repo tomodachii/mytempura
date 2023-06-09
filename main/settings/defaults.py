@@ -300,6 +300,7 @@ JAZZMIN_SETTINGS = {
         "auth.group": "vertical_tabs",
     },
     "language_chooser": True,
+    "related_modal_active": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -319,3 +320,7 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
 }
+
+# changed in django 3.0 to DENY (affect add modal on admin)
+# https://docs.djangoproject.com/en/3.1/ref/clickjacking/#setting-x-frame-options-for-all-responses
+X_FRAME_OPTIONS = "SAMEORIGIN"
