@@ -1,0 +1,30 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+
+{% block content %}
+    <!-- Breadcrumbs -->
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            &rsaquo;
+            <a href="{% url 'admin:app_list' app_label='keywordrecognition' %}">{% trans 'Keyword Recognition' %}</a>
+            &rsaquo;
+            <a href="{% url 'admin:keywordrecognition_elizabot_changelist' %}">{% trans 'Eliza Bots' %}</a>
+            &rsaquo;
+            <a href="{% url 'admin:keywordrecognition_elizabot_change' object_id=elizabot.id %}">{{ elizabot }}</a>
+        </div>
+    {% endblock %}
+    <!-- Custom content for your test page -->
+    <h1>Test Bot</h1>
+    <!-- Add your form or other elements here -->
+    <!-- Example: -->
+    <form method="POST" action="{% url 'admin:elizabot-test-bot' object_id=elizabot.id %}">
+        {% csrf_token %}
+        <input type="text" name="input" placeholder="{% trans 'Enter input' %}">
+        <button type="submit">{% trans 'Submit' %}</button>
+    </form>
+
+    {% if response %}
+        <div class="response">{{ response }}</div>
+    {% endif %}
+{% endblock %}

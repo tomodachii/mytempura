@@ -1,0 +1,12 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+
+{% block object-tools-items %}
+    <div class="object-tools d-flex flex-column">
+        {{ block.super }}
+        <a href="{% url 'admin:elizabot-test-bot' object_id=original.id %}" class="btn btn-outline-info btn-block mt-3">
+            {% trans 'Test Bot' %}
+        </a>
+    </div>
+{% endblock %}
