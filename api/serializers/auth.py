@@ -33,7 +33,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
 
 class SignInSerializer(serializers.Serializer):
-    email = serializers.EmailField()
+    username = serializers.CharField()
     password = serializers.CharField(allow_blank=True, trim_whitespace=False)
 
 
@@ -42,7 +42,7 @@ class TokenPayloadResponse(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ["id", "name", "email", "description", "exp"]
+        fields = ["id", "name", "username", "email", "description", "exp"]
 
 
 class ObtainTokenResponseSerializer(serializers.Serializer):
@@ -54,4 +54,4 @@ class ObtainTokenResponseSerializer(serializers.Serializer):
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ["id", "email", "name", "description"]
+        fields = ["id", "username", "email", "name", "description"]

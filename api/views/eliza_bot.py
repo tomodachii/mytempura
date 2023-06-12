@@ -1,8 +1,10 @@
 from rest_framework.views import APIView
-from api.middlewares import RouteAuthenticationByJWT
+from api.middlewares import (
+    RouteAuthenticationByJWT,
+)
 from django.http import JsonResponse
 from rest_framework import status, parsers
-from keywordrecognition.serializers import (
+from api.serializers import (
     ElizaBotSerializer,
     ElizaBotResponseSerializer,
     ElizaBotLoadTxtSerializer,
@@ -104,7 +106,9 @@ class ElizaBotDetailAPI(APIView):
 
 
 class ElizaBotAPIView(APIView):
-    authentication_classes = [RouteAuthenticationByJWT]
+    authentication_classes = [
+        RouteAuthenticationByJWT,
+    ]
     permission_classes = ()
 
     @extend_schema(

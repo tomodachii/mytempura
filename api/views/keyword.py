@@ -3,7 +3,7 @@ from api.middlewares import RouteAuthenticationByJWT
 from django.http import JsonResponse
 from rest_framework import status
 from drf_spectacular.utils import extend_schema
-from keywordrecognition.serializers import (
+from api.serializers import (
     KeywordResponseSerializer,
     KeywordCreateSerializer,
     KeywordUpdateSerializer,
