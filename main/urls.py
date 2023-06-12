@@ -23,6 +23,7 @@ urlpatterns = [
     # https://stackoverflow.com/a/58634209
     path("i18n/", include("django.conf.urls.i18n")),
     path("api/", include("api.urls")),
+    path("keywordrecognition/", include("keywordrecognition.urls")),
 ]
 
 urlpatterns += [

@@ -1,6 +1,4 @@
 from rest_framework.views import APIView
-
-# from api.middlewares import FirebaseAuthentication
 from django.http import JsonResponse
 from rest_framework import status
 from backend.models import Account
@@ -59,7 +57,9 @@ class SignInAPIView(APIView):
         try:
             serializer = SignInSerializer(data=data)
             if serializer.is_valid() and data:
-                account = Account.objects.get(email=serializer.validated_data["email"])
+                account = Account.objects.get(
+                    username=serializer.validated_data["username"]
+                )
                 if check_password(
                     serializer.validated_data["password"], account.password
                 ):
