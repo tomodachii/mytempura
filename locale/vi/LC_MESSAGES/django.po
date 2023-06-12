@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 15:29+0700\n"
+"POT-Creation-Date: 2023-06-12 12:33+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,19 +78,19 @@ msgstr "tài khoản"
 msgid "accounts"
 msgstr "tài khoản"
 
-#: backend/models/account.py:80
+#: backend/models/account.py:79
 msgid "email"
 msgstr ""
 
-#: backend/models/account.py:83 keywordrecognition/models/eliza_bot.py:13
+#: backend/models/account.py:82 keywordrecognition/models/eliza_bot.py:13
 msgid "name"
 msgstr "tên"
 
-#: backend/models/account.py:84
+#: backend/models/account.py:83
 msgid "password"
 msgstr "mật khẩu"
 
-#: backend/models/account.py:86 keywordrecognition/models/eliza_bot.py:14
+#: backend/models/account.py:85 keywordrecognition/models/eliza_bot.py:14
 msgid "description"
 msgstr "mô tả"
 
@@ -239,6 +239,70 @@ msgstr "từ đồng nghĩa"
 msgid "value"
 msgstr "giá trị"
 
-#: main/templates/admin/base_site.html:40
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:9
+msgid "Test Bot"
+msgstr "Thử Bot"
+
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:8
+msgid "Home"
+msgstr ""
+
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:10
+msgid "Keyword Recognition"
+msgstr ""
+
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
+msgid "Eliza Bots"
+msgstr ""
+
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:23
+msgid "Enter input"
+msgstr "Nhập input"
+
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:24
+msgid "Submit"
+msgstr ""
+
+#: main/templates/admin/base.html:96
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: main/templates/admin/base.html:161
+msgid "Account"
+msgstr "Tài khoản"
+
+#: main/templates/admin/base.html:164
+msgid "Change password"
+msgstr "Đổi mật khẩu"
+
+#: main/templates/admin/base.html:168
+msgid "Log out"
+msgstr "Đăng xuất"
+
+#: main/templates/admin/base.html:179
+msgid "See Profile"
+msgstr "Xem Profile"
+
+#: main/templates/admin/base.html:219
 msgid "Dashboard"
 msgstr "Trang chủ"
+
+#: main/templates/admin/base.html:336
+msgid "Copyright"
+msgstr ""
+
+#: main/templates/admin/base.html:336
+msgid "All rights reserved."
+msgstr ""
+
+#: main/templates/admin/base.html:352
+msgid "UI Configuration"
+msgstr "Tùy chỉnh UI"
+
+#: main/templates/admin/base.html:356
+msgid "Copy this info your settings file to persist these UI changes"
+msgstr "Copy vào settings file để thực hiện thay đổi UI"
+
+#: main/templates/admin/base.html:360
+msgid "Close"
+msgstr "Đóng"

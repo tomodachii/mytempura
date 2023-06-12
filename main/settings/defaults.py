@@ -77,6 +77,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "main/templates"),
+            os.path.join(BASE_DIR, "keywordrecognition/templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
