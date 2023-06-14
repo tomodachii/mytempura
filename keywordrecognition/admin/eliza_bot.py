@@ -3,6 +3,7 @@ from keywordrecognition.models import ElizaBot
 from .inline import KeywordInline
 from django.template.response import TemplateResponse
 from django.urls import path
+from django.conf import settings
 
 
 class ElizaBotAdmin(admin.ModelAdmin):
@@ -27,6 +28,7 @@ class ElizaBotAdmin(admin.ModelAdmin):
         elizabot = self.get_object(request, object_id)
         context = self.admin_site.each_context(request)
         context["elizabot"] = elizabot
+        context["backend_url"] = settings.BACKEND_URL
 
         # input = request.POST.get("input")
         # # Handle form submission

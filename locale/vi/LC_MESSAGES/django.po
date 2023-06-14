@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 12:33+0700\n"
+"POT-Creation-Date: 2023-06-15 00:43+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgstr "tài khoản"
 msgid "email"
 msgstr ""
 
-#: backend/models/account.py:82 keywordrecognition/models/eliza_bot.py:13
+#: backend/models/account.py:82 keywordrecognition/models/eliza_bot.py:14
 msgid "name"
 msgstr "tên"
 
@@ -90,7 +90,7 @@ msgstr "tên"
 msgid "password"
 msgstr "mật khẩu"
 
-#: backend/models/account.py:85 keywordrecognition/models/eliza_bot.py:14
+#: backend/models/account.py:85 keywordrecognition/models/eliza_bot.py:15
 msgid "description"
 msgstr "mô tả"
 
@@ -148,7 +148,7 @@ msgid "pattern"
 msgstr ""
 
 #: keywordrecognition/models/default_message.py:29
-#: keywordrecognition/models/default_message.py:35
+#: keywordrecognition/models/default_message.py:38
 msgid "default message"
 msgstr "message mặc định"
 
@@ -156,22 +156,26 @@ msgstr "message mặc định"
 msgid "default messages"
 msgstr "message mặc định"
 
-#: keywordrecognition/models/default_message.py:33
+#: keywordrecognition/models/default_message.py:35
 #: keywordrecognition/models/keyword.py:14 keywordrecognition/models/quit.py:17
 msgid "bot"
 msgstr ""
 
-#: keywordrecognition/models/eliza_bot.py:10
+#: keywordrecognition/models/eliza_bot.py:11
 msgid "eliza bot"
 msgstr ""
 
-#: keywordrecognition/models/eliza_bot.py:11
+#: keywordrecognition/models/eliza_bot.py:12
 msgid "eliza bots"
 msgstr "eliza bot"
 
-#: keywordrecognition/models/eliza_bot.py:16
+#: keywordrecognition/models/eliza_bot.py:17
 msgid "owner"
 msgstr "chủ sở hữu"
+
+#: keywordrecognition/models/eliza_bot.py:32
+msgid "Hello! Please tell me your problem"
+msgstr "Xin chào! Xin hãy cho tôi biết vấn đề của bạn"
 
 #: keywordrecognition/models/keyword.py:11
 msgid "keywords"
@@ -239,29 +243,34 @@ msgstr "từ đồng nghĩa"
 msgid "value"
 msgstr "giá trị"
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:9
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:8
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:19
 msgid "Test Bot"
 msgstr "Thử Bot"
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:8
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
 msgid "Home"
 msgstr ""
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:10
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:13
 msgid "Keyword Recognition"
 msgstr ""
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:14
 msgid "Eliza Bots"
 msgstr ""
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:23
-msgid "Enter input"
-msgstr "Nhập input"
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:44
+msgid "Chat with "
+msgstr "Chat với"
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:24
-msgid "Submit"
-msgstr ""
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:47
+msgid "Enter your input here"
+msgstr "Nhập input tại đây"
+
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:48
+msgid "Send"
+msgstr "Gửi"
 
 #: main/templates/admin/base.html:96
 msgid "Search"

@@ -30,7 +30,10 @@ class DefaultMessage(ModelBase):
         verbose_name_plural = _("default messages")
 
     bot = models.ForeignKey(
-        "keywordrecognition.ElizaBot", on_delete=models.CASCADE, verbose_name=_("bot")
+        "keywordrecognition.ElizaBot",
+        on_delete=models.CASCADE,
+        verbose_name=_("bot"),
+        related_name="default_messages",
     )
     message = models.TextField(verbose_name=_("default message"))
 
