@@ -1,20 +1,25 @@
 {% extends 'admin/base_site.html' %}
 {% load i18n %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/elizabot_test.css' %}">
+{% endblock %}
+
+<!-- Breadcrumbs -->
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'admin:app_list' app_label='keywordrecognition' %}">{% trans 'Keyword Recognition' %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'admin:keywordrecognition_elizabot_changelist' %}">{% trans 'Eliza Bots' %}</a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'admin:keywordrecognition_elizabot_change' object_id=elizabot.id %}">{{ elizabot }}</a></li>
+</ol>
+{% endblock %}
+
+{% block content_title %}{% trans 'Test Bot' %}{% endblock %}
 
 {% block content %}
-    <!-- Breadcrumbs -->
-    {% block breadcrumbs %}
-        <div class="breadcrumbs">
-            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-            &rsaquo;
-            <a href="{% url 'admin:app_list' app_label='keywordrecognition' %}">{% trans 'Keyword Recognition' %}</a>
-            &rsaquo;
-            <a href="{% url 'admin:keywordrecognition_elizabot_changelist' %}">{% trans 'Eliza Bots' %}</a>
-            &rsaquo;
-            <a href="{% url 'admin:keywordrecognition_elizabot_change' object_id=elizabot.id %}">{{ elizabot }}</a>
-        </div>
-    {% endblock %}
-    <!-- Custom content for your test page -->
+    {% comment %} <!-- Custom content for your test page -->
     <h1>Test Bot</h1>
     <!-- Add your form or other elements here -->
     <!-- Example: -->
@@ -26,5 +31,26 @@
 
     {% if response %}
         <div class="response">{{ response }}</div>
-    {% endif %}
+    {% endif %} {% endcomment %}
+
+    <div class="chatbot__overview">
+        <ul class="chatlist">
+          <li class="bot__output bot__output--standard">Xin chào, đây là chatbot hỗ trợ tuyển sinh đại học Bách Khoa Hà Nội! Tôi có thể giúp gì cho bạn?</li>
+        </ul>
+      </div>
+      <div class="chatbox-area">
+        <form action="" id="chatform">
+          <label>Chat với chatbot hỗ trợ tuyển sinh Đại học Bách Khoa Hà Nội</label>
+          <div class="chatbox__container">
+            <img id="kitty" src="{% static 'images/hellokitty.png' %}" alt="kitty">
+            <textarea placeholder="Nhập tin nhắn tại đây" class="chatbox" name="chatbox" resize: "none" minlength="2"></textarea>
+            <input class="submit-button" type="submit" value="Gửi">
+          </div>
+        </form>
+        
+      </div>
+{% endblock %}
+
+{% block extrajs %}
+  <script src="{% static "js/elizabot_test.js" %}"></script>
 {% endblock %}

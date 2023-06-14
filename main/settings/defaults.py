@@ -203,6 +203,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 #     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 # ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "keywordrecognition/static"),
+]
+
 JAZZMIN_SETTINGS = {
     # title of the window
     "site_title": "MyTempura",
@@ -222,15 +226,19 @@ JAZZMIN_SETTINGS = {
     # Top Menu #
     ############
     # Links to put along the top menu
-    # 'topmenu_links': [
+    # "topmenu_links": [
     #     # Url that gets reversed (Permissions can be added)
-    #     {'name': 'Home',  'url': 'admin:index', 'permissions': ['auth.view_user']},
+    #     {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
     #     # external url that opens in a new window (Permissions can be added)
-    #     {'name': 'Support', 'url': 'https://github.com/farridav/django-jazzmin/issues', 'new_window': True},
+    #     {
+    #         "name": "Support",
+    #         "url": "https://github.com/tomodachii/mytempura/issues",
+    #         "new_window": True,
+    #     },
     #     # model admin to link to (Permissions checked against model)
-    #     {'model': 'auth.User'},
+    #     {"model": "auth.User"},
     #     # App with dropdown menu to all its models pages (Permissions checked against models)
-    #     {'app': 'polls'},
+    #     {"app": "polls"},
     # ],
     #############
     # User Menu #
