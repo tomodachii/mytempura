@@ -348,3 +348,5 @@ JAZZMIN_UI_TWEAKS = {
 # changed in django 3.0 to DENY (affect add modal on admin)
 # https://docs.djangoproject.com/en/3.1/ref/clickjacking/#setting-x-frame-options-for-all-responses
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+BACKEND_URL = os.environ.get("BACKEND_URL")

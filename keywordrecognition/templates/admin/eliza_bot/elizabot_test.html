@@ -35,16 +35,16 @@
 
     <div class="chatbot__overview">
         <ul class="chatlist">
-          <li class="bot__output bot__output--standard">Xin chào, đây là chatbot hỗ trợ tuyển sinh đại học Bách Khoa Hà Nội! Tôi có thể giúp gì cho bạn?</li>
+          <li class="bot__output bot__output--standard">{{ elizabot.get_random_initial_message }}</li>
         </ul>
       </div>
       <div class="chatbox-area">
         <form action="" id="chatform">
-          <label>Chat với chatbot hỗ trợ tuyển sinh Đại học Bách Khoa Hà Nội</label>
+          <label>{% trans "Chat with " %} {{ elizabot }}</label>
           <div class="chatbox__container">
             <img id="kitty" src="{% static 'images/hellokitty.png' %}" alt="kitty">
-            <textarea placeholder="Nhập tin nhắn tại đây" class="chatbox" name="chatbox" resize: "none" minlength="2"></textarea>
-            <input class="submit-button" type="submit" value="Gửi">
+            <textarea placeholder={% trans "Enter your input here" %} class="chatbox" name="chatbox" resize: "none" minlength="2"></textarea>
+            <input class="submit-button" type="submit" value={% trans "Send" %}>
           </div>
         </form>
         
@@ -52,5 +52,86 @@
 {% endblock %}
 
 {% block extrajs %}
-  <script src="{% static "js/elizabot_test.js" %}"></script>
+  <script>
+    // The form we receive user input from
+    let chatForm = document.querySelector("#chatform");
+    let chatList = document.querySelector(".chatlist");
+    
+    const botID = "{{ elizabot.id }}"
+    const backendURL = "{{ backend_url }}"
+
+    async function postData(url, data) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": `{{ csrf_token }}`,
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+
+            return response.json();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    // The sender should be "user" or "bot"
+    function displayChatBubble(message, sender) {
+        let chatBubble = document.createElement("li");
+        chatBubble.classList.add(sender === "user" ? "user__input" : "bot__output");
+        chatBubble.innerHTML = message;
+        chatList.appendChild(chatBubble);
+        //Sets chatList scroll to the bottom
+        chatList.scrollTop = chatList.scrollHeight;
+    }
+
+    const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+    async function makeResponse(input) {
+        try {
+            const response = await postData(`${backendURL}/api/bots/${botID}/response`, { message: input });
+            return response.response;
+        } catch (error) {
+            console.error("Error:", error);
+            return "error!"; // Return an empty string or handle the error accordingly
+        }
+    }
+
+    async function handleInput() {
+        // The text area for user's input text
+        let textInput = document.querySelector(".chatbox");
+        let input = textInput.value.toLowerCase();
+        //Check empty textarea
+        if (input.length > 0) {
+            displayChatBubble(input, "user");
+            let response = await makeResponse(input);
+            if (response) {
+                displayChatBubble(response, "bot");
+            }
+        }
+        textInput.value = "";
+    }
+
+    window.onload = () => {
+        // Handle Enter
+        chatForm.addEventListener("keydown", (e) => {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                handleInput();
+            }
+        });
+        // Handle submit
+        chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            handleInput();
+        });
+    };
+  </script>
 {% endblock %}

@@ -57,6 +57,7 @@ table {
   scrollbar-width: none;
   /* Firefox */
   width: 100%;
+  min-width: 850px;
   max-width: 850px;
   max-height: 55vh;
   margin: 0 auto;
