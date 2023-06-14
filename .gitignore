@@ -99,5 +99,7 @@ serviceAccountKey.json
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
+celerybeat-schedule.db
 
+# static
 static/*

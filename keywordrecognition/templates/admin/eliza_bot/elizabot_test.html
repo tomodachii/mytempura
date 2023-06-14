@@ -19,20 +19,6 @@
 {% block content_title %}{% trans 'Test Bot' %}{% endblock %}
 
 {% block content %}
-    {% comment %} <!-- Custom content for your test page -->
-    <h1>Test Bot</h1>
-    <!-- Add your form or other elements here -->
-    <!-- Example: -->
-    <form method="POST" action="{% url 'admin:elizabot-test-bot' object_id=elizabot.id %}">
-        {% csrf_token %}
-        <input type="text" name="input" placeholder="{% trans 'Enter input' %}">
-        <button type="submit">{% trans 'Submit' %}</button>
-    </form>
-
-    {% if response %}
-        <div class="response">{{ response }}</div>
-    {% endif %} {% endcomment %}
-
     <div class="chatbot__overview">
         <ul class="chatlist">
           <li class="bot__output bot__output--standard">{{ elizabot.get_random_initial_message }}</li>
@@ -91,8 +77,6 @@
         //Sets chatList scroll to the bottom
         chatList.scrollTop = chatList.scrollHeight;
     }
-
-    const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
     async function makeResponse(input) {
         try {
