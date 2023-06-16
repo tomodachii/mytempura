@@ -2,8 +2,10 @@
 
 - cp .env.template .env
 - poetry install
-<!-- - docker compose up -d -->
+- docker compose up -d
 - poetry shell
+- ./manage.py migrate
+- ./manage.py compilemessages
 ### Test:
 
 coverage run --source='.' manage.py test --no-input && coverage html && coverage report --skip-covered
