@@ -1,11 +1,25 @@
 {% extends "admin/change_form.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block object-tools-items %}
-    <div class="object-tools d-flex flex-column">
-        {{ block.super }}
-        <a href="{% url 'admin:elizabot-test-bot' object_id=original.id %}" class="btn btn-outline-info btn-block mt-3">
-            {% trans 'Test Bot' %}
-        </a>
-    </div>
+<div class="object-tools d-flex flex-column">
+    {{ block.super }}
+    <a href="{% url 'admin:elizabot-test-bot' object_id=original.id %}" class="btn btn-outline-info btn-block mt-3">
+        {% trans 'Test Bot' %}
+    </a>
+    <a class="related-widget-wrapper-link add-related btn btn-outline-info btn-block mt-3" data-popup="yes" id="shareBot">Share</a>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+    {{  block.super }}
+    <script>
+        let iframeHTML = '<div class="col-4 text-center d-flex"><a href="{% url 'redoc' %}" class="btn btn-primary p-4 rounded"><i class="fa fa-code fa-2x d-block p-5"></i> API</a></div>'
+        $(document).ready(function() {
+            $('#shareBot').click(function() {
+              showModal("Share", iframeHTML, {'data': {'lookup': null}});
+            });
+        });                          
+    </script>
 {% endblock %}

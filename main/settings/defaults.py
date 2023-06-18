@@ -310,7 +310,7 @@ JAZZMIN_SETTINGS = {
         "auth.group": "vertical_tabs",
     },
     "language_chooser": True,
-    "related_modal_active": True,
+    # "related_modal_active": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
