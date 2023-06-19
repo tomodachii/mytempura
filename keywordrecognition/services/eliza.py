@@ -183,6 +183,10 @@ class ElizaService:
 
             keywords = Keyword.objects.filter(bot=self.bot).order_by("-weight")
             output = None
+            if not keywords.exists():
+                return DefaultMessage.default_message_objects.random_fallback(
+                    bot=self.bot
+                ).message
             for keyword in keywords:
                 output = self.match_keyword(text=text, keyword=keyword)
                 if output:

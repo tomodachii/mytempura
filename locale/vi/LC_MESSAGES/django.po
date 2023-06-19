@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-15 00:43+0700\n"
+"POT-Creation-Date: 2023-06-19 17:25+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,16 +147,20 @@ msgstr "từ khóa"
 msgid "pattern"
 msgstr ""
 
-#: keywordrecognition/models/default_message.py:29
-#: keywordrecognition/models/default_message.py:38
+#: keywordrecognition/models/default_message.py:20
+msgid "There is no Fallback message defined for this bot"
+msgstr "Chưa định nghĩa Fallback message cho bot"
+
+#: keywordrecognition/models/default_message.py:33
+#: keywordrecognition/models/default_message.py:42
 msgid "default message"
 msgstr "message mặc định"
 
-#: keywordrecognition/models/default_message.py:30
+#: keywordrecognition/models/default_message.py:34
 msgid "default messages"
 msgstr "message mặc định"
 
-#: keywordrecognition/models/default_message.py:35
+#: keywordrecognition/models/default_message.py:39
 #: keywordrecognition/models/keyword.py:14 keywordrecognition/models/quit.py:17
 msgid "bot"
 msgstr ""
@@ -243,12 +247,13 @@ msgstr "từ đồng nghĩa"
 msgid "value"
 msgstr "giá trị"
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:8
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:9
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:19
 msgid "Test Bot"
 msgstr "Thử Bot"
 
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
+#: main/templates/admin/change_form.html:23
 msgid "Home"
 msgstr ""
 
@@ -260,15 +265,15 @@ msgstr ""
 msgid "Eliza Bots"
 msgstr ""
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:44
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:29
 msgid "Chat with "
 msgstr "Chat với"
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:47
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:32
 msgid "Enter your input here"
 msgstr "Nhập input tại đây"
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:48
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:33
 msgid "Send"
 msgstr "Gửi"
 
@@ -315,3 +320,16 @@ msgstr "Copy vào settings file để thực hiện thay đổi UI"
 #: main/templates/admin/base.html:360
 msgid "Close"
 msgstr "Đóng"
+
+#: main/templates/admin/change_form.html:34
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: main/templates/admin/change_form.html:55
+msgid "Please correct the error below."
+msgstr ""
+
+#: main/templates/admin/change_form.html:57
+msgid "Please correct the errors below."
+msgstr ""
