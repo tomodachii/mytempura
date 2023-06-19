@@ -214,7 +214,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "MyTempura",
     "site_brand": "MyTempura",
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
-    'site_logo': 'images/tempura-sumikko.jpg',
+    "site_logo": "images/tempura-sumikko.jpg",
     # Welcome text on the login screen
     "welcome_sign": "Welcome to MyTempura",
     # Copyright on the footer
@@ -260,7 +260,19 @@ JAZZMIN_SETTINGS = {
     # Hide these models when generating side menu (e.g auth.user)
     "hide_models": [],
     # List of apps to base side menu ordering off of (does not need to contain all apps)
-    "order_with_respect_to": [],
+    "order_with_respect_to": [
+        "auth",
+        "backend",
+        "keywordrecognition",
+        "keywordrecognition.elizabot",
+        "keywordrecognition.defaultmessage",
+        "keywordrecognition.keyword",
+        "keywordrecognition.decomp",
+        "keywordrecognition.reasmb",
+        "keywordrecognition.quit",
+        "keywordrecognition.synonym",
+        "keywordrecognition.postprocessing",
+    ],
     # Custom links to append to app groups, keyed on app name
     # 'custom_links': {
     #     'backend': [{
