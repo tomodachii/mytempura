@@ -15,6 +15,10 @@ class DefaultMessageCustomManager(Manager):
             count = self.filter(
                 bot=bot, message_type=DefaultMessage.FALLBACK
             ).aggregate(count=Count("id"))["count"]
+            if count == 0:
+                return DefaultMessage(
+                    message=_("There is no Fallback message defined for this bot")
+                )
             random_index = randint(0, count - 1)
             return self.filter(bot=bot, message_type=DefaultMessage.FALLBACK)[
                 random_index
