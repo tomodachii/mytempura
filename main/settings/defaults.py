@@ -238,7 +238,7 @@ JAZZMIN_SETTINGS = {
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "polls"},
+        {"app": "keywordrecognition"},
     ],
     #############
     # User Menu #

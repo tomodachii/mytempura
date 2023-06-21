@@ -12,6 +12,15 @@ class KeywordAdmin(admin.ModelAdmin):
     list_display_links = ["word"]
     inlines = [DecompInline]
 
+    def get_queryset(self, request):
+        # Get the current logged-in admin user
+        owner = request.user
+
+        # Filter the queryset to only include items belonging to the admin user
+        queryset = super().get_queryset(request).filter(bot__owner=owner)
+
+        return queryset
+
     def bot_link(self, obj):
         url = reverse("admin:keywordrecognition_elizabot_change", args=[obj.bot.pk])
         return format_html('<a href="{}">{}</a>', url, obj.bot)

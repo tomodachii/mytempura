@@ -14,6 +14,17 @@ class ReasmbAdmin(admin.ModelAdmin):
     ]
     list_display_links = ["id", "template"]
 
+    def get_queryset(self, request):
+        # Get the current logged-in admin user
+        owner = request.user
+
+        # Filter the queryset to only include items belonging to the admin user
+        queryset = (
+            super().get_queryset(request).filter(decomp__keyword__bot__owner=owner)
+        )
+
+        return queryset
+
     def bot_link(self, obj):
         url = reverse(
             "admin:keywordrecognition_elizabot_change", args=[obj.decomp.keyword.bot.pk]

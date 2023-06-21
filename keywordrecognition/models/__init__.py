@@ -4,5 +4,4 @@ from .eliza_bot import ElizaBot
 from .keyword import Keyword
 from .postprocessing import PostProcessing
 from .synonym import Synonym
-from .quit import Quit
 from .reasmb import Reasmb

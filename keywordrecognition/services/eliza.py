@@ -7,7 +7,6 @@ from keywordrecognition.models import (
     Keyword,
     PostProcessing,
     Synonym,
-    Quit,
     Reasmb,
 )
 from keywordrecognition.exceptions import ElizaServiceException
@@ -34,9 +33,6 @@ class ElizaService:
         DefaultMessage.objects.get_or_create(
             bot=self.bot, message=content, message_type=DefaultMessage.FALLBACK
         )
-
-    def load_quit(self, content: str):
-        Quit.objects.get_or_create(bot=self.bot, trigger=content)
 
     def load_synonym(self, content: str):
         patterns = content.split("/")
@@ -81,8 +77,6 @@ class ElizaService:
             self.load_final(content)
         elif tag == "fallback":
             self.load_fallback(content)
-        elif tag == "quit":
-            self.load_quit(content)
         elif tag == "synon":
             self.load_synonym(content)
         elif tag == "post":

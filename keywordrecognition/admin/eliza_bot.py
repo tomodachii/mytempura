@@ -12,6 +12,15 @@ class ElizaBotAdmin(admin.ModelAdmin):
     inlines = [KeywordInline]
     change_form_template = "admin/eliza_bot/elizabot_change_form.html"
 
+    def get_queryset(self, request):
+        # Get the current logged-in admin user
+        owner = request.user
+
+        # Filter the queryset to only include items belonging to the admin user
+        queryset = super().get_queryset(request).filter(owner=owner)
+
+        return queryset
+
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [

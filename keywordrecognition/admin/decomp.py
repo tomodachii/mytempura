@@ -12,6 +12,15 @@ class DecompAdmin(admin.ModelAdmin):
     list_display_links = ["id", "pattern"]
     inlines = [ReasmbInline]
 
+    def get_queryset(self, request):
+        # Get the current logged-in admin user
+        owner = request.user
+
+        # Filter the queryset to only include items belonging to the admin user
+        queryset = super().get_queryset(request).filter(keyword__bot__owner=owner)
+
+        return queryset
+
     def keyword_link(self, obj):
         url = reverse("admin:keywordrecognition_keyword_change", args=[obj.keyword.pk])
         return format_html('<a href="{}">{}</a>', url, obj.keyword.word)
