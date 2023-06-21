@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import Keyword
 from django.urls import reverse
 from django.utils.html import format_html
@@ -28,4 +29,4 @@ class KeywordAdmin(admin.ModelAdmin):
     bot_link.short_description = "bot"
 
 
-admin.site.register(Keyword, KeywordAdmin)
+admin_site.register(Keyword, KeywordAdmin)

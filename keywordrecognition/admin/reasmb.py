@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import Reasmb
 from django.urls import reverse
 from django.utils.html import format_html
@@ -48,4 +49,4 @@ class ReasmbAdmin(admin.ModelAdmin):
     decomp_link.short_description = "decomp"
 
 
-admin.site.register(Reasmb, ReasmbAdmin)
+admin_site.register(Reasmb, ReasmbAdmin)

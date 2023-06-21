@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import ElizaBot
 from .inline import KeywordInline
 from django.template.response import TemplateResponse
@@ -54,4 +55,4 @@ class ElizaBotAdmin(admin.ModelAdmin):
     keyword_count.short_description = "keyword count"
 
 
-admin.site.register(ElizaBot, ElizaBotAdmin)
+admin_site.register(ElizaBot, ElizaBotAdmin)

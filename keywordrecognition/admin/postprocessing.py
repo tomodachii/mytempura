@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import PostProcessing
 
 
@@ -8,4 +9,4 @@ class PostProcessingAdmin(admin.ModelAdmin):
     list_display_links = ["id"]
 
 
-admin.site.register(PostProcessing, PostProcessingAdmin)
+admin_site.register(PostProcessing, PostProcessingAdmin)

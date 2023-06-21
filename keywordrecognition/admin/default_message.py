@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import DefaultMessage
 from django.urls import reverse
 from django.utils.html import format_html
@@ -26,4 +27,4 @@ class DefaultMessageAdmin(admin.ModelAdmin):
     bot_link.short_description = "bot"
 
 
-admin.site.register(DefaultMessage, DefaultMessageAdmin)
+admin_site.register(DefaultMessage, DefaultMessageAdmin)

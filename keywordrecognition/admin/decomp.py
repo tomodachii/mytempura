@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import Decomp
 from django.urls import reverse
 from django.utils.html import format_html
@@ -36,4 +37,4 @@ class DecompAdmin(admin.ModelAdmin):
     bot_link.short_description = "bot"
 
 
-admin.site.register(Decomp, DecompAdmin)
+admin_site.register(Decomp, DecompAdmin)

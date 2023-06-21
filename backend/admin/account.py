@@ -1,4 +1,4 @@
-from django.contrib import admin
+from main.admin import admin as admin_site
 from backend.models import Account
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
@@ -25,4 +25,4 @@ class AccountAdmin(UserAdmin):
     )
 
 
-admin.site.register(Account, AccountAdmin)
+admin_site.register(Account, AccountAdmin)

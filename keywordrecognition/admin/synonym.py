@@ -1,4 +1,5 @@
 from django.contrib import admin
+from main.admin import admin as admin_site
 from keywordrecognition.models import Synonym
 
 
@@ -8,4 +9,4 @@ class SynonymAdmin(admin.ModelAdmin):
     list_display_links = ["id"]
 
 
-admin.site.register(Synonym, SynonymAdmin)
+admin_site.register(Synonym, SynonymAdmin)
