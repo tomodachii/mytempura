@@ -9,6 +9,7 @@ from django.conf import settings
 
 class ElizaBotAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "description", "owner", "keyword_count"]
+    list_display_links = ["id", "name"]
     search_fields = ["name", "owner__email"]
     inlines = [KeywordInline]
     change_form_template = "admin/eliza_bot/elizabot_change_form.html"

@@ -236,9 +236,9 @@ JAZZMIN_SETTINGS = {
             "new_window": True,
         },
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        {"model": "backend.Account"},
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "keywordrecognition"},
+        # {"app": "keywordrecognition"},
     ],
     #############
     # User Menu #
@@ -261,17 +261,16 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
     # List of apps to base side menu ordering off of (does not need to contain all apps)
     "order_with_respect_to": [
-        "auth",
-        "backend",
         "keywordrecognition",
         "keywordrecognition.elizabot",
         "keywordrecognition.defaultmessage",
         "keywordrecognition.keyword",
         "keywordrecognition.decomp",
         "keywordrecognition.reasmb",
-        "keywordrecognition.quit",
         "keywordrecognition.synonym",
         "keywordrecognition.postprocessing",
+        "auth",
+        "backend",
     ],
     # Custom links to append to app groups, keyed on app name
     # 'custom_links': {

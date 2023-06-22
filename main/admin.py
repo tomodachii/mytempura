@@ -15,7 +15,7 @@ class AdminSite(admin_site.AdminSite):
         context = super(AdminSite, self).each_context(request)
         context.update(
             {
-                "exclude_app_list": ["backend"],
+                "exclude_app_list": ["api"],
             }
         )
         return context

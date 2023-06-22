@@ -8,7 +8,7 @@ class AccountAdmin(UserAdmin):
     # search_fields = ["email", "uid"]
     list_display = ["username", "email", "name", "is_active", "last_login"]
     fieldsets = (
-        (None, {"fields": ("username", "password")}),
+        (_("General"), {"fields": ("username", "password")}),
         (_("Personal info"), {"fields": ("name", "email")}),
         (
             _("Permissions"),

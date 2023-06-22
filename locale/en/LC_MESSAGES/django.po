@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 17:25+0700\n"
+"POT-Creation-Date: 2023-06-22 10:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: backend/admin/account.py:11
+msgid "General"
+msgstr ""
 
 #: backend/admin/account.py:12
 msgid "Personal info"
@@ -28,6 +32,10 @@ msgstr ""
 
 #: backend/admin/account.py:24
 msgid "Important dates"
+msgstr ""
+
+#: backend/apps.py:8
+msgid "Account Management"
 msgstr ""
 
 #: backend/enums.py:5 keywordrecognition/enums.py:5
@@ -98,6 +106,11 @@ msgstr ""
 msgid "created at"
 msgstr ""
 
+#: keywordrecognition/apps.py:8
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:13
+msgid "Keyword Chatbot"
+msgstr ""
+
 #: keywordrecognition/enums.py:10
 msgid "Eliza Chatbot Does not exist"
 msgstr ""
@@ -161,7 +174,7 @@ msgid "default messages"
 msgstr ""
 
 #: keywordrecognition/models/default_message.py:39
-#: keywordrecognition/models/keyword.py:14 keywordrecognition/models/quit.py:17
+#: keywordrecognition/models/keyword.py:14
 msgid "bot"
 msgstr ""
 
@@ -207,18 +220,6 @@ msgstr ""
 msgid "output word"
 msgstr ""
 
-#: keywordrecognition/models/quit.py:13
-msgid "quit message"
-msgstr ""
-
-#: keywordrecognition/models/quit.py:14
-msgid "quit messages"
-msgstr ""
-
-#: keywordrecognition/models/quit.py:19
-msgid "trigger"
-msgstr ""
-
 #: keywordrecognition/models/reasmb.py:13
 msgid "reassembling rule"
 msgstr ""
@@ -253,12 +254,8 @@ msgid "Test Bot"
 msgstr ""
 
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
-#: main/templates/admin/change_form.html:23
+#: main/templates/admin/change_form.html:23 main/templates/admin/index.html:11
 msgid "Home"
-msgstr ""
-
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:13
-msgid "Keyword Recognition"
 msgstr ""
 
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:14
@@ -297,27 +294,28 @@ msgstr ""
 msgid "See Profile"
 msgstr ""
 
-#: main/templates/admin/base.html:219
+#: main/templates/admin/base.html:219 main/templates/admin/index.html:7
+#: main/templates/admin/index.html:12
 msgid "Dashboard"
 msgstr ""
 
-#: main/templates/admin/base.html:336
+#: main/templates/admin/base.html:338
 msgid "Copyright"
 msgstr ""
 
-#: main/templates/admin/base.html:336
+#: main/templates/admin/base.html:338
 msgid "All rights reserved."
 msgstr ""
 
-#: main/templates/admin/base.html:352
+#: main/templates/admin/base.html:354
 msgid "UI Configuration"
 msgstr ""
 
-#: main/templates/admin/base.html:356
+#: main/templates/admin/base.html:358
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr ""
 
-#: main/templates/admin/base.html:360
+#: main/templates/admin/base.html:362
 msgid "Close"
 msgstr ""
 
@@ -332,4 +330,17 @@ msgstr ""
 
 #: main/templates/admin/change_form.html:57
 msgid "Please correct the errors below."
+msgstr ""
+
+#: main/templates/admin/index.html:79
+msgid "Recent actions"
+msgstr ""
+
+#: main/templates/admin/index.html:83
+msgid "None available"
+msgstr ""
+
+#: main/templates/admin/index.html:97
+#, python-format
+msgid "%(timesince)s ago"
 msgstr ""

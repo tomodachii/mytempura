@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 17:25+0700\n"
+"POT-Creation-Date: 2023-06-22 10:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: backend/admin/account.py:11
+msgid "General"
+msgstr "Thông tin chung"
 
 #: backend/admin/account.py:12
 msgid "Personal info"
@@ -29,6 +33,10 @@ msgstr "Phân quyền"
 #: backend/admin/account.py:24
 msgid "Important dates"
 msgstr "Ngày tháng quan trọng"
+
+#: backend/apps.py:8
+msgid "Account Management"
+msgstr "Quản lý tài khoản"
 
 #: backend/enums.py:5 keywordrecognition/enums.py:5
 msgid "Server error"
@@ -98,6 +106,11 @@ msgstr "mô tả"
 msgid "created at"
 msgstr "ngày giờ khởi tạo"
 
+#: keywordrecognition/apps.py:8
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:13
+msgid "Keyword Chatbot"
+msgstr ""
+
 #: keywordrecognition/enums.py:10
 msgid "Eliza Chatbot Does not exist"
 msgstr "Eliza Chatbot không tồn tại"
@@ -161,7 +174,7 @@ msgid "default messages"
 msgstr "message mặc định"
 
 #: keywordrecognition/models/default_message.py:39
-#: keywordrecognition/models/keyword.py:14 keywordrecognition/models/quit.py:17
+#: keywordrecognition/models/keyword.py:14
 msgid "bot"
 msgstr ""
 
@@ -207,18 +220,6 @@ msgstr "giá trị đầu vào"
 msgid "output word"
 msgstr "kết quả đầu ra"
 
-#: keywordrecognition/models/quit.py:13
-msgid "quit message"
-msgstr "message kết thúc"
-
-#: keywordrecognition/models/quit.py:14
-msgid "quit messages"
-msgstr "message kết thúc"
-
-#: keywordrecognition/models/quit.py:19
-msgid "trigger"
-msgstr "từ khóa kích hoạt"
-
 #: keywordrecognition/models/reasmb.py:13
 msgid "reassembling rule"
 msgstr "luật hợp thành"
@@ -253,13 +254,9 @@ msgid "Test Bot"
 msgstr "Thử Bot"
 
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
-#: main/templates/admin/change_form.html:23
+#: main/templates/admin/change_form.html:23 main/templates/admin/index.html:11
 msgid "Home"
-msgstr ""
-
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:13
-msgid "Keyword Recognition"
-msgstr ""
+msgstr "Trang chủ"
 
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:14
 msgid "Eliza Bots"
@@ -297,27 +294,28 @@ msgstr "Đăng xuất"
 msgid "See Profile"
 msgstr "Xem Profile"
 
-#: main/templates/admin/base.html:219
+#: main/templates/admin/base.html:219 main/templates/admin/index.html:7
+#: main/templates/admin/index.html:12
 msgid "Dashboard"
 msgstr "Trang chủ"
 
-#: main/templates/admin/base.html:336
+#: main/templates/admin/base.html:338
 msgid "Copyright"
 msgstr ""
 
-#: main/templates/admin/base.html:336
+#: main/templates/admin/base.html:338
 msgid "All rights reserved."
 msgstr ""
 
-#: main/templates/admin/base.html:352
+#: main/templates/admin/base.html:354
 msgid "UI Configuration"
 msgstr "Tùy chỉnh UI"
 
-#: main/templates/admin/base.html:356
+#: main/templates/admin/base.html:358
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr "Copy vào settings file để thực hiện thay đổi UI"
 
-#: main/templates/admin/base.html:360
+#: main/templates/admin/base.html:362
 msgid "Close"
 msgstr "Đóng"
 
@@ -333,3 +331,25 @@ msgstr ""
 #: main/templates/admin/change_form.html:57
 msgid "Please correct the errors below."
 msgstr ""
+
+#: main/templates/admin/index.html:79
+msgid "Recent actions"
+msgstr "Lịch sử"
+
+#: main/templates/admin/index.html:83
+msgid "None available"
+msgstr ""
+
+#: main/templates/admin/index.html:97
+#, python-format
+msgid "%(timesince)s ago"
+msgstr "%(timesince)s trước"
+
+#~ msgid "quit message"
+#~ msgstr "message kết thúc"
+
+#~ msgid "quit messages"
+#~ msgstr "message kết thúc"
+
+#~ msgid "trigger"
+#~ msgstr "từ khóa kích hoạt"
