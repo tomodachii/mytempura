@@ -85,6 +85,14 @@ class Account(AbstractUser):
         default="", null=True, blank=True, verbose_name=_("description")
     )
 
+    selected_bot = models.ForeignKey(
+        "backend.Bot",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=_("selected bot"),
+    )
+
     objects = CustomUserManager()
 
     def __str__(self):

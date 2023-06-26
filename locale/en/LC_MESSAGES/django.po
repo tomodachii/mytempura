@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-22 10:05+0700\n"
+"POT-Creation-Date: 2023-06-26 18:19+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: backend/models/account.py:82 keywordrecognition/models/eliza_bot.py:14
+#: backend/models/account.py:82 backend/models/bot.py:13
 msgid "name"
 msgstr ""
 
@@ -98,12 +98,29 @@ msgstr ""
 msgid "password"
 msgstr ""
 
-#: backend/models/account.py:85 keywordrecognition/models/eliza_bot.py:15
+#: backend/models/account.py:85 backend/models/bot.py:14
 msgid "description"
+msgstr ""
+
+#: backend/models/account.py:93
+msgid "selected bot"
 msgstr ""
 
 #: backend/models/base.py:31 keywordrecognition/models/base.py:24
 msgid "created at"
+msgstr ""
+
+#: backend/models/bot.py:10 keywordrecognition/models/default_message.py:39
+#: keywordrecognition/models/keyword.py:14
+msgid "bot"
+msgstr ""
+
+#: backend/models/bot.py:11
+msgid "bots"
+msgstr ""
+
+#: backend/models/bot.py:16
+msgid "owner"
 msgstr ""
 
 #: keywordrecognition/apps.py:8
@@ -173,24 +190,15 @@ msgstr ""
 msgid "default messages"
 msgstr ""
 
-#: keywordrecognition/models/default_message.py:39
-#: keywordrecognition/models/keyword.py:14
-msgid "bot"
-msgstr ""
-
-#: keywordrecognition/models/eliza_bot.py:11
+#: keywordrecognition/models/eliza_bot.py:10
 msgid "eliza bot"
 msgstr ""
 
-#: keywordrecognition/models/eliza_bot.py:12
+#: keywordrecognition/models/eliza_bot.py:11
 msgid "eliza bots"
 msgstr ""
 
-#: keywordrecognition/models/eliza_bot.py:17
-msgid "owner"
-msgstr ""
-
-#: keywordrecognition/models/eliza_bot.py:32
+#: keywordrecognition/models/eliza_bot.py:22
 msgid "Hello! Please tell me your problem"
 msgstr ""
 
@@ -294,28 +302,23 @@ msgstr ""
 msgid "See Profile"
 msgstr ""
 
-#: main/templates/admin/base.html:219 main/templates/admin/index.html:7
-#: main/templates/admin/index.html:12
-msgid "Dashboard"
-msgstr ""
-
-#: main/templates/admin/base.html:338
+#: main/templates/admin/base.html:345
 msgid "Copyright"
 msgstr ""
 
-#: main/templates/admin/base.html:338
+#: main/templates/admin/base.html:345
 msgid "All rights reserved."
 msgstr ""
 
-#: main/templates/admin/base.html:354
+#: main/templates/admin/base.html:361
 msgid "UI Configuration"
 msgstr ""
 
-#: main/templates/admin/base.html:358
+#: main/templates/admin/base.html:365
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr ""
 
-#: main/templates/admin/base.html:362
+#: main/templates/admin/base.html:369
 msgid "Close"
 msgstr ""
 
@@ -330,6 +333,10 @@ msgstr ""
 
 #: main/templates/admin/change_form.html:57
 msgid "Please correct the errors below."
+msgstr ""
+
+#: main/templates/admin/index.html:7 main/templates/admin/index.html:12
+msgid "Dashboard"
 msgstr ""
 
 #: main/templates/admin/index.html:79

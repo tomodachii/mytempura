@@ -45,6 +45,8 @@
     {% if jazzmin_settings.use_google_fonts_cdn %}
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'vendor/select2/css/select2.min.css' %}">
     {% endif %}
 
     {% block extrastyle %} {% endblock %}
@@ -211,14 +213,20 @@
                     </div>
 
                     <nav class="mt-2">
+                        <select id="bot-selector" class="d-none" name="bot_id">
+                            <option value="" {% if selected_bot is None %}selected{% endif %}>No Bot Selected</option>
+                            {% for bot in bots %}
+                                <option value="{{ bot.id }}" {% if selected_bot and selected_bot.id == bot.id %}selected{% endif %}>{{ bot.name }}</option>
+                            {% endfor %}
+                        </select>
                         <ul class="nav nav-pills nav-sidebar flex-column {{ jazzmin_ui.sidebar_list_classes }}" data-widget="treeview" role="menu" data-collapsible="false">
 
-                            <li class="nav-item">
+                            {% comment %} <li class="nav-item">
                                 <a href="{% url 'admin:index' %}" class="nav-link">
                                     <i class="nav-icon fas fa-th-large"></i>
                                     <p>{% trans 'Dashboard' %}</p>
                                 </a>
-                            </li>
+                            </li> {% endcomment %}
 
                             {% if jazzmin_settings.navigation_expanded %}
                                 {% for app in side_menu_list %}
@@ -387,7 +395,30 @@
 <script src="{% static "jazzmin/js/ui-builder.js" %}"></script>
 {% endif %}
 
-{% block extrajs %}{% endblock %}
+{% block extrajs %}
+<script type="text/javascript" src="{% static 'vendor/select2/js/select2.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $('#bot-selector').select2().on('select2:select', function (e) {
+            var selectedValue = e.params.data.id;
+            fetch('{% url 'admin:update-selected-bot' %}?selected-bot=' + selectedValue)
+                .then(function(response) {
+                    if (response.ok) {
+                        console.log('Context updated successfully!');
+                    } else {
+                        console.error('Error updating context:', response.statusText);
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error updating context:', error);
+                });
+        });
+    
+        $('#bot-selector').removeClass('d-none'); // Remove the 'd-none' class after initialization
+    });
+    
+</script>
+{% endblock %}
 
 </body>
 </html>
