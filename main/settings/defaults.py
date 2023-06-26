@@ -214,7 +214,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "MyTempura",
     "site_brand": "MyTempura",
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
-    "site_logo": "images/tempura-sumikko.jpg",
+    "site_logo": "images/tempura-sumikko-3.jpg",
     # Welcome text on the login screen
     "welcome_sign": "Welcome to MyTempura",
     # Copyright on the footer
