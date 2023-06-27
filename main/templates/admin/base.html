@@ -405,6 +405,7 @@
                 .then(function(response) {
                     if (response.ok) {
                         console.log('Context updated successfully!');
+                        window.location.reload(); // Reload the page
                     } else {
                         console.error('Error updating context:', response.statusText);
                     }

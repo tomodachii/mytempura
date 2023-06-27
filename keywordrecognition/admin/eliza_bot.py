@@ -15,6 +15,7 @@ class ElizaBotAdmin(admin.ModelAdmin):
     change_form_template = "admin/eliza_bot/elizabot_change_form.html"
 
     def get_queryset(self, request):
+        queryset = self.model.objects.none()
         # Get the current logged-in admin user
         owner = request.user
 
