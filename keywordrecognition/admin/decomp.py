@@ -7,18 +7,23 @@ from .inline import ReasmbInline
 
 
 class DecompAdmin(admin.ModelAdmin):
-    list_display = ["id", "keyword_link", "pattern", "bot_link"]
-    search_fields = ["keyword__word", "pattern"]
-    list_filter = ["keyword__bot"]
-    list_display_links = ["id", "pattern"]
+    list_display = ["pattern", "keyword_link"]
+    search_fields = ["pattern", "keyword__word"]
+    list_filter = ["keyword"]
+    list_display_links = ["pattern"]
     inlines = [ReasmbInline]
 
     def get_queryset(self, request):
         # Get the current logged-in admin user
+        queryset = self.model.objects.none()
         owner = request.user
 
-        # Filter the queryset to only include items belonging to the admin user
-        queryset = super().get_queryset(request).filter(keyword__bot__owner=owner)
+        if owner.selected_bot:
+            queryset = (
+                super()
+                .get_queryset(request)
+                .filter(keyword__bot__owner=owner, keyword__bot=owner.selected_bot)
+            )
 
         return queryset
 
@@ -27,14 +32,6 @@ class DecompAdmin(admin.ModelAdmin):
         return format_html('<a href="{}">{}</a>', url, obj.keyword.word)
 
     keyword_link.short_description = "keyword"
-
-    def bot_link(self, obj):
-        url = reverse(
-            "admin:keywordrecognition_elizabot_change", args=[obj.keyword.bot.pk]
-        )
-        return format_html('<a href="{}">{}</a>', url, obj.keyword.bot)
-
-    bot_link.short_description = "bot"
 
 
 admin_site.register(Decomp, DecompAdmin)
