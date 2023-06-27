@@ -261,6 +261,9 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
     # List of apps to base side menu ordering off of (does not need to contain all apps)
     "order_with_respect_to": [
+        "backend",
+        "backend.account",
+        "backend.bot",
         "keywordrecognition",
         "keywordrecognition.elizabot",
         "keywordrecognition.defaultmessage",
@@ -270,7 +273,6 @@ JAZZMIN_SETTINGS = {
         "keywordrecognition.synonym",
         "keywordrecognition.postprocessing",
         "auth",
-        "backend",
     ],
     # Custom links to append to app groups, keyed on app name
     # 'custom_links': {
@@ -285,6 +287,7 @@ JAZZMIN_SETTINGS = {
     "icons": {
         "auth.Group": "fas fa-users",
         "backend.account": "fas fa-users-cog",
+        "backend.bot": "fas fa-robot",
         "keywordrecognition.keyword": "fas fa-key",
         "keywordrecognition.elizabot": "fas fa-robot",
         "keywordrecognition.reasmb": "fas fa-recycle",
