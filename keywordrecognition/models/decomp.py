@@ -19,6 +19,7 @@ class Decomp(ModelBase):
         verbose_name=_("keyword"),
     )
     pattern = models.CharField(max_length=255, verbose_name=_("pattern"))
+    weight = models.IntegerField(default=1, verbose_name=_("weight"))
 
     def __str__(self):
         return f"{self.pattern}"

@@ -147,7 +147,7 @@ class ElizaService:
             for i in range(len(words) - (n - 1)):
                 phrase = " ".join(words[i : i + n])
                 if keyword.word == phrase:
-                    for decomp in keyword.decomp_set.all():
+                    for decomp in keyword.decomp_set.order_by("-weight"):
                         results = self.match_decomp(text=text, decomp=decomp)
                         if not results:
                             continue
