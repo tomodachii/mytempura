@@ -142,6 +142,23 @@ class ElizaService:
         decomp_pattern_parts = decomp.get_decomp_pattern_parts()
         return self.extract_text_by_decomp(rule=decomp_pattern_parts, text=text)
 
+    def text_preprocess(self, text: str):
+        synonyms = Synonym.objects.filter(bot=self.bot)
+        words = [w for w in text.split(" ") if w]
+
+        text_substr_list = []
+
+        for i in range(len(words)):
+            for j in range(i + 1, len(words)):
+                substr = " ".join(words[i:j])
+                text_substr_list.append(substr)
+        for substr in text_substr_list:
+            for synonym in synonyms:
+                if substr == synonym.word:
+                    text = text.replace(substr, synonym.value)
+                    break
+        return text
+
     def match_keyword(self, text: str, keyword: Keyword):
         output = None
         n = len(keyword.word.split())
@@ -180,6 +197,7 @@ class ElizaService:
 
             keywords = Keyword.objects.filter(bot=self.bot).order_by("-weight")
             output = None
+            text = self.text_preprocess(text=text)
             if not keywords.exists():
                 return DefaultMessage.default_message_objects.random_fallback(
                     bot=self.bot
