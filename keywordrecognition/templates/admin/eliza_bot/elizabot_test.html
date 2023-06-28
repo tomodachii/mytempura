@@ -40,6 +40,12 @@
 {% block extrajs %}
 {{ block.super }}
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var container = document.querySelector('#bot-selector__container');
+        if (container) {
+            container.style.display = 'none';
+        }
+    });
     // The form we receive user input from
     let chatForm = document.querySelector("#chatform");
     let chatList = document.querySelector(".chatlist");

@@ -213,12 +213,14 @@
                     </div>
 
                     <nav class="mt-2">
-                        <select id="bot-selector" class="d-none" name="bot_id">
-                            <option value="" {% if selected_bot is None %}selected{% endif %}>No Bot Selected</option>
-                            {% for bot in bots %}
-                                <option value="{{ bot.id }}" {% if selected_bot and selected_bot.id == bot.id %}selected{% endif %}>{{ bot.name }}</option>
-                            {% endfor %}
-                        </select>
+                        <div id="bot-selector__container">
+                            <select id="bot-selector" class="d-none" name="bot_id">
+                                <option value="" {% if selected_bot is None %}selected{% endif %}>No Bot Selected</option>
+                                {% for bot in bots %}
+                                    <option value="{{ bot.id }}" {% if selected_bot and selected_bot.id == bot.id %}selected{% endif %}>{{ bot.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         <ul class="nav nav-pills nav-sidebar flex-column {{ jazzmin_ui.sidebar_list_classes }}" data-widget="treeview" role="menu" data-collapsible="false">
 
                             {% comment %} <li class="nav-item">
@@ -414,8 +416,6 @@
                     console.error('Error updating context:', error);
                 });
         });
-    
-        $('#bot-selector').removeClass('d-none'); // Remove the 'd-none' class after initialization
     });
     
 </script>
