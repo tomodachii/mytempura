@@ -38,7 +38,10 @@ class ElizaService:
         patterns = content.split("/")
         patterns = [" ".join(pattern.split()) for pattern in patterns]
         try:
-            Synonym.objects.get_or_create(word=patterns[1], value=patterns[0])
+            for i in range(1, len(patterns)):
+                Synonym.objects.get_or_create(
+                    bot=self.bot, value=patterns[0], word=patterns[i]
+                )
         except IndexError:
             pass
 
