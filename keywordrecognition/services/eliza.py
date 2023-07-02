@@ -95,7 +95,7 @@ class ElizaService:
         for line in data:
             if not line.strip():
                 continue
-            tag, content = [part.strip() for part in line.split(":")]
+            tag, content = [part.strip() for part in line.split(":=")]
             self.load_item(tag, content)
 
     def generate_response(
@@ -145,6 +145,7 @@ class ElizaService:
     def text_preprocess(self, text: str):
         synonyms = Synonym.objects.filter(bot=self.bot)
         words = [w for w in text.split(" ") if w]
+        synonyms_list = []
 
         text_substr_list = []
 
@@ -156,8 +157,9 @@ class ElizaService:
             for synonym in synonyms:
                 if substr == synonym.word:
                     text = text.replace(substr, synonym.value)
+                    synonyms_list.append(synonym)
                     break
-        return text
+        return text, synonyms_list
 
     def match_keyword(self, text: str, keyword: Keyword):
         output = None
@@ -190,6 +192,11 @@ class ElizaService:
                         # from results and reasmb -> do some cooking to return an ouput
         return output
 
+    def output_postprocess(self, output: str, synonyms_list: list[str]):
+        for synonym in synonyms_list:
+            output = output.replace(synonym.value, synonym.word)
+        return output
+
     def response(self, text: str):
         if self.bot:
             # punctuation cleanup
@@ -197,7 +204,7 @@ class ElizaService:
 
             keywords = Keyword.objects.filter(bot=self.bot).order_by("-weight")
             output = None
-            text = self.text_preprocess(text=text)
+            text, synonyms_list = self.text_preprocess(text=text)
             if not keywords.exists():
                 return DefaultMessage.default_message_objects.random_fallback(
                     bot=self.bot
@@ -205,6 +212,9 @@ class ElizaService:
             for keyword in keywords:
                 output = self.match_keyword(text=text, keyword=keyword)
                 if output:
+                    output = self.output_postprocess(
+                        output=output, synonyms_list=synonyms_list
+                    )
                     break
             return (
                 output
