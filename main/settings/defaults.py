@@ -44,6 +44,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "hoangdt.dev.icts.vn"]
 # Application definition
 INSTALLED_APPS = [
     "jazzmin",
+    "nlp.apps.NlpConfig",
     "keywordrecognition.apps.KeywordrecognitionConfig",
     "backend.apps.BackendConfig",
     "django.contrib.admin",
