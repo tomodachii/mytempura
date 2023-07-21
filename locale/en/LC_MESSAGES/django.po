@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 18:19+0700\n"
+"POT-Creation-Date: 2023-07-22 00:14+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgid "Important dates"
 msgstr ""
 
 #: backend/apps.py:8
-msgid "Account Management"
+msgid "Account and Bot Management"
 msgstr ""
 
 #: backend/enums.py:5 keywordrecognition/enums.py:5
@@ -107,11 +107,13 @@ msgid "selected bot"
 msgstr ""
 
 #: backend/models/base.py:31 keywordrecognition/models/base.py:24
+#: nlp/models/base.py:24
 msgid "created at"
 msgstr ""
 
 #: backend/models/bot.py:10 keywordrecognition/models/default_message.py:39
 #: keywordrecognition/models/keyword.py:14
+#: keywordrecognition/models/synonym.py:16
 msgid "bot"
 msgstr ""
 
@@ -177,6 +179,11 @@ msgstr ""
 msgid "pattern"
 msgstr ""
 
+#: keywordrecognition/models/decomp.py:22
+#: keywordrecognition/models/keyword.py:17
+msgid "weight"
+msgstr ""
+
 #: keywordrecognition/models/default_message.py:20
 msgid "There is no Fallback message defined for this bot"
 msgstr ""
@@ -207,12 +214,8 @@ msgid "keywords"
 msgstr ""
 
 #: keywordrecognition/models/keyword.py:16
-#: keywordrecognition/models/synonym.py:13
+#: keywordrecognition/models/synonym.py:18
 msgid "word"
-msgstr ""
-
-#: keywordrecognition/models/keyword.py:17
-msgid "weight"
 msgstr ""
 
 #: keywordrecognition/models/postprocessing.py:10
@@ -252,11 +255,11 @@ msgstr ""
 msgid "synonyms"
 msgstr ""
 
-#: keywordrecognition/models/synonym.py:14
+#: keywordrecognition/models/synonym.py:19
 msgid "value"
 msgstr ""
 
-#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:9
+#: keywordrecognition/templates/admin/eliza_bot/elizabot_change_form.html:10
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:19
 msgid "Test Bot"
 msgstr ""
@@ -282,43 +285,43 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: main/templates/admin/base.html:96
+#: main/templates/admin/base.html:98
 msgid "Search"
 msgstr ""
 
-#: main/templates/admin/base.html:161
+#: main/templates/admin/base.html:163
 msgid "Account"
 msgstr ""
 
-#: main/templates/admin/base.html:164
+#: main/templates/admin/base.html:166
 msgid "Change password"
 msgstr ""
 
-#: main/templates/admin/base.html:168
+#: main/templates/admin/base.html:170
 msgid "Log out"
 msgstr ""
 
-#: main/templates/admin/base.html:179
+#: main/templates/admin/base.html:181
 msgid "See Profile"
 msgstr ""
 
-#: main/templates/admin/base.html:345
+#: main/templates/admin/base.html:349
 msgid "Copyright"
 msgstr ""
 
-#: main/templates/admin/base.html:345
+#: main/templates/admin/base.html:349
 msgid "All rights reserved."
 msgstr ""
 
-#: main/templates/admin/base.html:361
+#: main/templates/admin/base.html:365
 msgid "UI Configuration"
 msgstr ""
 
-#: main/templates/admin/base.html:365
+#: main/templates/admin/base.html:369
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr ""
 
-#: main/templates/admin/base.html:369
+#: main/templates/admin/base.html:373
 msgid "Close"
 msgstr ""
 
@@ -350,4 +353,65 @@ msgstr ""
 #: main/templates/admin/index.html:97
 #, python-format
 msgid "%(timesince)s ago"
+msgstr ""
+
+#: nlp/models/entity.py:10
+msgid "entity"
+msgstr ""
+
+#: nlp/models/entity.py:11
+msgid "entities"
+msgstr ""
+
+#: nlp/models/entity.py:14 nlp/models/intent.py:14 nlp/models/nlp_bot.py:9
+msgid "nlp bot"
+msgstr ""
+
+#: nlp/models/intent.py:10 nlp/models/response.py:14
+#: nlp/models/training_phrase.py:14
+msgid "intent"
+msgstr ""
+
+#: nlp/models/intent.py:11
+msgid "intents"
+msgstr ""
+
+#: nlp/models/nlp_bot.py:10
+msgid "nlp bots"
+msgstr ""
+
+#: nlp/models/response.py:10 nlp/models/response.py:17
+msgid "response"
+msgstr ""
+
+#: nlp/models/response.py:11
+msgid "responses"
+msgstr ""
+
+#: nlp/models/response.py:24
+msgid "Instant response"
+msgstr ""
+
+#: nlp/models/response.py:25
+msgid "Collect response"
+msgstr ""
+
+#: nlp/models/response.py:26
+msgid "Provide response"
+msgstr ""
+
+#: nlp/models/response.py:33
+msgid "default response type"
+msgstr ""
+
+#: nlp/models/training_phrase.py:10
+msgid "training phrase"
+msgstr ""
+
+#: nlp/models/training_phrase.py:11
+msgid "training phrases"
+msgstr ""
+
+#: nlp/models/training_phrase.py:17
+msgid "phrase"
 msgstr ""
