@@ -39,6 +39,7 @@ class AdminSite(admin_site.AdminSite):
         return super(AdminSite, self).index(request, extra_context)
 
     def each_context(self, request):
+        exclude_app_list = ["api"]
         context = super(AdminSite, self).each_context(request)
         if request.user.is_authenticated:
             bots = Bot.objects.filter(owner=request.user)
@@ -46,9 +47,13 @@ class AdminSite(admin_site.AdminSite):
         else:
             bots = []
             selected_bot = None
+        if hasattr(selected_bot, "elizabot"):
+            exclude_app_list.append("nlp")
+        elif hasattr(selected_bot, "nlpbot"):
+            exclude_app_list.append("keywordrecognition")
         context.update(
             {
-                "exclude_app_list": ["api"],
+                "exclude_app_list": exclude_app_list,
                 "bots": bots,
                 "selected_bot": selected_bot,
             }

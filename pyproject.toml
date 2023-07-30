@@ -20,6 +20,7 @@ pyjwt = "^2.7.0"
 django-cors-headers = "^4.0.0"
 watchdog = "^3.0.0"
 django-jazzmin = "^2.6.0"
+underthesea = "^6.5.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"

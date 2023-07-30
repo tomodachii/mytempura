@@ -273,6 +273,7 @@ JAZZMIN_SETTINGS = {
         "keywordrecognition.reasmb",
         "keywordrecognition.synonym",
         "keywordrecognition.postprocessing",
+        "nlp",
         "auth",
     ],
     # Custom links to append to app groups, keyed on app name
