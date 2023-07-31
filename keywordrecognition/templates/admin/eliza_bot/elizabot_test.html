@@ -87,7 +87,7 @@
 
     async function makeResponse(input) {
         try {
-            const response = await postData(`${backendURL}/api/bots/${botID}/response`, { message: input });
+            const response = await postData(`${backendURL}/api/elizabots/${botID}/response`, { message: input });
             return response.response;
         } catch (error) {
             console.error("Error:", error);

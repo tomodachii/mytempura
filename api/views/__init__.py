@@ -7,3 +7,4 @@ from .eliza_bot import (
     ElizaBotDetailAPI,
 )
 from .keyword import KeywordDetailAPI, KeywordAPI
+from .nlp_bot import EntityUploadCSVAPIView
