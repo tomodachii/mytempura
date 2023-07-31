@@ -1,11 +1,11 @@
 from nlp.models import (
     NLPBot,
-    Intent,
+    # Intent,
     Entity,
-    Response,
+    # Response,
     EntityCategory,
-    ResponseEntity,
-    TrainingPhrase,
+    # ResponseEntity,
+    # TrainingPhrase,
 )
 import csv
 
