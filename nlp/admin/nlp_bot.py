@@ -22,6 +22,22 @@ class NLPBotAdmin(admin.ModelAdmin):
 
         return queryset
 
+    # Set selected bot in context
+    def change_view(self, request, object_id, form_url="", extra_context=None):
+        extra_context = extra_context or {}
+        nlpbot = self.get_object(request, object_id)
+        context = self.admin_site.each_context(request)
+        context["selected_bot"] = nlpbot
+        user = request.user
+        user.selected_bot = nlpbot
+        user.save()
+        return super().change_view(
+            request,
+            object_id,
+            form_url,
+            extra_context=extra_context,
+        )
+
     def intent_count(self, obj):
         return obj.intent_set.count()
 

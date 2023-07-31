@@ -14,7 +14,7 @@ class Response(ModelBase):
         "nlp.Intent", on_delete=models.CASCADE, verbose_name=_("intent")
     )
 
-    response = models.TextField(verbose_name=_("response"))
+    response = models.CharField(verbose_name=_("response"))
 
     INSTANT = "INSTANT"
     COLLECT = "COLLECT"

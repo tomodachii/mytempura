@@ -16,3 +16,9 @@ class FIREBASE_EXCEPTION:
 class ACCOUNT_EXCEPTION:
     ACCOUNT_NOT_EXIST = _("Account does not exist")
     EMAIL_ALREADY_EXISTED = _("Email alredy existed")
+
+
+class FILE_EXCEPTION:
+    INVALID_FILE_EXTENSION_TXT = _("Invalid File extension! Please use a .txt file")
+    INVALID_FILE_EXTENSION_CSV = _("Invalid File extension! Please use a .csv file")
+    FILE_TOO_LARGE = _("File upload must be under 2MB")

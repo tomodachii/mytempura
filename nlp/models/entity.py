@@ -13,7 +13,9 @@ class Entity(ModelBase):
     bot = models.ForeignKey(
         "nlp.NLPBot", on_delete=models.CASCADE, verbose_name=_("nlp bot")
     )
-    entity_name = models.CharField(max_length=100, null=False)
+    entity_name = models.CharField(
+        max_length=100, null=False, verbose_name=_("entity name")
+    )
 
     entity_category = models.ForeignKey(
         "nlp.EntityCategory",
@@ -22,6 +24,8 @@ class Entity(ModelBase):
         on_delete=models.SET_NULL,
         verbose_name=_("entity category"),
     )
+
+    synonym = models.CharField(null=True, blank=True, verbose_name=_("synonym"))
 
     def __str__(self):
         return self.entity_name

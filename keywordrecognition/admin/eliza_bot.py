@@ -51,6 +51,22 @@ class ElizaBotAdmin(admin.ModelAdmin):
         template = "admin/eliza_bot/elizabot_test.html"
         return TemplateResponse(request, template, context)
 
+    # Set selected bot in context
+    def change_view(self, request, object_id, form_url="", extra_context=None):
+        extra_context = extra_context or {}
+        elizabot = self.get_object(request, object_id)
+        context = self.admin_site.each_context(request)
+        context["selected_bot"] = elizabot
+        user = request.user
+        user.selected_bot = elizabot
+        user.save()
+        return super().change_view(
+            request,
+            object_id,
+            form_url,
+            extra_context=extra_context,
+        )
+
     def keyword_count(self, obj):
         return obj.keyword_set.count()
 

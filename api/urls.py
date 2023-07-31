@@ -19,36 +19,47 @@ urlpatterns = [
     path("auth/sign-in", views.SignInAPIView.as_view(), name="sign-in"),
     # keyword-recognition
     # bot
-    path("bots", views.ElizaBotAPIView.as_view(), name="eliza-bot"),
-    path("bots/<int:id>", views.ElizaBotDetailAPI.as_view(), name="eliza-bot-detail"),
+    path("elizabots", views.ElizaBotAPIView.as_view(), name="eliza-bot"),
     path(
-        "bots/<int:id>/load",
+        "elizabots/<int:id>", views.ElizaBotDetailAPI.as_view(), name="eliza-bot-detail"
+    ),
+    path(
+        "elizabots/<int:id>/load",
         views.ElizaBotLoadTxtAPIView.as_view(),
         name="eliza-bot-load-data",
     ),
     path(
-        "bots/<int:bot_id>/load/<str:task_id>/status",
+        "elizabots/<int:bot_id>/load/<str:task_id>/status",
         views.ElizaBotLoadTxtStatusAPIView.as_view(),
         name="eliza-bot-load-data-status",
     ),
     path(
-        "bots/<int:id>/response",
+        "elizabots/<int:id>/response",
         views.ElizaBotGenerateResponseAPIView.as_view(),
         name="eliza-bot-response",
     ),
     # bot-keyword
     path(
-        "bots/<int:bot_id>/keywords",
+        "elizabots/<int:bot_id>/keywords",
         views.KeywordAPI.as_view(),
         name="eliza-bot-keyword",
     ),
     # keyword
-    path("keywords", views.KeywordAPI.as_view(), name="eliza-bot-keyword-create"),
     path(
-        "keywords/<int:id>",
+        "elizabots/keywords",
+        views.KeywordAPI.as_view(),
+        name="eliza-bot-keyword-create",
+    ),
+    path(
+        "elizabots/keywords/<int:id>",
         views.KeywordDetailAPI.as_view(),
         name="eliza-bot-keyword-detail",
     ),
     # decomp
     # reasmb
+    path(
+        "nlpbots/<int:bot_id>/entities/upload",
+        views.EntityUploadCSVAPIView.as_view(),
+        name="nlp-upload-entities",
+    ),
 ]

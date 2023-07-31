@@ -14,7 +14,7 @@ class TrainingPhrase(ModelBase):
         "nlp.Intent", on_delete=models.CASCADE, verbose_name=_("intent")
     )
 
-    phrase = models.TextField(verbose_name=_("phrase"))
+    phrase = models.CharField(verbose_name=_("phrase"))
 
     def __str__(self):
         return self.response

@@ -274,7 +274,12 @@ JAZZMIN_SETTINGS = {
         "keywordrecognition.synonym",
         "keywordrecognition.postprocessing",
         "nlp",
-        "auth",
+        "auth.nlpbot",
+        "auth.intent",
+        "auth.trainingphrase",
+        "auth.entity",
+        "auth.entitycategory",
+        "auth.response",
     ],
     # Custom links to append to app groups, keyed on app name
     # 'custom_links': {
@@ -298,6 +303,11 @@ JAZZMIN_SETTINGS = {
         "keywordrecognition.postprocessing": "fas fa-flag",
         "keywordrecognition.quit": "fas fa-stop",
         "keywordrecognition.synonym": "fas fa-equals",
+        "nlp.nlpbot": "fas fa-robot",
+        "nlp.intent": "fas fa-puzzle-piece",
+        "nlp.entity": "fas fa-box",
+        "nlp.response": "fas fa-reply",
+        "nlp.entitycategory": "fas fa-bars",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
