@@ -274,12 +274,11 @@ JAZZMIN_SETTINGS = {
         "keywordrecognition.synonym",
         "keywordrecognition.postprocessing",
         "nlp",
-        "auth.nlpbot",
-        "auth.intent",
-        "auth.trainingphrase",
-        "auth.entity",
-        "auth.entitycategory",
-        "auth.response",
+        "nlp.nlpbot",
+        "nlp.intent",
+        "nlp.entity",
+        "nlp.entitycategory",
+        "nlp.response",
     ],
     # Custom links to append to app groups, keyed on app name
     # 'custom_links': {

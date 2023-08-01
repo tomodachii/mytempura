@@ -3,10 +3,11 @@ from main.admin import admin as admin_site
 from backend.models import Bot
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.utils.translation import gettext_lazy as _
 
 
 class BotAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "description", "owner"]
+    list_display = ["id", "name", "description", "owner", "bot_type"]
     list_display_links = ["id", "name"]
     search_fields = ["name", "owner__email"]
 
@@ -41,6 +42,17 @@ class BotAdmin(admin.ModelAdmin):
         return super().change_view(
             request, object_id, form_url, extra_context=extra_context
         )
+
+    def bot_type(self, obj):
+        if hasattr(obj, "elizabot") and obj.elizabot is not None:
+            # Redirect to ElizaBot admin change form
+            return "Keyword Recognition"
+
+        if hasattr(obj, "nlpbot") and obj.nlpbot is not None:
+            # Redirect to NLPBot admin change form
+            return "NLP"
+
+    bot_type.short_description = _("type")
 
 
 admin_site.register(Bot, BotAdmin)
