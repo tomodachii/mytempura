@@ -2,10 +2,11 @@ from nlp.models import (
     NLPBot,
     Intent,
     Entity,
-    # Response,
+    Response,
     EntityCategory,
-    # ResponseEntity,
+    ResponseEntity,
     TrainingPhrase,
+    ResponseEntityCategory,
 )
 import csv
 
@@ -54,3 +55,60 @@ class UploadService:
                 training_phrase, _ = TrainingPhrase.objects.get_or_create(
                     intent=intent, phrase=phrase
                 )
+
+    def upload_responses_from_csv(self, file):
+        # Open the CSV file
+        with open(file, "r", encoding="utf-8") as csvfile:
+            # Create a CSV reader
+            csvreader = csv.reader(csvfile, delimiter="\t")
+
+            for row in csvreader:
+                intent_name, message_type, entities_str, response_text = row
+
+                # Check if the Intent with the given name exists, if not create a new one
+                intent, _ = Intent.objects.get_or_create(
+                    bot=self.bot, intent_name=intent_name
+                )
+
+                # Create or update the Response based on the message_type
+                response, _ = Response.objects.get_or_create(
+                    intent=intent, message_type=message_type, response=response_text
+                )
+
+                # Process the entities
+                if entities_str:
+                    entity_names = entities_str.split(",")
+                    entities = []
+                    entity_categories = []
+                    if message_type == Response.COLLECT:
+                        for category_name in entity_names:
+                            category, _ = EntityCategory.objects.get_or_create(
+                                bot=self.bot, category_name=category_name.strip()
+                            )
+                            entity_categories.append(category)
+
+                        # Update the ResponseEntityCategory mappings for the response
+                        response_required_categories = (
+                            ResponseEntityCategory.objects.filter(response=response)
+                        )
+                        response_required_categories.delete()
+                        for category in entity_categories:
+                            ResponseEntityCategory.objects.create(
+                                response=response, required_category=category
+                            )
+                    else:
+                        for entity_name in entity_names:
+                            entity, _ = Entity.objects.get_or_create(
+                                bot=self.bot, entity_name=entity_name.strip()
+                            )
+                            entities.append(entity)
+
+                        # Update the ResponseEntity mappings for the response
+                        response_entities = ResponseEntity.objects.filter(
+                            response=response
+                        )
+                        response_entities.delete()
+                        for entity in entities:
+                            ResponseEntity.objects.create(
+                                response=response, entity=entity
+                            )

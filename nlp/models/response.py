@@ -30,7 +30,7 @@ class Response(ModelBase):
         max_length=64,
         choices=RESPONSE_TYPE,
         default=INSTANT,
-        verbose_name=_("default response type"),
+        verbose_name=_("response type"),
     )
 
     def __str__(self):

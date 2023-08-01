@@ -17,4 +17,4 @@ class TrainingPhrase(ModelBase):
     phrase = models.CharField(verbose_name=_("phrase"))
 
     def __str__(self):
-        return self.response
+        return self.phrase
