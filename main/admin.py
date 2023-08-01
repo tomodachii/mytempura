@@ -1,7 +1,7 @@
 from django.contrib import admin as admin_site
 from backend.models import Bot
 from django.urls import path
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse
 
 # from django.urls import reverse
 # from django.shortcuts import redirect
