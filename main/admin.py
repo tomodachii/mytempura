@@ -1,7 +1,10 @@
 from django.contrib import admin as admin_site
 from backend.models import Bot
 from django.urls import path
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
+
+# from django.urls import reverse
+# from django.shortcuts import redirect
 
 
 class AdminSite(admin_site.AdminSite):
@@ -28,7 +31,18 @@ class AdminSite(admin_site.AdminSite):
             selected_bot = Bot.objects.get(id=bot_id)
             account.selected_bot = selected_bot
             account.save()
-            return JsonResponse({"message": "Select Bot"})
+
+            if hasattr(selected_bot, "elizabot") and selected_bot.elizabot is not None:
+                # Redirect to ElizaBot admin change form
+                return JsonResponse(
+                    {"message": "Selected Bot", "type": "eliza", "bot_id": bot_id}
+                )
+
+            if hasattr(selected_bot, "nlpbot") and selected_bot.nlpbot is not None:
+                # Redirect to NLPBot admin change form
+                return JsonResponse(
+                    {"message": "Selected Bot", "type": "nlp", "bot_id": bot_id}
+                )
         except Exception as e:
             return JsonResponse({"message": e})
 

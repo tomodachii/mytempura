@@ -400,16 +400,30 @@
 {% block extrajs %}
 <script type="text/javascript" src="{% static 'vendor/select2/js/select2.min.js' %}"></script>
 <script>
+    const backendURL = "{{ backend_url }}"
     $(document).ready(function() {
         $('#bot-selector').select2().on('select2:select', function (e) {
-            var selectedValue = e.params.data.id;
+            let selectedValue = e.params.data.id;
             fetch('{% url 'admin:update-selected-bot' %}?selected-bot=' + selectedValue)
                 .then(function(response) {
                     if (response.ok) {
                         console.log('Context updated successfully!');
-                        window.location.reload(); // Reload the page
+                        // window.location.reload(); // Reload the page
+                        return response.json()
                     } else {
                         console.error('Error updating context:', response.statusText);
+                    }
+                })
+                .then(function(data) {
+                    console.log(data)
+                    if (data.type === "eliza") {
+                        console.log('Selected Bot is ElizaBot');
+                        // Redirect to the ElizaBot admin change form (modify the URL accordingly)
+                        window.location.href = `${backendURL}/keywordrecognition/elizabot/${selectedValue}/change`
+                    } else if (data.type === "nlp") {
+                        console.log('Selected Bot is NLPBot');
+                        // Redirect to the NLPBot admin change form (modify the URL accordingly)
+                        window.location.href = `${backendURL}/nlp/nlpbot/${selectedValue}/change`
                     }
                 })
                 .catch(function(error) {
