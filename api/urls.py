@@ -62,4 +62,9 @@ urlpatterns = [
         views.EntityUploadCSVAPIView.as_view(),
         name="nlp-upload-entities",
     ),
+    path(
+        "nlpbots/<int:bot_id>/intents/upload",
+        views.IntentUploadCSVAPIView.as_view(),
+        name="nlp-upload-intents",
+    ),
 ]
