@@ -1,0 +1,59 @@
+chào hỏi	Lập tức		Xin chào, mình có thể giúp gì cho bạn ^^
+chào hỏi	Lập tức		Xin chào, mình là bot hỗ trợ, mình có thể giúp gì không bạn nhỉ :D
+hỏi mặt hàng	Lập tức		Chỗ mình bán Iphone X, Iphone 11, Iphone 12 và Samsung S10, Samsung S20 ạ! Thông tin tới bạn!
+check còn hàng	Cung cấp	iphone X	Iphone X hết hàng mất rồi bạn ạ! Thông tin tới bạn!
+check còn hàng	Cung cấp	iphone 11	Iphone 11 còn hàng bạn nhé! Thông tin tới bạn!
+check còn hàng	Cung cấp	iphone 12	Iphone 12 còn hàng bạn nhé! Thông tin tới bạn!
+check còn hàng	Cung cấp	samsung S10	Sản phẩm Samsung S10 hết hàng mất rồi bạn ạ! Thông tin tới bạn!
+check còn hàng	Cung cấp	samsung S20	Sản phẩm Samsung S20 còn hàng bạn nhé! Thông tin tới bạn!
+hỏi chi tiết	Cung cấp	chụp ảnh đẹp	Các sản phẩm Iphone X, Iphone 11, Iphone 12 và Samsung S20, Samsung S10 mà chúng tôi bán đều là những dòng điện thoại cao cấp và chụp ảnh rất đẹp!
+hỏi chi tiết	Cung cấp	pin khỏe	Samsung S20 và Samsung S10 đang là những điện thoại có thời lượng pin lâu nhất!
+hỏi chi tiết	Cung cấp	nhanh	Các dòng cao cấp mà chúng tôi bán đều có tốc độ chạy nhanh và mượt, tuy nhiên theo thời gian, các dòng Iphone sẽ không bị lag như Samsung!
+đặt mua	Thu thập	Điện thoại	Bạn đã chọn được điện thoại nào rồi ạ?
+đặt mua	Thu thập	Họ Tên	Cho mình xin họ tên của bạn nhé!
+đặt mua	Thu thập	SĐT	Cho mình xin số điện thoại của bạn nhé!
+so sánh	Cung cấp	iphone X,iphone 11	Iphone 11 cải tiến so với Iphone X về mọi mặt! Iphone X bên mình cũng đã hết hàng :(
+so sánh	Cung cấp	iphone X,iphone 12	Iphone 12 cải tiến so với Iphone X về mọi mặt! Iphone X bên mình cũng đã hết hàng :(
+so sánh	Cung cấp	iphone X,samsung S10	Iphone X chạy mượt và chụp ảnh đẹp hơn nhưng S10 lại có thời lượng pin lâu hơn! Tuy nhiên, cả 2 mặt hàng này đều đã đã hết hàng :(
+so sánh	Cung cấp	iphone X,samsung S20	Iphone X chạy mượt hơn nhưng S20 lại có thời lượng pin lâu hơn! 2 máy này chụp ảnh đẹp như nhau, tùy cảm nhận người dùng!
+so sánh	Cung cấp	iphone 11,iphone 12	Iphone 12 cải tiến so với Iphone 11 về mọi mặt!
+so sánh	Cung cấp	iphone 11,samsung S10	Iphone 11 chạy mượt và chụp ảnh đẹp hơn nhưng Samsung S10 lại có thời lượng pin lâu hơn! Tuy nhiên, Samsung S10 đã đã hết hàng rồi bạn ạ :(
+so sánh	Cung cấp	iphone 11,samsung S20	Iphone 11 chạy mượt và chụp ảnh đẹp hơn nhưng Samsung S20 lại có thời lượng pin lâu hơn!
+so sánh	Cung cấp	iphone 12,samsung S10	Iphone 12 chạy mượt và chụp ảnh đẹp hơn nhiều S10 bạn ạ, dù cho thời lượng pin Iphone 12 ít hơn, nhưng vẫn nên chọn mua Iphone 12! Hơn nữa, Samsung S10 bên mình hết hàng mất rồi bạn ạ!
+so sánh	Cung cấp	iphone 12,samsung S20	2 điện thoại này khá tương đương nhau. Tuy vậy, Samsung S20 lại có thời lượng pin lâu hơn
+so sánh	Cung cấp	samsung S10,samsung S20	Samsung S20 cải tiến so với Samsung S10 về mọi mặt! Samsung S10 chỗ mình cũng đã hết hàng :(
+hỏi giá	Cung cấp	iphone X	Giá của Iphone X là 10 triệu VNĐ ạ! Nhưng bên mình hết Iphone X mất rồi bạn ạ!
+hỏi giá	Cung cấp	iphone 11	Giá của Iphone 11 là 15 triệu VNĐ ạ!
+hỏi giá	Cung cấp	iphone 12	Giá của Iphone 12 là 20 triệu VNĐ ạ!
+hỏi giá	Cung cấp	samsung S10	Giá của Samsung S10 là 14 triệu VNĐ ạ! Nhưng bên mình hết Samsung S10 mất rồi bạn ạ! Thông tin tới bạn!
+hỏi giá	Cung cấp	samsung S20	Giá của Samsung S20 là 18 triệu VNĐ ạ!
+so sánh chi tiết	Cung cấp	iphone X,iphone 11,pin khỏe	Iphone 11 có thời lượng pin lâu hơn Iphone X! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,iphone 12,pin khỏe	Iphone 12 có thời lượng pin lâu hơn Iphone X ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,samsung S10,pin khỏe	Samsung S10 có thời lượng pin lâu hơn Iphone X ạ! Nhưng cả 2 dòng này bên mình đều hết hàng mất rồi bạn ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,samsung S20,pin khỏe	Samsung S20 có thời lượng pin lâu hơn Iphone X ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,iphone 12,pin khỏe	Iphone 12 có thời lượng pin lâu hơn Iphone 11 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,samsung S10,pin khỏe	Samsung S10 có thời lượng pin lâu hơn Iphone 11 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,samsung S20,pin khỏe	Samsung S20 có thời lượng pin lâu hơn Iphone 11 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 12,samsung S10,pin khỏe	Samsung S10 có thời lượng pin lâu hơn Iphone 12 ạ! Nhưng khi dùng ta sẽ thấy nó gần tương đương nhau! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 12,samsung S20,pin khỏe	Samsung S20 có thời lượng pin lâu hơn Iphone 12 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	samsung S10,samsung S20,pin khỏe	Samsung S20 cải tiến so với Samsung S10 về mọi mặt! Về thời lượng pin cũng vậy! Thông tin tới bạn
+so sánh chi tiết	Cung cấp	iphone X,iphone 11,chụp ảnh đẹp	Iphone 11 có chụp ảnh đẹp hơn Iphone X! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,iphone 12,chụp ảnh đẹp	Iphone 12 có chụp ảnh đẹp hơn Iphone X ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,samsung S10,chụp ảnh đẹp	Samsung S10 có chụp ảnh đẹp tương tự Iphone X ạ! Nhưng cả 2 dòng này bên mình đều hết hàng mất rồi bạn ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,samsung S20,chụp ảnh đẹp	Samsung S20 có chụp ảnh đẹp hơn Iphone X ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,iphone 12,chụp ảnh đẹp	Iphone 12 cải tiến so với Iphone 11 về mọi mặt! Về chất lượng ảnh chụp cũng vậy! Thông tin tới bạn
+so sánh chi tiết	Cung cấp	iphone 11,samsung S10,chụp ảnh đẹp	Iphone 11 có chụp ảnh đẹp hơn Samsung S10 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,samsung S20,chụp ảnh đẹp	Samsung S20 có chụp ảnh đẹp gần bằng Iphone 11 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 12,samsung S10,chụp ảnh đẹp	Iphone 12 có chụp ảnh đẹp hơn hẳn Samsung S10 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 12,samsung S20,chụp ảnh đẹp	Samsung S20 có chụp ảnh đẹp tương tự như Iphone 12 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	samsung S10,samsung S20,chụp ảnh đẹp	Samsung S20 cải tiến so với Samsung S10 về mọi mặt! Về chất lượng ảnh chụp cũng vậy! Thông tin tới bạn
+so sánh chi tiết	Cung cấp	iphone X,iphone 11,nhanh	Iphone 11 sẽ mượt hơn Iphone X! Tuy vậy với mục đích dùng phổ thông thì mình sẽ thấy 2 điện thoại tương tự nhau! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,iphone 12,nhanh	Iphone 12 có mượt hơn hẳn Iphone X ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,samsung S10,nhanh	Theo thời gian, Iphone X sẽ đỡ bị lag hơn Samsung S10! Nhưng cả 2 dòng này bên mình đều hết hàng mất rồi bạn ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone X,samsung S20,nhanh	Samsung S20 có nhanh hơn Iphone X một chút ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,iphone 12,nhanh	Iphone 12 cải tiến so với Iphone 11 về mọi mặt! Về tốc độ cũng vậy! Thông tin tới bạn
+so sánh chi tiết	Cung cấp	iphone 11,samsung S10,nhanh	Iphone 11 dùng sẽ mượt hơn Samsung S10 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 11,samsung S20,nhanh	Samsung S20 có độ mượt tương tự Iphone 11 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 12,samsung S10,nhanh	Iphone 12 mượt hơn hẳn Samsung S10 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	iphone 12,samsung S20,nhanh	Samsung S20 có độ mượt gần bằng như Iphone 12 ạ! Thông tin tới bạn!
+so sánh chi tiết	Cung cấp	samsung S10,samsung S20,nhanh	Samsung S20 cải tiến so với Samsung S10 về mọi mặt! Về tốc độ cũng vậy! Thông tin tới bạn
