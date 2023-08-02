@@ -1,11 +1,19 @@
 # mytempura
 
+## Steps to self-host mytepmura
+
 - cp .env.template .env
 - poetry install
 - docker compose up -d
 - poetry shell
 - ./manage.py migrate
 - ./manage.py compilemessages
+
+In order to making changes to Celery (if there are any) you need to remove all volumes associated with worker service
+```
+docker compose down --volumes
+```
+
 ### Test:
 
 coverage run --source='.' manage.py test --no-input && coverage html && coverage report --skip-covered

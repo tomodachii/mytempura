@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-22 00:14+0700\n"
+"POT-Creation-Date: 2023-08-02 12:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,15 +34,19 @@ msgstr ""
 msgid "Important dates"
 msgstr ""
 
+#: backend/admin/bot.py:55
+msgid "type"
+msgstr ""
+
 #: backend/apps.py:8
 msgid "Account and Bot Management"
 msgstr ""
 
-#: backend/enums.py:5 keywordrecognition/enums.py:5
+#: backend/enums.py:5 keywordrecognition/enums.py:5 nlp/enums.py:5
 msgid "Server error"
 msgstr ""
 
-#: backend/enums.py:6 keywordrecognition/enums.py:6
+#: backend/enums.py:6 keywordrecognition/enums.py:6 nlp/enums.py:6
 msgid "Permission error"
 msgstr ""
 
@@ -64,6 +68,18 @@ msgstr ""
 
 #: backend/enums.py:17
 msgid "Account does not exist"
+msgstr ""
+
+#: backend/enums.py:22 keywordrecognition/enums.py:21 nlp/enums.py:21
+msgid "Invalid File extension! Please use a .txt file"
+msgstr ""
+
+#: backend/enums.py:23
+msgid "Invalid File extension! Please use a .csv file"
+msgstr ""
+
+#: backend/enums.py:24 keywordrecognition/enums.py:22 nlp/enums.py:22
+msgid "File upload must be under 2MB"
 msgstr ""
 
 #: backend/models/account.py:46
@@ -134,7 +150,7 @@ msgstr ""
 msgid "Eliza Chatbot Does not exist"
 msgstr ""
 
-#: keywordrecognition/enums.py:11
+#: keywordrecognition/enums.py:11 nlp/enums.py:11
 msgid "Chosen Bot does not belong to this User"
 msgstr ""
 
@@ -142,23 +158,15 @@ msgstr ""
 msgid "Bot not set, please set the bot before using ElizaService"
 msgstr ""
 
-#: keywordrecognition/enums.py:16
+#: keywordrecognition/enums.py:16 nlp/enums.py:16
 msgid "Invalid goto key"
 msgstr ""
 
-#: keywordrecognition/enums.py:17
+#: keywordrecognition/enums.py:17 nlp/enums.py:17
 msgid "Invalid result index"
 msgstr ""
 
-#: keywordrecognition/enums.py:21
-msgid "Invalid File extension! Please use a .txt file"
-msgstr ""
-
-#: keywordrecognition/enums.py:22
-msgid "File upload must be under 2MB"
-msgstr ""
-
-#: keywordrecognition/enums.py:26
+#: keywordrecognition/enums.py:26 nlp/enums.py:26
 msgid "Keyword does not exist"
 msgstr ""
 
@@ -247,7 +255,7 @@ msgstr ""
 msgid "template"
 msgstr ""
 
-#: keywordrecognition/models/synonym.py:10
+#: keywordrecognition/models/synonym.py:10 nlp/models/entity.py:28
 msgid "synonym"
 msgstr ""
 
@@ -355,7 +363,15 @@ msgstr ""
 msgid "%(timesince)s ago"
 msgstr ""
 
-#: nlp/models/entity.py:10
+#: nlp/enums.py:10
+msgid "NLP Chatbot Does not exist"
+msgstr ""
+
+#: nlp/enums.py:15
+msgid "Bot not set, please set the bot before using NLPService"
+msgstr ""
+
+#: nlp/models/entity.py:10 nlp/models/response_entity.py:17
 msgid "entity"
 msgstr ""
 
@@ -363,8 +379,21 @@ msgstr ""
 msgid "entities"
 msgstr ""
 
-#: nlp/models/entity.py:14 nlp/models/intent.py:14 nlp/models/nlp_bot.py:9
+#: nlp/models/entity.py:14 nlp/models/entity_category.py:14
+#: nlp/models/intent.py:14 nlp/models/nlp_bot.py:9
 msgid "nlp bot"
+msgstr ""
+
+#: nlp/models/entity.py:17
+msgid "entity name"
+msgstr ""
+
+#: nlp/models/entity.py:25 nlp/models/entity_category.py:10
+msgid "entity category"
+msgstr ""
+
+#: nlp/models/entity_category.py:11
+msgid "entity categories"
 msgstr ""
 
 #: nlp/models/intent.py:10 nlp/models/response.py:14
@@ -376,11 +405,16 @@ msgstr ""
 msgid "intents"
 msgstr ""
 
+#: nlp/models/intent.py:17
+msgid "intent name"
+msgstr ""
+
 #: nlp/models/nlp_bot.py:10
 msgid "nlp bots"
 msgstr ""
 
 #: nlp/models/response.py:10 nlp/models/response.py:17
+#: nlp/models/response_entity.py:14 nlp/models/response_entity_category.py:14
 msgid "response"
 msgstr ""
 
@@ -401,7 +435,17 @@ msgid "Provide response"
 msgstr ""
 
 #: nlp/models/response.py:33
-msgid "default response type"
+msgid "response type"
+msgstr ""
+
+#: nlp/models/response_entity.py:10 nlp/models/response_entity.py:11
+msgid "response entity mapping"
+msgstr ""
+
+#: nlp/models/response_entity_category.py:10
+#: nlp/models/response_entity_category.py:11
+#: nlp/models/response_entity_category.py:21
+msgid "required entity category"
 msgstr ""
 
 #: nlp/models/training_phrase.py:10

@@ -13,7 +13,9 @@ class Intent(ModelBase):
     bot = models.ForeignKey(
         "nlp.NLPBot", on_delete=models.CASCADE, verbose_name=_("nlp bot")
     )
-    intent_name = models.CharField(max_length=100, null=False)
+    intent_name = models.CharField(
+        unique=True, max_length=100, null=False, verbose_name=_("intent name")
+    )
 
     def __str__(self):
         return self.intent_name

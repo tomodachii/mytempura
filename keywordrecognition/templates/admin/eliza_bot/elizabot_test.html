@@ -51,8 +51,7 @@
     let chatList = document.querySelector(".chatlist");
     
     const botID = "{{ elizabot.id }}"
-    const backendURL = "{{ backend_url }}"
-
+    
     async function postData(url, data) {
         try {
             const response = await fetch(url, {

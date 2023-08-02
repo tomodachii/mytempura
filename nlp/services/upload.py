@@ -96,7 +96,7 @@ class UploadService:
                             ResponseEntityCategory.objects.create(
                                 response=response, required_category=category
                             )
-                    else:
+                    elif message_type == Response.PROVIDE:
                         for entity_name in entity_names:
                             entity, _ = Entity.objects.get_or_create(
                                 bot=self.bot, entity_name=entity_name.strip()
