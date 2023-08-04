@@ -1,4 +1,7 @@
-from underthesea import ner
+# from nlp.models import NLPBot
+# from nlp.services import NLPService
 
-text = "Tôi muốn hỏi thông tin xét tuyển ngành công nghệ thông tin trường đại học Bách Khoa"
-print(ner(text))
+# bot = NLPBot.objects.get(id=8)
+# nlp_service = NLPService(bot=bot, context={})
+# nlp_service.train_model()
+# print(nlp_service.generate_response("đúng rồi nha"))
