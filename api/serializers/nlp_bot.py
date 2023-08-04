@@ -15,3 +15,11 @@ class NLPBotUploadCSVSerializer(serializers.Serializer):
             if size_in_mb > 2:
                 raise serializers.ValidationError(FILE_EXCEPTION.FILE_TOO_LARGE)
         return value
+
+
+class NLPBotInputMessageSerializer(serializers.Serializer):
+    message = serializers.CharField(required=True)
+
+
+class NLPBotGenerateResponseSerializer(serializers.Serializer):
+    response = serializers.CharField(required=True)

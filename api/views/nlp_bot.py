@@ -1,9 +1,13 @@
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from rest_framework import status, parsers
-from api.serializers import NLPBotUploadCSVSerializer
+from api.serializers import (
+    NLPBotUploadCSVSerializer,
+    NLPBotInputMessageSerializer,
+    NLPBotGenerateResponseSerializer,
+)
 from drf_spectacular.utils import extend_schema
-from nlp.services import UploadService
+from nlp.services import UploadService, NLPService
 from nlp.models import NLPBot
 from nlp.enums import NLP_BOT_EXCEPTION
 import tempfile
@@ -135,6 +139,55 @@ class ResponseUploadCSVAPIView(APIView):
                     status=status.HTTP_200_OK,
                     safe=False,
                 )
+            else:
+                return JsonResponse(
+                    {"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
+                )
+        except NLPBot.DoesNotExist:
+            return JsonResponse(
+                {"message": NLP_BOT_EXCEPTION.NLP_BOT_NOT_EXIST},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        except Exception as e:
+            return JsonResponse(
+                {"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class NLPBotGenerateResponseAPIView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    @extend_schema(
+        request=NLPBotInputMessageSerializer,
+        responses={200: NLPBotGenerateResponseSerializer},
+        tags=["nlp-bot"],
+    )
+    def post(self, request, id):
+        request.session.set_expiry(60 * 10)
+        if "context" not in request.session:
+            request.session["context"] = {"test": "test"}
+        context = request.session["context"]
+        try:
+            serializer = NLPBotInputMessageSerializer(data=request.data)
+            if serializer.is_valid():
+                bot = NLPBot.objects.get(id=id)
+                nlp_service = NLPService(bot=bot, context=context)
+                response, updated_context = nlp_service.generate_response(
+                    input_text=serializer.validated_data["message"]
+                )
+                response_serializer = NLPBotGenerateResponseSerializer(
+                    data={"response": response}
+                )
+                if response_serializer.is_valid():
+                    return JsonResponse(
+                        response_serializer.data, status=status.HTTP_200_OK
+                    )
+                else:
+                    return JsonResponse(
+                        {"message": response_serializer.errors},
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
             else:
                 return JsonResponse(
                     {"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST

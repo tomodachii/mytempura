@@ -9,6 +9,7 @@ class IntentAdmin(admin.ModelAdmin):
     search_fields = ["intent_name"]
     list_display_links = ["intent_name"]
     inlines = [TrainingPhraseInline]
+    change_list_template = "admin/intent/change_list.html"
 
     def get_queryset(self, request):
         # Get the current logged-in admin user

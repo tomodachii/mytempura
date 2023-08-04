@@ -8,10 +8,61 @@ import pickle
 from nlp.exceptions import NLPServiceException
 import random
 
+LIST_DEFAULT_INTENT = [
+    {"target": "positive", "data": "Đúng rồi"},
+    {"target": "positive", "data": "Đúng rồi nhé"},
+    {"target": "positive", "data": "Đúng rồi nha"},
+    {"target": "positive", "data": "Đúng"},
+    {"target": "positive", "data": "Phải rồi"},
+    {"target": "positive", "data": "Oke"},
+    {"target": "positive", "data": "Ok"},
+    {"target": "positive", "data": "Chuẩn"},
+    {"target": "positive", "data": "Được"},
+    {"target": "positive", "data": "Được nha"},
+    {"target": "positive", "data": "Được nhé"},
+    {"target": "positive", "data": "đc"},
+    {"target": "positive", "data": "đc nha"},
+    {"target": "positive", "data": "đc nhé"},
+    {"target": "positive", "data": "tốt"},
+    {"target": "positive", "data": "chính xác"},
+    {"target": "positive", "data": "chuẩn nha"},
+    {"target": "positive", "data": "good"},
+    {"target": "positive", "data": "yea"},
+    {"target": "positive", "data": "yes"},
+    {"target": "stop", "data": "Không"},
+    {"target": "stop", "data": "Không nhé"},
+    {"target": "stop", "data": "Không nha"},
+    {"target": "stop", "data": "Thôi"},
+    {"target": "stop", "data": "Dừng"},
+    {"target": "stop", "data": "Dừng lại"},
+    {"target": "stop", "data": "Dừng lại đi"},
+    {"target": "stop", "data": "stop"},
+    {"target": "negative", "data": "Sai"},
+    {"target": "negative", "data": "Nhầm rồi"},
+    {"target": "negative", "data": "sai rồi"},
+    {"target": "negative", "data": "sai rồi kìa"},
+    {"target": "negative", "data": "đợi đã"},
+    {"target": "negative", "data": "đợi chút"},
+    {"target": "negative", "data": "sửa lại tí"},
+    {"target": "negative", "data": "thay đổi chút"},
+    {"target": "negative", "data": "sửa chút"},
+    {"target": "what_about", "data": "Thế còn thì sao"},
+    {"target": "what_about", "data": "thế thì thế nào"},
+    {"target": "what_about", "data": "còn thì sao"},
+    {"target": "what_about", "data": "thì thế nào"},
+]
+
+LIST_FALLBACK = [
+    "Xin lỗi bot không hiểu ý của bạn, bạn có thế diễn đạt rõ hơn được không",
+    "Xin lỗi nha bot không hiểu ý bạn, bạn có thế nói rõ hơn được không :(",
+    "bot không hiểu ý bạn :( bạn chat rõ hơn được không, bot xin lỗi nhé :(",
+]
+
 
 class NLPService:
-    def __init__(self, bot: NLPBot):
+    def __init__(self, bot: NLPBot, context: dict):
         self.bot = bot
+        self.context = context
         self.data = []
         self.target = []
         self.entities = []
@@ -68,7 +119,16 @@ class NLPService:
         return model_path
 
     def train_model(self):
+        default_data_list = [entry["data"] for entry in LIST_DEFAULT_INTENT]
+        default_target_list = [entry["target"] for entry in LIST_DEFAULT_INTENT]
+        for i, data in enumerate(default_data_list):
+            intent, _ = Intent.objects.get_or_create(
+                bot=self.bot, intent_name=default_target_list[i]
+            )
+            TrainingPhrase.objects.get_or_create(intent=intent, phrase=data)
         raw_train_data, train_target = self.build_data_and_target_list()
+        raw_train_data = raw_train_data + default_data_list
+        train_target = train_target + default_target_list
         train_data = [self.text_preprocess(data) for data in raw_train_data]
         # Create a TF-IDF vectorizer
         vectorizer = CountVectorizer()
@@ -131,15 +191,16 @@ class NLPService:
     def entity_extraction():
         pass
 
-    def generate_response(self, input_text: str) -> str:
+    def generate_response(self, input_text: str) -> (str, dict):
         try:
             pre_intent_name = self.predict(input_text=input_text)
             intent = Intent.objects.get(bot=self.bot, intent_name=pre_intent_name)
             responses = Response.objects.filter(intent=intent)
             if responses.exists():
                 response = random.choice(responses)
-                return response.response
+                if response.message_type == Response.INSTANT:
+                    return response.response, self.context
             else:
-                return "Fallback"
+                return random.choice(LIST_FALLBACK), self.context
         except Intent.DoesNotExist:
             raise NLPServiceException("Intent does not exist")

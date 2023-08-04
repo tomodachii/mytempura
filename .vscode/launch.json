@@ -42,17 +42,17 @@
                 "--concurrency=1",
             ]
         },
-        // {
-        //     "name": "Python: eliza service test",
-        //     "type": "python",
-        //     "request": "launch",
-        //     "program": "${workspaceFolder}/manage.py",
-        //     "args": [
-        //         "shell",
-        //         "<",
-        //         "eliza_service_test_script.py"
-        //     ],
-        //     "django": true
-        // }
+        {
+            "name": "Python: eliza service test",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "shell",
+                "<",
+                "test.py"
+            ],
+            "django": true
+        }
     ]
 }

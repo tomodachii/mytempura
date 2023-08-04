@@ -19,4 +19,8 @@ from .keyword import (
     KeywordUpdateSerializer,
 )
 
-from .nlp_bot import NLPBotUploadCSVSerializer
+from .nlp_bot import (
+    NLPBotUploadCSVSerializer,
+    NLPBotInputMessageSerializer,
+    NLPBotGenerateResponseSerializer,
+)

@@ -60,16 +60,21 @@ urlpatterns = [
     path(
         "nlpbots/<int:bot_id>/entities/upload",
         views.EntityUploadCSVAPIView.as_view(),
-        name="nlp-upload-entities",
+        name="nlp-bot-upload-entities",
     ),
     path(
         "nlpbots/<int:bot_id>/intents/upload",
         views.IntentUploadCSVAPIView.as_view(),
-        name="nlp-upload-intents",
+        name="nlp-bot-upload-intents",
     ),
     path(
         "nlpbots/<int:bot_id>/responses/upload",
         views.ResponseUploadCSVAPIView.as_view(),
-        name="nlp-upload-responses",
+        name="nlp-bot-upload-responses",
+    ),
+    path(
+        "nlpbots/<int:id>/response",
+        views.NLPBotGenerateResponseAPIView.as_view(),
+        name="nlp-bot-response",
     ),
 ]
