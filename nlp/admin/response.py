@@ -10,6 +10,7 @@ class ResponseAdmin(admin.ModelAdmin):
     list_display_links = ["intent", "response"]
 
     inlines = [ResponseEntityInline, ResponseEntityCategoryInline]
+    change_list_template = "admin/response/change_list.html"
 
     def get_queryset(self, request):
         # Get the current logged-in admin user

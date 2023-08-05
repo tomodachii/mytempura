@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 12:53+0700\n"
+"POT-Creation-Date: 2023-08-05 14:56+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,7 +273,8 @@ msgid "Test Bot"
 msgstr "Thử Bot"
 
 #: keywordrecognition/templates/admin/eliza_bot/elizabot_test.html:12
-#: main/templates/admin/change_form.html:23 main/templates/admin/index.html:11
+#: main/templates/admin/change_form.html:23
+#: main/templates/admin/change_list.html:28 main/templates/admin/index.html:11
 msgid "Home"
 msgstr "Trang chủ"
 
@@ -339,12 +340,14 @@ msgid "Add %(name)s"
 msgstr "Thêm %(name)s"
 
 #: main/templates/admin/change_form.html:55
+#: main/templates/admin/change_list.html:64
 msgid "Please correct the error below."
-msgstr ""
+msgstr "Xin hãy sửa các lỗi sau"
 
 #: main/templates/admin/change_form.html:57
+#: main/templates/admin/change_list.html:66
 msgid "Please correct the errors below."
-msgstr ""
+msgstr "Xin hãy sửa các lỗi sau"
 
 #: main/templates/admin/index.html:7 main/templates/admin/index.html:12
 msgid "Dashboard"
@@ -459,6 +462,18 @@ msgstr "câu mẫu"
 #: nlp/models/training_phrase.py:17
 msgid "phrase"
 msgstr "câu mẫu"
+
+#: nlp/templates/admin/entity/change_list.html:8
+#: nlp/templates/admin/entity/change_list.html:14
+#, fuzzy
+#| msgid "Upload Intent"
+msgid "Upload Entity"
+msgstr "Upload ý định"
+
+#: nlp/templates/admin/intent/change_list.html:8
+#: nlp/templates/admin/intent/change_list.html:15
+msgid "Upload Intent"
+msgstr "Upload ý định"
 
 #~ msgid "quit message"
 #~ msgstr "message kết thúc"

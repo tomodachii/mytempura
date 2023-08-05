@@ -1,0 +1,23 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+
+  <a class="related-widget-wrapper-link btn btn-info" data-popup="yes" id="uploadResponse" style="padding: 6px;">{% trans 'Upload Response' %}</a>
+{% endblock %}
+
+{% block extrajs %}
+    {{ block.super }}
+    <script>
+        const modalId = 'uploadResponse'
+        const buttonText = "{% trans 'Upload Response' %}"
+        const formAction = '{% url 'nlp-bot-upload-responses' bot_id=selected_bot.id %}'
+        const formId = 'response-upload-form'
+        const fileId = 'response-file-input'
+        const uploadUrl = '{% url 'nlp-bot-upload-responses' bot_id=selected_bot.id %}'
+        const csrfToken = '{{ csrf_token }}'
+        handleUpload(modalId, buttonText, formAction, formId, fileId, uploadUrl, '{{ csrf_token }}');
+    </script>
+{% endblock %}
