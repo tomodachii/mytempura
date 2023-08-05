@@ -206,6 +206,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "keywordrecognition/static"),
+    os.path.join(BASE_DIR, "main/static"),
 ]
 
 JAZZMIN_SETTINGS = {

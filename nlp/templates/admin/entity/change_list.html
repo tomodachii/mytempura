@@ -1,0 +1,23 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+
+  <a class="related-widget-wrapper-link btn btn-info" data-popup="yes" id="uploadEntity" style="padding: 6px;">{% trans 'Upload Entity' %}</a>
+{% endblock %}
+
+{% block extrajs %}
+    {{ block.super }}
+    <script>
+        const modalId = 'uploadEntity'
+        const buttonText = "{% trans 'Upload Entity' %}"
+        const formAction = '{% url 'nlp-bot-upload-entities' bot_id=selected_bot.id %}'
+        const formId = 'entity-upload-form'
+        const fileId = 'entity-file-input'
+        const uploadUrl = '{% url 'nlp-bot-upload-entities' bot_id=selected_bot.id %}'
+        const csrfToken = '{{ csrf_token }}'
+        handleUpload(modalId, buttonText, formAction, formId, fileId, uploadUrl, '{{ csrf_token }}');
+    </script>
+{% endblock %}

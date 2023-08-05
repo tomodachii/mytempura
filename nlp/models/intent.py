@@ -14,7 +14,7 @@ class Intent(ModelBase):
         "nlp.NLPBot", on_delete=models.CASCADE, verbose_name=_("nlp bot")
     )
     intent_name = models.CharField(
-        unique=True, max_length=100, null=False, verbose_name=_("intent name")
+        max_length=100, null=False, verbose_name=_("intent name")
     )
 
     def __str__(self):

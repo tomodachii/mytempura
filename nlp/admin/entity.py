@@ -10,6 +10,7 @@ class EntityAdmin(admin.ModelAdmin):
     search_fields = ["bot", "entity_name"]
     list_filter = ["entity_category"]
     list_display_links = ["entity_name"]
+    change_list_template = "admin/entity/change_list.html"
 
     def get_queryset(self, request):
         # Get the current logged-in admin user

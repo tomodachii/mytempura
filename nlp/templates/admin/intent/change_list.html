@@ -5,62 +5,19 @@
 {% block object-tools-items %}
   {{ block.super }}
 
-  <a class="related-widget-wrapper-link btn btn-info" data-popup="yes" id="uploadIntent">Upload Intent</a>
+  <a class="related-widget-wrapper-link btn btn-info" data-popup="yes" id="uploadIntent" style="padding: 6px;">{% trans 'Upload Intent' %}</a>
 {% endblock %}
 
 {% block extrajs %}
     {{ block.super }}
     <script>
-        let formUploadDataHTML = '<form id="upload-form" enctype="multipart/form-data" action="{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}">{% csrf_token %}<input type="file" name="file" id="file-input"><button type="button" class="btn btn-outline-info btn-block mt-3" id="upload-button">Upload</button><div id="upload-message" style="margin-top: 10px;"></div></form>';
-        document.addEventListener('DOMContentLoaded', function() {
-            let uploadIntentModal = document.getElementById('uploadIntent');
-
-            uploadIntentModal.addEventListener('click', function() {
-                showModal("Upload Intent", formUploadDataHTML, {'data': {'lookup': null}});
-
-                let form = document.getElementById('upload-form');
-                let fileInput = document.getElementById('file-input');
-                let uploadButton = document.getElementById('upload-button');
-                let uploadMessage = document.getElementById('upload-message');
-
-                uploadButton.addEventListener('click', function() {
-                    console.log('upload data');
-                    uploadMessage.innerText = 'Uploading file...';
-                    uploadMessage.style.color = '#000';
-
-                    let formData = new FormData(form);
-                    let url = "{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}";
-    
-                    fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRFToken': '{{ csrf_token }}'
-                        },
-                        body: formData
-                    })
-                    .then(function(response) {
-                        if (response.ok) {
-                            // Success message
-                            console.log('File uploaded successfully.');
-                            uploadMessage.innerText = 'File uploaded successfully.';
-                            uploadMessage.style.color = 'green';
-                            // Clear file input
-                            fileInput.value = '';
-                        } else {
-                            // Error message
-                            console.log('File upload failed.');
-                            uploadMessage.innerText = 'File upload failed.';
-                            uploadMessage.style.color = 'red';
-                        }
-                    })
-                    .catch(function(error) {
-                        // Error message
-                        console.log('File upload failed:', error);
-                        uploadMessage.innerText = 'File upload failed: ' + error;
-                        uploadMessage.style.color = 'red';
-                    });
-                });
-            });
-        });
+        const modalId = 'uploadIntent'
+        const buttonText = "{% trans 'Upload Intent' %}"
+        const formAction = '{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}'
+        const formId = 'intent-upload-form'
+        const fileId = 'intent-file-input'
+        const uploadUrl = '{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}'
+        const csrfToken = '{{ csrf_token }}'
+        handleUpload(modalId, buttonText, formAction, formId, fileId, uploadUrl, '{{ csrf_token }}');
     </script>
 {% endblock %}

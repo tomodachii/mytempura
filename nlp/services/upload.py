@@ -107,7 +107,8 @@ class UploadService:
                         response_entities = ResponseEntity.objects.filter(
                             response=response
                         )
-                        response_entities.delete()
+                        if response_entities.exists():
+                            response_entities.delete()
                         for entity in entities:
                             ResponseEntity.objects.create(
                                 response=response, entity=entity
