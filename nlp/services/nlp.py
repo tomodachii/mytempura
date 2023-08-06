@@ -1,4 +1,11 @@
-from nlp.models import NLPBot, TrainingPhrase, Intent, Response
+from nlp.models import (
+    NLPBot,
+    TrainingPhrase,
+    Intent,
+    Response,
+    Entity,
+    ResponseEntityCategory,
+)
 from sklearn.svm import SVC
 from sklearn.naive_bayes import MultinomialNB
 import string
@@ -7,6 +14,7 @@ import os
 import pickle
 from nlp.exceptions import NLPServiceException
 import random
+import re
 
 LIST_DEFAULT_INTENT = [
     {"target": "positive", "data": "Đúng rồi"},
@@ -188,18 +196,132 @@ class NLPService:
 
         return prediction[0]
 
-    def entity_extraction():
-        pass
+    def reset_context(self):
+        self.context = {
+            "current_intent": "",
+            "previous_intent": "",
+            "extracted_entities": [],
+            "need_confirmation": False,
+            "required_entity_categories": [],
+            "template_response_id": 0,
+        }
+        return self.context
+
+    def info_extraction(self, input_text: str, response_type: str):
+        if response_type == Response.PROVIDE:
+            entities = Entity.objects.filter(bot=self.bot)
+            extracted_entities = []
+            for entity in entities:
+                pattern = entity.entity_name
+                if entity.synonym:
+                    pattern = "{}|{}".format(
+                        entity.entity_name,
+                        entity.synonym.lower().replace(",", "|").replace(" ", ""),
+                    )
+                pattern = re.compile(pattern)
+                if len(re.findall(pattern, input_text.lower().replace(" ", ""))) > 0:
+                    if (
+                        entity.entity_category.category_name
+                        in self.context["required_entity_categories"]
+                        and entity.entity_name not in self.context["extracted_entities"]
+                    ):
+                        idx = self.context["required_entity_categories"].index(
+                            entity.entity_category.category_name
+                        )
+                        self.context["required_entity_categories"].pop(idx)
+                        extracted_entities.append(entity.entity_name)
+                        self.context["extracted_entities"].append(entity.entity_name)
+
+            return extracted_entities
+
+    def matching_provide_response(
+        self, intent, template_response, responses, extracted_entities
+    ):
+        if not self.context["required_entity_categories"]:
+            for response in responses:
+                response_entity_set = response.responseentity_set.all()
+                entity_list = []
+
+                for response_entity in response_entity_set:
+                    entity_list.append(response_entity.entity.entity_name)
+                if set(extracted_entities) == set(entity_list):
+                    self.reset_context()
+                    return response.response
+        else:
+            self.context["current_intent"] = intent.intent_name
+            self.context["template_response_id"] = template_response.id
+            return "Để {}, bạn vui lòng bổ sung những thông tin sau: {}".format(
+                intent.intent_name,
+                ", ".join(self.context["required_entity_categories"]),
+            )
+
+    def generate_provide_response(
+        self, input_text: str, template_response: Response
+    ) -> (str, dict):
+        intent = template_response.intent
+        responses = Response.objects.filter(intent=intent)
+        required_entity_categories = ResponseEntityCategory.objects.filter(
+            response=template_response
+        )
+        if required_entity_categories.exists():
+            for required_entity_category in required_entity_categories:
+                self.context["required_entity_categories"].append(
+                    required_entity_category.required_category.category_name
+                )
+            extracted_entities = self.info_extraction(
+                input_text=input_text, response_type=Response.PROVIDE
+            )
+            return self.matching_provide_response(
+                intent=intent,
+                template_response=template_response,
+                responses=responses,
+                extracted_entities=extracted_entities,
+            )
+        else:
+            raise NLPServiceException("Required Category does not exist")
+
+    def generate_addition_info_collect_response(self, input_text: str):
+        intent = Intent.objects.get(
+            bot=self.bot, intent_name=self.context["current_intent"]
+        )
+        responses = Response.objects.filter(intent=intent)
+        template_response = Response.objects.get(
+            id=self.context["template_response_id"]
+        )
+        self.info_extraction(input_text=input_text, response_type=Response.PROVIDE)
+        return self.matching_provide_response(
+            intent=intent,
+            template_response=template_response,
+            responses=responses,
+            extracted_entities=self.context["extracted_entities"],
+        )
 
     def generate_response(self, input_text: str) -> (str, dict):
+        intent = None
         try:
-            pre_intent_name = self.predict(input_text=input_text)
-            intent = Intent.objects.get(bot=self.bot, intent_name=pre_intent_name)
+            current_intent_name = self.context["current_intent"]
+            if current_intent_name:
+                return (
+                    self.generate_addition_info_collect_response(input_text=input_text),
+                    self.context,
+                )
+            pred_intent_name = self.predict(input_text=input_text)
+            intent = Intent.objects.get(bot=self.bot, intent_name=pred_intent_name)
             responses = Response.objects.filter(intent=intent)
             if responses.exists():
-                response = random.choice(responses)
-                if response.message_type == Response.INSTANT:
-                    return response.response, self.context
+                template_response = random.choice(responses)
+                response = None
+                if template_response.message_type == Response.INSTANT:
+                    response = template_response.response
+                    self.reset_context()
+                if template_response.message_type == Response.PROVIDE:
+                    response = self.generate_provide_response(
+                        input_text=input_text,
+                        template_response=template_response,
+                    )
+                if not response:
+                    return random.choice(LIST_FALLBACK), self.context
+                return response, self.context
             else:
                 return random.choice(LIST_FALLBACK), self.context
         except Intent.DoesNotExist:

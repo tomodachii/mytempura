@@ -166,7 +166,14 @@ class NLPBotGenerateResponseAPIView(APIView):
     def post(self, request, id):
         request.session.set_expiry(60 * 10)
         if "context" not in request.session:
-            request.session["context"] = {"test": "test"}
+            request.session["context"] = {
+                "current_intent": "",
+                "previous_intent": "",
+                "extracted_entities": [],
+                "need_confirmation": False,
+                "required_entity_categories": [],
+                "template_response_id": 0,
+            }
         context = request.session["context"]
         try:
             serializer = NLPBotInputMessageSerializer(data=request.data)
@@ -176,6 +183,7 @@ class NLPBotGenerateResponseAPIView(APIView):
                 response, updated_context = nlp_service.generate_response(
                     input_text=serializer.validated_data["message"]
                 )
+                request.session["context"] = updated_context
                 response_serializer = NLPBotGenerateResponseSerializer(
                     data={"response": response}
                 )

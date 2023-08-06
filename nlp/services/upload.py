@@ -63,7 +63,13 @@ class UploadService:
             csvreader = csv.reader(csvfile, delimiter="\t")
 
             for row in csvreader:
-                intent_name, message_type, entities_str, response_text = row
+                (
+                    intent_name,
+                    message_type,
+                    entity_categories_str,
+                    entities_str,
+                    response_text,
+                ) = row
 
                 # Check if the Intent with the given name exists, if not create a new one
                 intent, _ = Intent.objects.get_or_create(
@@ -76,40 +82,41 @@ class UploadService:
                 )
 
                 # Process the entities
-                if entities_str:
-                    entity_names = entities_str.split(",")
-                    entities = []
+                if entity_categories_str:
+                    entity_category_names = entity_categories_str.split(",")
                     entity_categories = []
-                    if message_type == Response.COLLECT:
-                        for category_name in entity_names:
-                            category, _ = EntityCategory.objects.get_or_create(
-                                bot=self.bot, category_name=category_name.strip()
-                            )
-                            entity_categories.append(category)
-
-                        # Update the ResponseEntityCategory mappings for the response
-                        response_required_categories = (
-                            ResponseEntityCategory.objects.filter(response=response)
+                    for category_name in entity_category_names:
+                        category, _ = EntityCategory.objects.get_or_create(
+                            bot=self.bot, category_name=category_name.strip()
                         )
-                        response_required_categories.delete()
-                        for category in entity_categories:
-                            ResponseEntityCategory.objects.create(
-                                response=response, required_category=category
-                            )
-                    elif message_type == Response.PROVIDE:
-                        for entity_name in entity_names:
-                            entity, _ = Entity.objects.get_or_create(
-                                bot=self.bot, entity_name=entity_name.strip()
-                            )
-                            entities.append(entity)
+                        entity_categories.append(category)
 
-                        # Update the ResponseEntity mappings for the response
-                        response_entities = ResponseEntity.objects.filter(
-                            response=response
+                    # Update the ResponseEntityCategory mappings for the response
+                    response_required_categories = (
+                        ResponseEntityCategory.objects.filter(response=response)
+                    )
+                    response_required_categories.delete()
+                    for category in entity_categories:
+                        ResponseEntityCategory.objects.create(
+                            response=response, required_category=category
                         )
-                        if response_entities.exists():
-                            response_entities.delete()
-                        for entity in entities:
-                            ResponseEntity.objects.create(
-                                response=response, entity=entity
+                    if entities_str:
+                        entity_names = entities_str.split(",")
+                        entities = []
+                        if message_type == Response.PROVIDE:
+                            for entity_name in entity_names:
+                                entity, _ = Entity.objects.get_or_create(
+                                    bot=self.bot, entity_name=entity_name.strip()
+                                )
+                                entities.append(entity)
+
+                            # Update the ResponseEntity mappings for the response
+                            response_entities = ResponseEntity.objects.filter(
+                                response=response
                             )
+                            if response_entities.exists():
+                                response_entities.delete()
+                            for entity in entities:
+                                ResponseEntity.objects.create(
+                                    response=response, entity=entity
+                                )
