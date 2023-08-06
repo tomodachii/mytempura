@@ -77,4 +77,9 @@ urlpatterns = [
         views.NLPBotGenerateResponseAPIView.as_view(),
         name="nlp-bot-response",
     ),
+    path(
+        "nlpbots/<int:id>/train",
+        views.NLPBotTrainModelAPIView.as_view(),
+        name="nlp-bot-train",
+    ),
 ]

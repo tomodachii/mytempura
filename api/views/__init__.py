@@ -12,4 +12,5 @@ from .nlp_bot import (
     IntentUploadCSVAPIView,
     ResponseUploadCSVAPIView,
     NLPBotGenerateResponseAPIView,
+    NLPBotTrainModelAPIView,
 )
