@@ -222,7 +222,7 @@
                             </select>
                         </div>
                         {% if bot_type == "nlpbot" %}
-                            <button id="trainButton" class="btn btn-outline-info mt-3">Train Model</button>
+                            <button id="trainButton" class="btn btn-outline-info mt-3">{% trans 'Train Bot' %}</button>
                         {% endif %}
                         <ul class="nav nav-pills nav-sidebar flex-column {{ jazzmin_ui.sidebar_list_classes }}" data-widget="treeview" role="menu" data-collapsible="false">
 
@@ -441,7 +441,7 @@
         const csrfToken = '{{ csrf_token }}'
         const url = "{% url 'nlp-bot-train' id=selected_bot.id %}";
 
-        trainButton.innerText = 'Training bot ...';
+        trainButton.innerText = "{% trans 'Training bot ...' %}";
         
         fetch(url, {
             method: 'GET',
@@ -453,16 +453,16 @@
             if (response.ok) {
                 // Success message
                 console.log('Model training started.');
-                trainButton.innerText = 'Succeeded';
+                trainButton.innerText = "{% trans 'Succeeded' %}";
                 setTimeout(function() {
-                    trainButton.innerText = 'Train Model';
+                    trainButton.innerText = "{% trans 'Train Bot' %}";
                 }, 1000);
             } else {
                 // Error message
                 console.log('Model training failed.');
-                trainButton.innerText = 'Failed!';
+                trainButton.innerText = "{% trans 'Failed!' %}";
                 setTimeout(function() {
-                    trainButton.innerText = 'Train Model';
+                    trainButton.innerText = "{% trans 'Train Bot' %}";
                 }, 1000);
             }
         })

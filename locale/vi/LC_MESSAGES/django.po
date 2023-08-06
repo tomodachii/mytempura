@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-05 14:56+0700\n"
+"POT-Creation-Date: 2023-08-06 15:42+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,25 +314,42 @@ msgstr "Đăng xuất"
 msgid "See Profile"
 msgstr "Xem Profile"
 
-#: main/templates/admin/base.html:349
+#: main/templates/admin/base.html:225 main/templates/admin/base.html:459
+#: main/templates/admin/base.html:466
+msgid "Train Bot"
+msgstr "Huấn luyện Bot"
+
+#: main/templates/admin/base.html:352
 msgid "Copyright"
 msgstr ""
 
-#: main/templates/admin/base.html:349
+#: main/templates/admin/base.html:352
 msgid "All rights reserved."
 msgstr ""
 
-#: main/templates/admin/base.html:365
+#: main/templates/admin/base.html:368
 msgid "UI Configuration"
 msgstr "Tùy chỉnh UI"
 
-#: main/templates/admin/base.html:369
+#: main/templates/admin/base.html:372
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr "Copy vào settings file để thực hiện thay đổi UI"
 
-#: main/templates/admin/base.html:373
+#: main/templates/admin/base.html:376
 msgid "Close"
 msgstr "Đóng"
+
+#: main/templates/admin/base.html:445
+msgid "Training bot ..."
+msgstr "Đang huấn luyện bot ..."
+
+#: main/templates/admin/base.html:457
+msgid "Succeeded"
+msgstr "Thành công"
+
+#: main/templates/admin/base.html:464
+msgid "Failed!"
+msgstr "Lỗi!"
 
 #: main/templates/admin/change_form.html:34
 #, python-format
@@ -464,7 +481,7 @@ msgid "phrase"
 msgstr "câu mẫu"
 
 #: nlp/templates/admin/entity/change_list.html:8
-#: nlp/templates/admin/entity/change_list.html:14
+#: nlp/templates/admin/entity/change_list.html:15
 #, fuzzy
 #| msgid "Upload Intent"
 msgid "Upload Entity"
@@ -474,6 +491,11 @@ msgstr "Upload ý định"
 #: nlp/templates/admin/intent/change_list.html:15
 msgid "Upload Intent"
 msgstr "Upload ý định"
+
+#: nlp/templates/admin/response/change_list.html:8
+#: nlp/templates/admin/response/change_list.html:15
+msgid "Upload Response"
+msgstr "Upload phản hồi"
 
 #~ msgid "quit message"
 #~ msgstr "message kết thúc"
