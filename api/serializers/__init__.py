@@ -23,4 +23,5 @@ from .nlp_bot import (
     NLPBotUploadCSVSerializer,
     NLPBotInputMessageSerializer,
     NLPBotGenerateResponseSerializer,
+    NLPBotTrainModelSerializer,
 )

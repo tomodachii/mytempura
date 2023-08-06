@@ -23,3 +23,7 @@ class NLPBotInputMessageSerializer(serializers.Serializer):
 
 class NLPBotGenerateResponseSerializer(serializers.Serializer):
     response = serializers.CharField(required=True)
+
+
+class NLPBotTrainModelSerializer(serializers.Serializer):
+    message = serializers.CharField(required=True)

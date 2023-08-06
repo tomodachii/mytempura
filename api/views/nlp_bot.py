@@ -5,6 +5,7 @@ from api.serializers import (
     NLPBotUploadCSVSerializer,
     NLPBotInputMessageSerializer,
     NLPBotGenerateResponseSerializer,
+    NLPBotTrainModelSerializer,
 )
 from drf_spectacular.utils import extend_schema
 from nlp.services import UploadService, NLPService
@@ -142,6 +143,40 @@ class ResponseUploadCSVAPIView(APIView):
             else:
                 return JsonResponse(
                     {"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
+                )
+        except NLPBot.DoesNotExist:
+            return JsonResponse(
+                {"message": NLP_BOT_EXCEPTION.NLP_BOT_NOT_EXIST},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        except Exception as e:
+            return JsonResponse(
+                {"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class NLPBotTrainModelAPIView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    @extend_schema(
+        responses={200: NLPBotTrainModelSerializer},
+        tags=["nlp-bot"],
+    )
+    def get(self, request, id):
+        try:
+            bot = NLPBot.objects.get(id=id)
+            nlp_service = NLPService(bot=bot, context={})
+            nlp_service.train_model()
+            response_serializer = NLPBotTrainModelSerializer(
+                data={"message": "success"}
+            )
+            if response_serializer.is_valid():
+                return JsonResponse(response_serializer.data, status=status.HTTP_200_OK)
+            else:
+                return JsonResponse(
+                    {"message": response_serializer.errors},
+                    status=status.HTTP_400_BAD_REQUEST,
                 )
         except NLPBot.DoesNotExist:
             return JsonResponse(
