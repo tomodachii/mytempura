@@ -222,7 +222,14 @@
                             </select>
                         </div>
                         {% if bot_type == "nlpbot" %}
-                            <button id="trainButton" class="btn btn-outline-info mt-3">{% trans 'Train Bot' %}</button>
+                            <button id="trainButton" class="btn btn-outline-info btn-block mt-3">{% trans 'Train Bot' %}</button>
+                            <a href="{% url 'admin:nlpbot-test-bot' object_id=selected_bot.id %}" class="btn btn-info btn-block mt-3 text-white">
+                                {% trans 'Test Bot' %}
+                            </a>
+                        {% elif bot_type == "elizabot" %}
+                            <a href="{% url 'admin:elizabot-test-bot' object_id=selected_bot.id %}" class="btn btn-info btn-block mt-3 text-white">
+                                {% trans 'Test Bot' %}
+                            </a>
                         {% endif %}
                         <ul class="nav nav-pills nav-sidebar flex-column {{ jazzmin_ui.sidebar_list_classes }}" data-widget="treeview" role="menu" data-collapsible="false">
 
