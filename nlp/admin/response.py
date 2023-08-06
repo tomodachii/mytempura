@@ -28,7 +28,7 @@ class ResponseAdmin(admin.ModelAdmin):
 
     INLINE_MAPPING = {
         Response.COLLECT: [ResponseEntityCategoryInline],
-        Response.PROVIDE: [ResponseEntityInline],
+        Response.PROVIDE: [ResponseEntityCategoryInline, ResponseEntityInline],
     }
 
     def get_inline_instances(self, request, obj=None):
