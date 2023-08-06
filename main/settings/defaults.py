@@ -79,6 +79,7 @@ TEMPLATES = [
         "DIRS": [
             os.path.join(BASE_DIR, "main/templates"),
             os.path.join(BASE_DIR, "keywordrecognition/templates"),
+            os.path.join(BASE_DIR, "nlp/templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {

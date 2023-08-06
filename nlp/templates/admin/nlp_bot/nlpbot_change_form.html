@@ -1,0 +1,14 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block object-tools-items %}
+<div class="object-tools d-flex flex-column">
+    {{ block.super }}
+    {% if original.pk %}
+    <a href="{% url 'admin:nlpbot-test-bot' object_id=original.id %}" class="btn btn-outline-info btn-block mt-3">
+        {% trans 'Test Bot' %}
+    </a>
+    {% endif %}
+</div>
+{% endblock %}
