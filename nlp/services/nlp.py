@@ -300,12 +300,12 @@ class NLPService:
         intent = None
         try:
             current_intent_name = self.context["current_intent"]
+            pred_intent_name = self.predict(input_text=input_text)
             if current_intent_name:
                 return (
                     self.generate_addition_info_collect_response(input_text=input_text),
                     self.context,
                 )
-            pred_intent_name = self.predict(input_text=input_text)
             intent = Intent.objects.get(bot=self.bot, intent_name=pred_intent_name)
             responses = Response.objects.filter(intent=intent)
             if responses.exists():

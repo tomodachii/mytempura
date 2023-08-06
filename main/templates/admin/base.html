@@ -434,6 +434,10 @@
                         console.log('Selected Bot is NLPBot');
                         // Redirect to the NLPBot admin change form (modify the URL accordingly)
                         window.location.href = `${backendURL}/nlp/nlpbot/${selectedValue}/change`
+                    } else {
+                        console.log(data.message)
+                        console.log(`${backendURL}`)
+                        window.location.href = `${backendURL}`
                     }
                 })
                 .catch(function(error) {
@@ -443,41 +447,46 @@
     });
 
     let trainButton = document.getElementById("trainButton")
-
-    trainButton.addEventListener("click", function() {
-        const csrfToken = '{{ csrf_token }}'
-        const url = "{% url 'nlp-bot-train' id=selected_bot.id %}";
-
-        trainButton.innerText = "{% trans 'Training bot ...' %}";
+    
+    {% if selected_bot %}
+        {% if bot_type == "nlpbot" %}
+            trainButton.addEventListener("click", function() {
+                const csrfToken = '{{ csrf_token }}'
+                const url = "{% url 'nlp-bot-train' id=selected_bot.id %}";
         
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'X-CSRFToken': csrfToken
-            },
-        })
-        .then(function (response) {
-            if (response.ok) {
-                // Success message
-                console.log('Model training started.');
-                trainButton.innerText = "{% trans 'Succeeded' %}";
-                setTimeout(function() {
-                    trainButton.innerText = "{% trans 'Train Bot' %}";
-                }, 1000);
-            } else {
-                // Error message
-                console.log('Model training failed.');
-                trainButton.innerText = "{% trans 'Failed!' %}";
-                setTimeout(function() {
-                    trainButton.innerText = "{% trans 'Train Bot' %}";
-                }, 1000);
-            }
-        })
-        .catch(function (error) {
-            // Error message
-            console.log('Model training failed:', error);
-        });
-    });
+                trainButton.innerText = "{% trans 'Training bot ...' %}";
+                
+                fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'X-CSRFToken': csrfToken
+                    },
+                })
+                .then(function (response) {
+                    if (response.ok) {
+                        // Success message
+                        console.log('Model training started.');
+                        trainButton.innerText = "{% trans 'Succeeded' %}";
+                        setTimeout(function() {
+                            trainButton.innerText = "{% trans 'Train Bot' %}";
+                        }, 1000);
+                    } else {
+                        // Error message
+                        console.log('Model training failed.');
+                        trainButton.innerText = "{% trans 'Failed!' %}";
+                        setTimeout(function() {
+                            trainButton.innerText = "{% trans 'Train Bot' %}";
+                        }, 1000);
+                    }
+                })
+                .catch(function (error) {
+                    // Error message
+                    console.log('Model training failed:', error);
+                });
+            });
+        {% endif %}
+    {% endif %}
+    
     
 </script>
 {% endblock %}

@@ -2,6 +2,7 @@ from django.contrib import admin as admin_site
 from backend.models import Bot
 from django.urls import path
 from django.http import JsonResponse
+from django.conf import settings
 
 # from django.urls import reverse
 # from django.shortcuts import redirect
@@ -62,14 +63,19 @@ class AdminSite(admin_site.AdminSite):
         else:
             bots = []
             selected_bot = None
-        if hasattr(selected_bot, "elizabot"):
+        if selected_bot:
+            if hasattr(selected_bot, "elizabot"):
+                exclude_app_list.append("nlp")
+                bot_type = "elizabot"
+            elif hasattr(selected_bot, "nlpbot"):
+                exclude_app_list.append("keywordrecognition")
+                bot_type = "nlpbot"
+        else:
             exclude_app_list.append("nlp")
-            bot_type = "elizabot"
-        elif hasattr(selected_bot, "nlpbot"):
             exclude_app_list.append("keywordrecognition")
-            bot_type = "nlpbot"
         context.update(
             {
+                "backend_url": settings.BACKEND_URL,
                 "exclude_app_list": exclude_app_list,
                 "bots": bots,
                 "selected_bot": selected_bot,

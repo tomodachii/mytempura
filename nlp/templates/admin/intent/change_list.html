@@ -10,14 +10,16 @@
 
 {% block extrajs %}
     {{ block.super }}
-    <script>
-        const modalId = 'uploadIntent'
-        const buttonText = "{% trans 'Upload Intent' %}"
-        const formAction = '{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}'
-        const formId = 'intent-upload-form'
-        const fileId = 'intent-file-input'
-        const uploadUrl = '{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}'
-        const csrfToken = '{{ csrf_token }}'
-        handleUpload(modalId, buttonText, formAction, formId, fileId, uploadUrl, '{{ csrf_token }}');
-    </script>
+    {% if selected_bot %}
+      <script>
+          const modalId = 'uploadIntent'
+          const buttonText = "{% trans 'Upload Intent' %}"
+          const formAction = '{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}'
+          const formId = 'intent-upload-form'
+          const fileId = 'intent-file-input'
+          const uploadUrl = '{% url 'nlp-bot-upload-intents' bot_id=selected_bot.id %}'
+          const csrfToken = '{{ csrf_token }}'
+          handleUpload(modalId, buttonText, formAction, formId, fileId, uploadUrl, '{{ csrf_token }}');
+      </script>
+    {% endif %}
 {% endblock %}
