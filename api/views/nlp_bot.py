@@ -189,6 +189,19 @@ class NLPBotTrainModelAPIView(APIView):
             )
 
 
+def reset_context():
+    return {
+        "current_intent": "",
+        "previous_intent": "",
+        "extracted_entities": [],
+        "need_confirmation": False,
+        "required_entity_categories": [],
+        "template_response_id": 0,
+        "is_intent_interupt": False,
+        "interupt_intent": "",
+    }
+
+
 class NLPBotGenerateResponseAPIView(APIView):
     authentication_classes = []
     permission_classes = []
@@ -203,11 +216,15 @@ class NLPBotGenerateResponseAPIView(APIView):
         if "context" not in request.session:
             request.session["context"] = {
                 "current_intent": "",
-                "previous_intent": "",
                 "extracted_entities": [],
                 "need_confirmation": False,
                 "required_entity_categories": [],
                 "template_response_id": 0,
+                "is_intent_interupt": False,
+                "Email": None,
+                "SĐT": None,
+                "Địa chỉ": None,
+                "Họ Tên": None,
             }
         context = request.session["context"]
         try:
@@ -227,15 +244,18 @@ class NLPBotGenerateResponseAPIView(APIView):
                         response_serializer.data, status=status.HTTP_200_OK
                     )
                 else:
+                    request.session["context"] = reset_context()
                     return JsonResponse(
                         {"message": response_serializer.errors},
                         status=status.HTTP_400_BAD_REQUEST,
                     )
             else:
+                request.session["context"] = reset_context()
                 return JsonResponse(
                     {"message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
                 )
         except NLPBot.DoesNotExist:
+            request.session["context"] = reset_context()
             return JsonResponse(
                 {"message": NLP_BOT_EXCEPTION.NLP_BOT_NOT_EXIST},
                 status=status.HTTP_404_NOT_FOUND,

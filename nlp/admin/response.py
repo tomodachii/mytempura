@@ -29,6 +29,12 @@ class ResponseAdmin(admin.ModelAdmin):
     INLINE_MAPPING = {
         Response.COLLECT: [ResponseEntityCategoryInline],
         Response.PROVIDE: [ResponseEntityCategoryInline, ResponseEntityInline],
+        Response.PROVIDE_CONFIRM: [ResponseEntityCategoryInline, ResponseEntityInline],
+        Response.CONFIRM_POSITIVE_COLLECT: [
+            ResponseEntityCategoryInline,
+            ResponseEntityInline,
+        ],
+        Response.CONFIRM_POSITIVE: [ResponseEntityCategoryInline],
     }
 
     def get_inline_instances(self, request, obj=None):

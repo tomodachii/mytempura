@@ -70,6 +70,8 @@ class UploadService:
                     entities_str,
                     response_text,
                 ) = row
+                if intent_name == "đặt mua":
+                    print("a")
 
                 # Check if the Intent with the given name exists, if not create a new one
                 intent, _ = Intent.objects.get_or_create(
@@ -103,7 +105,7 @@ class UploadService:
                     if entities_str:
                         entity_names = entities_str.split(",")
                         entities = []
-                        if message_type == Response.PROVIDE:
+                        if message_type in [Response.PROVIDE, Response.PROVIDE_CONFIRM]:
                             for entity_name in entity_names:
                                 entity, _ = Entity.objects.get_or_create(
                                     bot=self.bot, entity_name=entity_name.strip()

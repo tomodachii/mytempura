@@ -19,11 +19,19 @@ class Response(ModelBase):
     INSTANT = "INSTANT"
     COLLECT = "COLLECT"
     PROVIDE = "PROVIDE"
+    PROVIDE_CONFIRM = "PROVIDE_CONFIRM"
+    CONFIRM_POSITIVE_COLLECT = "CONFIRM_POSITIVE_COLLECT"
+    CONFIRM_POSITIVE = "CONFIRM_POSITIVE"
+    CONFIRM_NEGATIVE = "CONFIRM_NEGATIVE"
 
     RESPONSE_TYPE = [
         (INSTANT, _("Instant response")),
         (COLLECT, _("Collect response")),
         (PROVIDE, _("Provide response")),
+        (PROVIDE_CONFIRM, _("Provide Confirm response")),
+        (CONFIRM_POSITIVE_COLLECT, _("Provide Confirm Collect response")),
+        (CONFIRM_POSITIVE, _("Positive response")),
+        (CONFIRM_NEGATIVE, _("Negative response")),
     ]
 
     message_type = models.CharField(

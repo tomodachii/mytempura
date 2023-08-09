@@ -15,5 +15,7 @@ class EntityCategory(ModelBase):
     )
     category_name = models.CharField(max_length=100, null=False)
 
+    synonym = models.CharField(null=True, blank=True, verbose_name=_("synonym"))
+
     def __str__(self):
         return self.category_name
