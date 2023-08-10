@@ -175,10 +175,13 @@ class ElizaService:
 
         text_substr_list = []
 
-        for i in range(len(words)):
-            for j in range(i + 1, len(words)):
-                substr = " ".join(words[i:j])
-                text_substr_list.append(substr)
+        if len(words) > 1:
+            for i in range(len(words)):
+                for j in range(i + 1, len(words)):
+                    substr = " ".join(words[i:j])
+                    text_substr_list.append(substr)
+        else:
+            text_substr_list.append(words[0])
         for substr in text_substr_list:
             for synonym in synonyms:
                 if substr == synonym.word:
