@@ -98,13 +98,39 @@ class ElizaService:
             tag, content = [part.strip() for part in line.split(":=")]
             self.load_item(tag, content)
 
+    def generate_sentence(self, template, decomp_pattern_parts):
+        open_bracket = False
+        current_position = -1
+        result_template = template
+
+        for char in result_template:
+            if char == "(":
+                open_bracket = True
+                current_position = ""
+            elif char == ")":
+                open_bracket = False
+                if current_position:
+                    replace_char = f"({current_position})"
+                    result_template = result_template.replace(
+                        replace_char,
+                        decomp_pattern_parts[int(current_position)],
+                    )
+                    print(result_template)
+            elif open_bracket:
+                current_position += char
+            else:
+                pass
+
+        return result_template
+
     def generate_response(
         self, decomp: Decomp, decomp_pattern_parts: list
     ) -> list[str]:
         response = None
         reasmb = decomp.get_random_reasmb()
-        for i in range(len(decomp_pattern_parts)):
-            response = reasmb.template.replace(f"({i})", decomp_pattern_parts[i])
+        # for i in range(len(decomp_pattern_parts)):
+        #     response = reasmb.template.replace(f"({i})", decomp_pattern_parts[i])
+        response = self.generate_sentence(reasmb.template, decomp_pattern_parts)
         return response
 
     def extract_text_by_decomp(self, rule: list, text: str):
