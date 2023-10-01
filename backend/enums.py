@@ -6,11 +6,11 @@ class SERVER_EXCEPTION:
     PERMISSION_ERROR = _("Permission error")
 
 
-class FIREBASE_EXCEPTION:
-    GET_USER_ERROR = _("Failed to get Firebase user")
-    EMAIL_ALREADY_EXISTED = _("Email alredy existed")
-    CREATE_USER_ERROR = _("Failed to create Firebase user")
-    GET_USER_BY_EMAIL_ERROR = _("Failed to get Firebase user by email")
+# class FIREBASE_EXCEPTION:
+#     GET_USER_ERROR = _("Failed to get Firebase user")
+#     EMAIL_ALREADY_EXISTED = _("Email alredy existed")
+#     CREATE_USER_ERROR = _("Failed to create Firebase user")
+#     GET_USER_BY_EMAIL_ERROR = _("Failed to get Firebase user by email")
 
 
 class ACCOUNT_EXCEPTION:

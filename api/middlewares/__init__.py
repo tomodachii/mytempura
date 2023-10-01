@@ -1,5 +1,5 @@
 from .api_middlewares import (
-    FirebaseAuthentication,
+    # FirebaseAuthentication,
     RouteAuthenticationByJWT,
 )
-from .openapi import FirebaseAuthenticationExtension
+# from .openapi import FirebaseAuthenticationExtension
